@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { Calendar, Clock, User, Search, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, User, Search, ArrowRight, Home } from 'lucide-react';
 import { supabase, type BlogPost } from '@/lib/supabase';
 import Link from 'next/link';
 import Header from '@/components/Header';
@@ -45,13 +45,6 @@ export default function BlogPage() {
       
       setBlogPosts(data || []);
       
-      // Extract all unique tags
-      const tags = new Set<string>();
-      data?.forEach(post => {
-        post.tags?.forEach((tag: string) => tags.add(tag));
-      });
-      setAllTags(Array.from(tags));
-      
     } catch (err) {
       console.error('Error fetching blog posts:', err);
     } finally {
@@ -65,14 +58,10 @@ export default function BlogPage() {
     if (searchTerm) {
       filtered = filtered.filter(post =>
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        (post.description && post.description.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
 
-    if (selectedTag) {
-      filtered = filtered.filter(post => post.tags.includes(selectedTag));
-    }
 
     setFilteredPosts(filtered);
   };
@@ -112,6 +101,14 @@ export default function BlogPage() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Insights, tendências e conhecimento sobre tecnologia, desenvolvimento e transformação digital.
             </p>
+            <div className="mt-6">
+              <Link href="/">
+                <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                  <Home className="mr-2 h-5 w-5" />
+                  Voltar ao Início
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Search and Filter */}
@@ -129,28 +126,6 @@ export default function BlogPage() {
               </div>
             </div>
 
-            {/* Tags Filter */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
-              <Button
-                variant={selectedTag === null ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedTag(null)}
-                className="mb-2"
-              >
-                Todos
-              </Button>
-              {allTags.map((tag) => (
-                <Button
-                  key={tag}
-                  variant={selectedTag === tag ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTag(tag)}
-                  className="mb-2"
-                >
-                  {tag}
-                </Button>
-              ))}
-            </div>
           </div>
 
           {/* Blog Posts Grid */}
@@ -166,10 +141,10 @@ export default function BlogPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => (
                 <Card key={post.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white border-0 shadow-lg overflow-hidden">
-                  {post.featured_image && (
+                  {post.image_url && (
                     <div className="aspect-video overflow-hidden">
                       <Image
-                        src={post.featured_image}
+                        src={post.image_url}
                         alt={post.title}
                         width={400}
                         height={225}
@@ -178,35 +153,19 @@ export default function BlogPage() {
                     </div>
                   )}
                   <CardHeader className="pb-4">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {post.tags?.slice(0, 3).map((tag, index) => (
-                        <Badge 
-                          key={index} 
-                          variant="secondary" 
-                          className="text-xs cursor-pointer hover:bg-blue-100"
-                          onClick={() => setSelectedTag(tag)}
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                       {post.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed line-clamp-3">
-                      {post.excerpt}
+                      {post.description}
                     </p>
                   </CardHeader>
                   <CardContent className="pt-0">
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                       <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
-                          <User className="h-4 w-4" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
                           <Clock className="h-4 w-4" />
-                          <span>{post.reading_time} min</span>
+                          <span>5 min</span>
                         </div>
                       </div>
                     </div>

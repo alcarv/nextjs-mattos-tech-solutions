@@ -25,7 +25,7 @@ export default function Blog() {
       setLoading(false);
       return;
     }
-    
+
     try {
       const { data, error } = await supabase!
         .from('blog_posts')
@@ -110,10 +110,10 @@ export default function Blog() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {blogPosts.map((post) => (
                 <Card key={post.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white border-0 shadow-lg overflow-hidden">
-                  {post.featured_image && (
+                  {post.image_url && (
                     <div className="aspect-video overflow-hidden">
                       <Image
-                        src={post.featured_image}
+                        src={post.image_url}
                         alt={post.title}
                         width={400}
                         height={225}
@@ -122,30 +122,19 @@ export default function Blog() {
                     </div>
                   )}
                   <CardHeader className="pb-4">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {post.tags?.slice(0, 2).map((tag, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                       {post.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed line-clamp-3">
-                      {post.excerpt}
+                      {post.description}
                     </p>
                   </CardHeader>
                   <CardContent className="pt-0">
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                       <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
-                          <User className="h-4 w-4" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
                           <Clock className="h-4 w-4" />
-                          <span>{post.reading_time} min</span>
+                          <span>5 min</span>
                         </div>
                       </div>
                     </div>
@@ -154,7 +143,7 @@ export default function Blog() {
                         <Calendar className="h-4 w-4" />
                         <span>{formatDate(post.created_at)}</span>
                       </div>
-                      <Link href={`/blog/${post.slug}`}>
+                      <Link href={`/blog/${post.id}`}>
                         <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
                           Ler mais
                           <ArrowRight className="ml-1 h-4 w-4" />

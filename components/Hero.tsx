@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -17,13 +18,17 @@ export default function Hero() {
             </p>
             
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                Começar Agora
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg">
-                Ver Nossos Serviços
-              </Button>
+              <Link href="/#contact">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                  Começar Agora
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/#services">
+                <Button variant="outline" size="lg">
+                  Ver Nossos Serviços
+                </Button>
+              </Link>
             </div>
 
             <div className="mt-12 grid grid-cols-2 gap-6">

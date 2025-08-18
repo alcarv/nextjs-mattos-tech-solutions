@@ -11,15 +11,15 @@ export const supabase = (supabaseUrl && supabaseUrl !== 'https://placeholder.sup
 
 export type BlogPost = {
   id: string;
+  website_id: string;
   title: string;
   slug: string;
-  excerpt: string;
+  description: string | null;
   content: string;
-  featured_image: string | null;
-  author: string;
+  image_url: string | null;
+  user_id: string;
   published: boolean;
   created_at: string;
   updated_at: string;
-  tags: string[];
-  reading_time: number;
+  published_at: string | null;
 };

@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 export const metadata: Metadata = {
   title: 'Mattos Tech Solutions - Consultoria e Desenvolvimento em TI',
@@ -114,7 +115,9 @@ export default function RootLayout({
         </noscript>
         
         {children}
-        
+
+        <FloatingWhatsApp />
+
         <Script
           src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/e1e8582b-eb55-4673-9c77-04989c8c9b1c-loader.js"
           strategy="afterInteractive"

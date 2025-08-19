@@ -17,14 +17,8 @@ export default function Footer() {
               Sua parceira especializada em consultoria de TI e desenvolvimento de soluções personalizadas.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Linkedin className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.instagram.com/mattostechsolutions/" target="_blank" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Twitter className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -57,9 +51,7 @@ export default function Footer() {
               <div className="flex items-start space-x-2">
                 <MapPin className="h-5 w-5 text-blue-400 mt-1" />
                 <span>
-                  Av. Paulista, 1000<br />
-                  São Paulo - SP<br />
-                  CEP: 01310-100
+                  Itu - SP
                 </span>
               </div>
             </div>

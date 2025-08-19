@@ -34,7 +34,7 @@ export default function Hero() {
             
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link href="https://wa.me/5511990183194?text=Olá! Gostaria de saber mais sobre os serviços da Mattos Tech Solutions." target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                <Button size="lg" className="bg-blue-600 hover:bg-green-700">
                   {config.ctaText}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>

@@ -12,7 +12,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 
-const servicos = [
+const servicosList = [
   {
     icon: Lightbulb,
     title: 'Consultoria e Planejamento em TI',
@@ -129,7 +129,7 @@ export default function Servicos() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicos.map((service, index) => (
+          {servicosList.map((service, index) => (
             <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white border-0 shadow-lg">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto mb-4 p-3 bg-blue-100 rounded-full w-fit">

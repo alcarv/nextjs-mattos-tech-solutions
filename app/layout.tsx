@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Mattos Tech Solutions - Consultoria e Desenvolvimento em TI',
@@ -42,6 +43,16 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://mattostechsolutions.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2563eb" />
+        <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        
+        {/* Updated Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -49,20 +60,23 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Mattos Tech Solutions",
-              "description": "Consultoria especializada em TI e soluções de desenvolvimento personalizadas",
+              "description": "Desenvolvimento profissional de websites e sistemas personalizados",
               "url": "https://mattostechsolutions.com",
-              "logo": "https://mattostechsolutions.com/logo.png",
+              "logo": "https://mattostechsolutions.com/favicon.svg",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+55-11-99999-9999",
+                "telephone": "+5511990183194",
                 "contactType": "customer service",
-                "areaServed": "BR",
                 "availableLanguage": "Portuguese"
               },
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "BR"
+              },
               "sameAs": [
-                "https://linkedin.com/company/mattos-tech-solutions"
+                "https://wa.me/+5511990183194"
               ],
-              "services": [
+              "servicos": [
                 "Consultoria e Planejamento em TI",
                 "Desenvolvimento de Software",
                 "Desenvolvimento Web",
@@ -76,8 +90,36 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* Google Tag Manager */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-NHK45VTT');
+          `}
+        </Script>
       </head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NHK45VTT"
+            height="0" 
+            width="0" 
+            style={{display: 'none', visibility: 'hidden'}}
+          />
+        </noscript>
+        
+        {children}
+        
+        <Script
+          src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/e1e8582b-eb55-4673-9c77-04989c8c9b1c-loader.js"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }

@@ -143,7 +143,7 @@ export default function Blog() {
                         <Calendar className="h-4 w-4" />
                         <span>{formatDate(post.created_at)}</span>
                       </div>
-                      <Link href={`/blog/${post.id}`}>
+                      <Link href={`/blog/${post.slug}`}>
                         <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
                           Ler mais
                           <ArrowRight className="ml-1 h-4 w-4" />

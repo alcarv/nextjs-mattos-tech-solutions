@@ -7,11 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { IMaskInput } from 'react-imask';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
     message: ''
   });
@@ -29,9 +31,10 @@ export default function Contact() {
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key';
 
     const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
+      name: formData.name,
+      email: formData.email,
       company: formData.company,
+      phone: formData.phone,
       message: formData.message,
       to_name: 'Mattos Tech Solutions',
     };
@@ -40,7 +43,7 @@ export default function Contact() {
       .then((response) => {
         console.log('Email sent successfully:', response);
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', company: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
       })
       .catch((error) => {
         console.error('Error sending email:', error);
@@ -59,6 +62,10 @@ export default function Contact() {
     }));
   };
 
+  const handlePhoneChange = (val: string) => {
+    setFormData(prev => ({ ...prev, phone: val }));
+  };
+
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,7 +74,7 @@ export default function Contact() {
             Entre em Contato
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Pronto para transformar sua empresa? Entre em contato conosco e descubra como 
+            Pronto para transformar sua empresa? Entre em contato conosco e descubra como
             podemos impulsionar seu negócio com tecnologia.
           </p>
         </div>
@@ -84,8 +91,14 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Telefone</h3>
-                      <p className="text-gray-600">+55 (11) 99999-9999</p>
-                      <p className="text-gray-600">+55 (11) 3333-3333</p>
+                      <a
+                        href="https://wa.me/5511990183194?text=Olá! Gostaria de saber mais sobre os serviços da Mattos Tech Solutions."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-600 hover:text-green-700 font-medium"
+                      >
+                        +55 (11) 99018-3194
+                      </a>
                     </div>
                   </div>
                 </CardContent>
@@ -99,8 +112,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">E-mail</h3>
-                      <p className="text-gray-600">contato@mattostech.com</p>
-                      <p className="text-gray-600">vendas@mattostech.com</p>
+                      <p className="text-gray-600">mattostechsolutions@gmail.com</p>
                     </div>
                   </div>
                 </CardContent>
@@ -115,9 +127,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Endereço</h3>
                       <p className="text-gray-600">
-                        Av. Paulista, 1000<br />
-                        São Paulo - SP<br />
-                        CEP: 01310-100
+                        Itu - SP<br />
                       </p>
                     </div>
                   </div>
@@ -183,7 +193,23 @@ export default function Contact() {
                       />
                     </div>
                   </div>
-                  
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Número de Celular *
+                    </label>
+
+                    <IMaskInput
+                      id="phone"
+                      name="phone"
+                      mask="(00) 00000-0000"
+                      value={formData.phone}
+                      onAccept={(val) => handlePhoneChange(String(val))}
+                      type="tel"
+                      required
+                      className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      placeholder="(11) 99999-9999"
+                    />
+                  </div>
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
                       Empresa

@@ -9,11 +9,27 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'Serviços', href: '/#services' },
+    { name: 'Serviços', href: '/#servicos' },
     { name: 'Sobre', href: '/#about' },
-    { name: 'Blog', href: '/#blog' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contato', href: '/#contact' },
   ];
+
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false);
+
+    if (href.startsWith('/#')) {
+      if (window.location.pathname !== '/') {
+        window.location.href = href;
+      } else {
+        const sectionId = href.substring(2);
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   return (
     <header className="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
@@ -48,11 +64,12 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link href="/#contact">
-                <Button variant="secondary" size="sm" className="ml-4">
-                  Contatos
-                </Button>
-              </Link>
+              <button
+                onClick={() => handleNavClick('/#contact')}
+                className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded font-medium transition-colors duration-200"
+              >
+                Contatos
+              </button>
             </div>
           </div>
 
@@ -93,11 +110,12 @@ export default function Header() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Link href="/#contact">
-                  <Button variant="secondary" size="sm" className="w-full" onClick={() => setIsMenuOpen(false)}>
-                    Contatos
-                  </Button>
-                </Link>
+                <button
+                  onClick={() => handleNavClick('/#contact')}
+                  className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded font-medium transition-colors duration-200 w-full"
+                >
+                  Contatos
+                </button>
               </div>
             </div>
           </div>

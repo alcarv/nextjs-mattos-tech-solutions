@@ -1,30 +1,45 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import { campaignConfigs, getDefaultConfig } from '@/lib/compaignConfigs';
 
 export default function Hero() {
+  const pathname = usePathname();
+  
+  const currentRoute = pathname.slice(1);
+  
+  const config = campaignConfigs[currentRoute as keyof typeof campaignConfigs] || getDefaultConfig();
+
   return (
     <section className="bg-gradient-to-br from-blue-50 to-blue-100 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Transforme sua empresa com{' '}
-              <span className="text-blue-600">Tecnologia Inteligente</span>
+              {config.heroTitle.includes('Tecnologia Inteligente') ? (
+                <>
+                  Transforme sua empresa com{' '}
+                  <span className="text-blue-600">Tecnologia Inteligente</span>
+                </>
+              ) : (
+                config.heroTitle
+              )}
             </h1>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Maximize o potencial da sua empresa com nossa consultoria especializada em TI e 
-              soluções de desenvolvimento personalizadas que impulsionam resultados.
+              {config.heroSubtitle}
             </p>
             
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link href="/#contact">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Começar Agora
+              <Link href="https://wa.me/5511990183194?text=Olá! Gostaria de saber mais sobre os serviços da Mattos Tech Solutions." target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                  {config.ctaText}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/#services">
+              <Link href="/#servicos">
                 <Button variant="outline" size="lg">
                   Ver Nossos Serviços
                 </Button>

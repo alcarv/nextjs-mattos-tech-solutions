@@ -29,16 +29,16 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* servicos */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Serviços</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">Consultoria em TI</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">Desenvolvimento Web</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">Desenvolvimento Mobile</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">Banco de Dados</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">Migração para Nuvem</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">UX/UI Design</Link></li>
+              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Consultoria em TI</Link></li>
+              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Web</Link></li>
+              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Mobile</Link></li>
+              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Banco de Dados</Link></li>
+              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Migração para Nuvem</Link></li>
+              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">UX/UI Design</Link></li>
             </ul>
           </div>
 
@@ -48,7 +48,7 @@ export default function Footer() {
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-blue-400" />
-                <span>+55 (11) 99999-9999</span>
+                <span>+55 (11) 99018-3194</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-blue-400" />

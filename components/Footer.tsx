@@ -65,7 +65,8 @@ export default function Footer() {
             </div>
             <div className="mt-4 md:mt-0">
               <div className="flex space-x-6 text-sm text-gray-400">
-                <Link href="#" className="hover:text-blue-400 transition-colors">Política de Privacidade</Link>
+                <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
+                <Link href="/politica-de-privacidade" className="hover:text-blue-400 transition-colors">Política de Privacidade</Link>
                 <Link href="#" className="hover:text-blue-400 transition-colors">Termos de Uso</Link>
                 <Link href="#" className="hover:text-blue-400 transition-colors">Cookies</Link>
               </div>

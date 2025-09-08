@@ -2,24 +2,45 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Mattos Tech Solutions - Consultoria e Desenvolvimento em TI',
-  description: 'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas. Serviços de consultoria, desenvolvimento web, mobile e muito mais.',
-  keywords: 'consultoria TI, desenvolvimento software, desenvolvimento web, governança compliance, banco dados analytics, desenvolvimento mobile, migração nuvem, avaliações TI, UX UI design',
-  authors: [{ name: 'Mattos Tech Solutions' }],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} – Consultoria e Desenvolvimento em TI`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description:
+    'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas. Serviços de consultoria, desenvolvimento web, mobile e muito mais.',
+  keywords:
+    'consultoria TI, desenvolvimento software, desenvolvimento web, governança compliance, banco dados analytics, desenvolvimento mobile, migração nuvem, avaliações TI, UX UI design',
+  authors: [{ name: SITE_NAME }],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Mattos Tech Solutions - Consultoria e Desenvolvimento em TI',
-    description: 'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas.',
-    url: 'https://mattostechsolutions.com',
-    siteName: 'Mattos Tech Solutions',
+    title: `${SITE_NAME} – Consultoria e Desenvolvimento em TI`,
+    description:
+      'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas.',
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: 'pt_BR',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/favicon.svg`,
+        width: 512,
+        height: 512,
+        alt: SITE_NAME,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mattos Tech Solutions - Consultoria e Desenvolvimento em TI',
-    description: 'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas.',
+    title: `${SITE_NAME} – Consultoria e Desenvolvimento em TI`,
+    description:
+      'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas.',
+    images: [`${SITE_URL}/favicon.svg`],
   },
   robots: {
     index: true,
@@ -42,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <link rel="canonical" href="https://mattostechsolutions.com" />
+        {/* Canonical is handled via Next metadata alternates */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -53,43 +74,14 @@ export default function RootLayout({
         <meta name="theme-color" content="#2563eb" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
         
-        {/* Updated Structured Data */}
+        {/* Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Mattos Tech Solutions",
-              "description": "Desenvolvimento profissional de websites e sistemas personalizados",
-              "url": "https://mattostechsolutions.com",
-              "logo": "https://mattostechsolutions.com/favicon.svg",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+5511990183194",
-                "contactType": "customer service",
-                "availableLanguage": "Portuguese"
-              },
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "BR"
-              },
-              "sameAs": [
-                "https://wa.me/+5511990183194"
-              ],
-              "servicos": [
-                "Consultoria e Planejamento em TI",
-                "Desenvolvimento de Software",
-                "Desenvolvimento Web",
-                "Governança e Compliance",
-                "Banco de Dados e Analytics",
-                "Desenvolvimento Mobile",
-                "Migração para Nuvem",
-                "Avaliações de TI",
-                "UX/UI Design"
-              ]
-            })
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
         />
         
         {/* Google Tag Manager */}

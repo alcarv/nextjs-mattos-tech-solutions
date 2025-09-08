@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
+    host: 'https://mattostechsolutions.com',
     sitemap: 'https://mattostechsolutions.com/sitemap.xml',
   };
 }

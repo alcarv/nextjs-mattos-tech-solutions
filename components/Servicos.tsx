@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
 import { 
   Lightbulb, 
   Code2, 
@@ -9,7 +10,8 @@ import {
   Cloud,
   ClipboardCheck,
   Palette,
-  CheckCircle
+  CheckCircle,
+  Brain
 } from 'lucide-react';
 
 const servicosList = [
@@ -22,7 +24,20 @@ const servicosList = [
       'Planejamento estratégico',
       'Otimização de processos',
       'Redução de custos'
-    ]
+    ],
+    href: '/consultoria-ti'
+  },
+  {
+    icon: Brain,
+    title: 'Inteligência Artificial',
+    description: 'Integramos IA generativa aos seus processos para automatizar tarefas, criar chatbots, melhorar a análise de dados e treinar sua equipe.',
+    features: [
+      'Integração com LLMs (OpenAI etc.)',
+      'Chatbots e automações',
+      'RAG com dados da empresa',
+      'Treinamentos práticos em IA'
+    ],
+    href: '/inteligencia-artificial'
   },
   {
     icon: Code2,
@@ -33,7 +48,8 @@ const servicosList = [
       'APIs e integrações',
       'Automação de processos',
       'Manutenção contínua'
-    ]
+    ],
+    href: '/criacao-software'
   },
   {
     icon: Globe,
@@ -44,7 +60,8 @@ const servicosList = [
       'Otimização SEO',
       'Performance otimizada',
       'Integração com CMS'
-    ]
+    ],
+    href: '/criacao-sites'
   },
   {
     icon: Shield,
@@ -55,7 +72,8 @@ const servicosList = [
       'Gestão de riscos',
       'Conformidade regulatória',
       'Auditorias de TI'
-    ]
+    ],
+    href: '/governanca-compliance'
   },
   {
     icon: Database,
@@ -66,7 +84,8 @@ const servicosList = [
       'Business Intelligence',
       'Migração de dados',
       'Otimização de queries'
-    ]
+    ],
+    href: '/banco-dados-analytics'
   },
   {
     icon: Smartphone,
@@ -77,7 +96,8 @@ const servicosList = [
       'PWAs',
       'UX/UI mobile',
       'Integração com APIs'
-    ]
+    ],
+    href: '/apps-mobile'
   },
   {
     icon: Cloud,
@@ -88,7 +108,8 @@ const servicosList = [
       'Migração de dados',
       'Otimização de custos',
       'Arquitetura em nuvem'
-    ]
+    ],
+    href: '/migracao-cloud'
   },
   {
     icon: ClipboardCheck,
@@ -99,7 +120,8 @@ const servicosList = [
       'Avaliação de segurança',
       'Diagnóstico de sistemas',
       'Recomendações técnicas'
-    ]
+    ],
+    href: '/avaliacoes-ti'
   },
   {
     icon: Palette,
@@ -110,7 +132,8 @@ const servicosList = [
       'Prototipagem',
       'Testes de usabilidade',
       'Design system'
-    ]
+    ],
+    href: '/ux-ui-design'
   }
 ];
 
@@ -130,29 +153,31 @@ export default function Servicos() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicosList.map((service, index) => (
-            <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white border-0 shadow-lg">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto mb-4 p-3 bg-blue-100 rounded-full w-fit">
-                  <service.icon className="h-8 w-8 text-blue-600" />
-                </div>
-                <CardTitle className="text-xl font-bold text-gray-900 mb-2">
-                  {service.title}
-                </CardTitle>
-                <CardDescription className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                      <span className="text-sm text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <Link key={index} href={service.href} className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg" aria-label={service.title} title={service.title}>
+              <Card className="cursor-pointer hover:shadow-xl transition-transform duration-300 group-hover:-translate-y-1 bg-white border-0 shadow-lg h-full">
+                <CardHeader className="text-center pb-4">
+                  <div className="mx-auto mb-4 p-3 bg-blue-100 rounded-full w-fit">
+                    <service.icon className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900 mb-2">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-600 leading-relaxed">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <ul className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                        <span className="text-sm text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

@@ -46,34 +46,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: 'https://mattostechsolutions.com/#services',
+      url: 'https://mattostechsolutions.com/inteligencia-artificial',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: 'https://mattostechsolutions.com/#about',
+      url: 'https://mattostechsolutions.com/governanca-compliance',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.6,
+      priority: 0.9,
     },
     {
-      url: 'https://mattostechsolutions.com/#blog',
+      url: 'https://mattostechsolutions.com/banco-dados-analytics',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://mattostechsolutions.com/avaliacoes-ti',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://mattostechsolutions.com/ux-ui-design',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
     },
     {
       url: 'https://mattostechsolutions.com/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
-    },
-    {
-      url: 'https://mattostechsolutions.com/#contact',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
     },
   ];
 

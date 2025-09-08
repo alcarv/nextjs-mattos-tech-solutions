@@ -11,6 +11,21 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog – Insights e Tendências',
+  description:
+    'Artigos sobre tecnologia, desenvolvimento e transformação digital pela Mattos Tech Solutions.',
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    title: 'Blog – Insights e Tendências',
+    description:
+      'Artigos sobre tecnologia, desenvolvimento e transformação digital pela Mattos Tech Solutions.',
+    url: 'https://mattostechsolutions.com/blog',
+    type: 'website',
+  },
+};
 
 export default function BlogPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);

@@ -27,12 +27,12 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Serviços</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Consultoria em TI</Link></li>
-              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Web</Link></li>
-              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Mobile</Link></li>
-              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Banco de Dados</Link></li>
-              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">Migração para Nuvem</Link></li>
-              <li><Link href="#servicos" className="hover:text-blue-400 transition-colors">UX/UI Design</Link></li>
+              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Consultoria em TI</Link></li>
+              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Web</Link></li>
+              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Mobile</Link></li>
+              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Banco de Dados</Link></li>
+              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Migração para Nuvem</Link></li>
+              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">UX/UI Design</Link></li>
             </ul>
           </div>
 

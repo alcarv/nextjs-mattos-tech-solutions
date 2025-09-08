@@ -28,6 +28,36 @@ export const campaignConfigs = {
     heroTitle: 'E-commerce que Vende Mais',
     heroSubtitle: 'Aumente suas vendas online com lojas virtuais otimizadas para conversão, integradas com os melhores sistemas de pagamento.',
     ctaText: 'Criar Loja Virtual'
+  },
+  'inteligencia-artificial': {
+    heroTitle: 'Inteligência Artificial para acelerar seus resultados',
+    heroSubtitle:
+      'Integrando IA generativa aos seus processos: chatbots, automações, RAG com LLMs, análise de dados e treinamentos práticos para sua equipe.',
+    ctaText: 'Falar com Especialista em IA'
+  },
+  'governanca-compliance': {
+    heroTitle: 'Governança e Compliance de TI sem dor de cabeça',
+    heroSubtitle:
+      'Implantamos políticas, processos e controles para conformidade (LGPD, ISO 27001) e segurança, reduzindo riscos e aumentando a confiança.',
+    ctaText: 'Fortalecer Governança'
+  },
+  'banco-dados-analytics': {
+    heroTitle: 'Dados que geram decisões — da modelagem ao BI',
+    heroSubtitle:
+      'Projetamos bancos de dados, pipelines e dashboards para transformar dados em insights: modelagem, ETL/ELT, performance e visualização.',
+    ctaText: 'Evoluir Dados e Analytics'
+  },
+  'avaliacoes-ti': {
+    heroTitle: 'Avaliações de TI para priorizar o que importa',
+    heroSubtitle:
+      'Diagnóstico de infraestrutura, segurança e aplicações para um roadmap claro de melhorias, riscos e ROI.',
+    ctaText: 'Solicitar Avaliação'
+  },
+  'ux-ui-design': {
+    heroTitle: 'UX/UI que converte e encanta',
+    heroSubtitle:
+      'Interfaces claras, prototipagem e testes de usabilidade para elevar a experiência do usuário e resultados de negócio.',
+    ctaText: 'Melhorar a Experiência'
   }
 };
 

@@ -68,7 +68,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-20">
+    <section id="contact" className="relative overflow-hidden py-20 scroll-mt-24 sm:scroll-mt-32">
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
       <div className="absolute bottom-20 right-10 -z-10 h-64 w-64 rounded-full bg-blue-600/30 blur-3xl" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

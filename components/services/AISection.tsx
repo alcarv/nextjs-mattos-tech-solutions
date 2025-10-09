@@ -99,7 +99,7 @@ export default function AISection() {
           </div>
 
           <div className="text-center">
-            <Link href="/#contact">
+            <Link href="#contact">
               <Button className="rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 px-8 text-base font-semibold shadow-lg shadow-blue-900/40 hover:from-blue-500 hover:to-indigo-400">
                 Falar com Especialista em IA
               </Button>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import ScrollProgress from '@/components/ScrollProgress';
 
 export const metadata: Metadata = {
   title: 'Blog – Insights e Tendências',
@@ -19,6 +20,10 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <ScrollProgress />
+      {children}
+    </>
+  );
 }
-

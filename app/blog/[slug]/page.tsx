@@ -64,12 +64,12 @@ export async function generateMetadata(
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-950 text-slate-200">
       <Header />
       <Suspense fallback={
         <div className="py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-xl text-gray-600">Carregando post...</p>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400">
+            <p className="text-xl">Carregando post...</p>
           </div>
         </div>
       }>

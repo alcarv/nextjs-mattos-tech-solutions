@@ -68,7 +68,8 @@ export type CampaignConfig = {
 };
 
 export const getDefaultConfig = (): CampaignConfig => ({
-  heroTitle: 'Transforme sua empresa com Tecnologia Inteligente',
-  heroSubtitle: 'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas que impulsionam resultados.',
-  ctaText: 'Começar Agora'
+  heroTitle: 'Tecnologia Inteligente para empresas em Itu e todo o Brasil',
+  heroSubtitle:
+    'Consultoria de TI, desenvolvimento de software, IA e soluções digitais criadas a partir de Itu/SP para impulsionar resultados em Sorocaba, Campinas, São Paulo e em qualquer lugar com atendimento remoto.',
+  ctaText: 'Agendar diagnóstico gratuito'
 });

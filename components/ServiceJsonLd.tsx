@@ -1,4 +1,4 @@
-import { SITE_NAME } from '@/lib/seo';
+import { SERVICE_AREAS, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 type Props = {
   name: string;
@@ -16,11 +16,12 @@ export default function ServiceJsonLd({ name, description, url, serviceType }: P
     provider: {
       '@type': 'Organization',
       name: SITE_NAME,
+      url: SITE_URL,
     },
-    areaServed: {
-      '@type': 'Country',
-      name: 'Brazil',
-    },
+    areaServed: SERVICE_AREAS.map((area) => ({
+      '@type': 'AdministrativeArea',
+      name: area,
+    })),
     serviceType: serviceType || name,
     url,
   };
@@ -29,4 +30,3 @@ export default function ServiceJsonLd({ name, description, url, serviceType }: P
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
   );
 }
-

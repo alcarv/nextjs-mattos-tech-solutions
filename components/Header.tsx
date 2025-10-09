@@ -33,13 +33,13 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 text-slate-100 shadow-lg shadow-slate-950/30 backdrop-blur">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 hover:text-blue-200 transition-colors">
+          <Link href="/" className="flex items-center space-x-2 text-blue-300 transition-colors hover:text-blue-200">
             <Code2 className="h-8 w-8" />
-            <span className="font-bold text-xl">Mattos Tech & Solutions</span>
+            <span className="font-bold text-xl">Mattos Tech Solutions</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,7 +49,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="hover:text-blue-200 transition-colors duration-200 font-medium"
+                  className="text-slate-300 transition-colors duration-200 hover:text-blue-400 font-medium"
                   onClick={() => {
                     // Close mobile menu if open
                     setIsMenuOpen(false);
@@ -67,9 +67,9 @@ export default function Header() {
               ))}
               <button
                 onClick={() => handleNavClick('/#contact')}
-                className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded font-medium transition-colors duration-200"
+                className="rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 px-4 py-2 font-medium text-white transition-colors duration-200 hover:from-blue-500 hover:to-indigo-400"
               >
-                Contatos
+                Contato
               </button>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Header() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-blue-200"
+              className="text-blue-300 hover:text-blue-200"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -90,12 +90,12 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-blue-700 rounded-lg mt-2">
+            <div className="mt-2 space-y-1 rounded-lg border border-slate-800 bg-slate-900/90 px-2 pt-2 pb-3 shadow-lg sm:px-3">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-white hover:text-blue-200 transition-colors duration-200"
+                  className="block px-3 py-2 text-slate-300 transition-colors duration-200 hover:text-blue-400"
                   onClick={() => {
                     setIsMenuOpen(false);
                     // Handle hash navigation for same page
@@ -113,9 +113,9 @@ export default function Header() {
               <div className="px-3 py-2">
                 <button
                   onClick={() => handleNavClick('/#contact')}
-                  className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded font-medium transition-colors duration-200 w-full"
+                  className="w-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 px-4 py-2 font-medium text-white transition-colors duration-200 hover:from-blue-500 hover:to-indigo-400"
                 >
-                  Contatos
+                  Contato
                 </button>
               </div>
             </div>

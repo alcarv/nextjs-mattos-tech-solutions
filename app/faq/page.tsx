@@ -60,7 +60,7 @@ export default function FAQPage() {
     {
       q: 'Como posso falar com a equipe?',
       a:
-        'Envie um e‑mail para contato@mattostech.com ou fale pelo WhatsApp no rodapé do site. Também podemos agendar uma call para entender o seu projeto.',
+        'Envie um e-mail para mattostechsolutions@gmail.com ou fale pelo WhatsApp no rodapé do site. Também podemos agendar uma call para entender o seu projeto.',
     },
   ];
 
@@ -84,7 +84,7 @@ export default function FAQPage() {
           <div className="mt-10 text-gray-700">
             <p>
               Não encontrou sua resposta? Fale com a gente em{' '}
-              <a href="mailto:contato@mattostech.com" className="text-blue-600 hover:underline">contato@mattostech.com</a>.
+              <a href="mailto:mattostechsolutions@gmail.com" className="text-blue-600 hover:underline">mattostechsolutions@gmail.com</a>.
             </p>
           </div>
         </div>
@@ -93,4 +93,3 @@ export default function FAQPage() {
     </main>
   );
 }
-

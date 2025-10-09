@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
+import Reveal from '@/components/Reveal';
 import { 
   Lightbulb, 
   Code2, 
@@ -25,7 +26,7 @@ const servicosList = [
       'Otimização de processos',
       'Redução de custos'
     ],
-    href: '/consultoria-ti'
+    href: '/consultoria-ti#detalhes-servico'
   },
   {
     icon: Brain,
@@ -37,7 +38,7 @@ const servicosList = [
       'RAG com dados da empresa',
       'Treinamentos práticos em IA'
     ],
-    href: '/inteligencia-artificial'
+    href: '/inteligencia-artificial#detalhes-servico'
   },
   {
     icon: Code2,
@@ -49,7 +50,7 @@ const servicosList = [
       'Automação de processos',
       'Manutenção contínua'
     ],
-    href: '/criacao-software'
+    href: '/criacao-software#detalhes-servico'
   },
   {
     icon: Globe,
@@ -61,7 +62,7 @@ const servicosList = [
       'Performance otimizada',
       'Integração com CMS'
     ],
-    href: '/criacao-sites'
+    href: '/criacao-sites#detalhes-servico'
   },
   {
     icon: Shield,
@@ -73,7 +74,7 @@ const servicosList = [
       'Conformidade regulatória',
       'Auditorias de TI'
     ],
-    href: '/governanca-compliance'
+    href: '/governanca-compliance#detalhes-servico'
   },
   {
     icon: Database,
@@ -85,7 +86,7 @@ const servicosList = [
       'Migração de dados',
       'Otimização de queries'
     ],
-    href: '/banco-dados-analytics'
+    href: '/banco-dados-analytics#detalhes-servico'
   },
   {
     icon: Smartphone,
@@ -97,7 +98,7 @@ const servicosList = [
       'UX/UI mobile',
       'Integração com APIs'
     ],
-    href: '/apps-mobile'
+    href: '/apps-mobile#detalhes-servico'
   },
   {
     icon: Cloud,
@@ -109,7 +110,7 @@ const servicosList = [
       'Otimização de custos',
       'Arquitetura em nuvem'
     ],
-    href: '/migracao-cloud'
+    href: '/migracao-cloud#detalhes-servico'
   },
   {
     icon: ClipboardCheck,
@@ -121,7 +122,7 @@ const servicosList = [
       'Diagnóstico de sistemas',
       'Recomendações técnicas'
     ],
-    href: '/avaliacoes-ti'
+    href: '/avaliacoes-ti#detalhes-servico'
   },
   {
     icon: Palette,
@@ -133,45 +134,60 @@ const servicosList = [
       'Testes de usabilidade',
       'Design system'
     ],
-    href: '/ux-ui-design'
+    href: '/ux-ui-design#detalhes-servico'
   }
 ];
 
 export default function Servicos() {
   return (
-    <section id="servicos" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="servicos" className="relative py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.25),transparent_55%)]" />
+      <Reveal className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <span className="inline-flex items-center rounded-full bg-blue-500/10 px-4 py-1 text-sm font-semibold text-blue-300">
+            Soluções ponta a ponta
+          </span>
+          <h2 className="text-4xl font-bold text-white mb-4">
             Serviços de Consultoria e Desenvolvimento
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Maximize o potencial da sua empresa com nossa consultoria especializada em TI e 
-            soluções de desenvolvimento personalizadas.
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de
+            desenvolvimento personalizadas. Atuamos a partir de Itu (SP) para Sorocaba, Campinas, São Paulo e
+            projetos remotos em todo o Brasil.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicosList.map((service, index) => (
-            <Link key={index} href={service.href} className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg" aria-label={service.title} title={service.title}>
-              <Card className="cursor-pointer hover:shadow-xl transition-transform duration-300 group-hover:-translate-y-1 bg-white border-0 shadow-lg h-full">
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 p-3 bg-blue-100 rounded-full w-fit">
-                    <service.icon className="h-8 w-8 text-blue-600" />
+            <Link
+              key={index}
+              href={service.href}
+              className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-2xl"
+              aria-label={service.title}
+              title={service.title}
+            >
+              <Card className="relative h-full overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 backdrop-blur transition-all duration-300 motion-safe:hover:-translate-y-2 motion-safe:hover:scale-[1.01] hover:border-blue-500/60 hover:shadow-2xl hover:shadow-blue-500/20">
+                <div className="pointer-events-none absolute -top-16 -right-8 h-36 w-36 rounded-full bg-blue-500/20 blur-2xl transition-transform duration-500 group-hover:translate-y-6" />
+                <CardHeader className="relative text-left pb-4">
+                  <div className="inline-flex items-center justify-center rounded-xl bg-blue-600/20 p-3 text-blue-300 shadow-inner shadow-blue-900/30 transition-transform duration-300 group-hover:scale-105">
+                    <service.icon className="h-7 w-7" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900 mb-2">
+                  <CardTitle className="mt-4 text-2xl font-semibold text-white">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-600 leading-relaxed">
+                  <CardDescription className="mt-2 text-slate-300 leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-0">
+                <CardContent className="relative pt-0">
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{feature}</span>
+                      <li
+                        key={featureIndex}
+                        className="flex items-center gap-2 rounded-lg px-2 py-1 text-slate-200 transition-colors duration-200 group-hover:bg-blue-500/10"
+                      >
+                        <CheckCircle className="h-4 w-4 flex-shrink-0 text-emerald-400" />
+                        <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -180,7 +196,7 @@ export default function Servicos() {
             </Link>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

@@ -2,7 +2,14 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
-import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd } from '@/lib/seo';
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  organizationJsonLd,
+  websiteJsonLd,
+  localBusinessJsonLd,
+} from '@/lib/seo';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -10,21 +17,28 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} – Consultoria e Desenvolvimento em TI`,
     template: `%s | ${SITE_NAME}`,
   },
-  description:
-    'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas. Serviços de consultoria, desenvolvimento web, mobile e muito mais.',
-  keywords:
-    'consultoria TI, desenvolvimento software, desenvolvimento web, governança compliance, banco dados analytics, desenvolvimento mobile, migração nuvem, avaliações TI, UX UI design',
-  authors: [{ name: SITE_NAME }],
+  description: SITE_DESCRIPTION,
+  keywords: [
+    'consultoria TI Itu',
+    'desenvolvimento de software São Paulo',
+    'empresa de tecnologia Sorocaba',
+    'inteligência artificial Campinas',
+    'criação de sites profissionais',
+    'suporte e manutenção de sistemas',
+    'mattos tech solutions',
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  category: 'technology',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: `${SITE_NAME} – Consultoria e Desenvolvimento em TI`,
-    description:
-      'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas.',
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: 'pt_BR',
+    alternateLocale: ['pt_PT'],
     type: 'website',
     images: [
       {
@@ -38,8 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_NAME} – Consultoria e Desenvolvimento em TI`,
-    description:
-      'Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de desenvolvimento personalizadas.',
+    description: SITE_DESCRIPTION,
     images: [`${SITE_URL}/favicon.svg`],
   },
   robots: {
@@ -52,6 +65,12 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  other: {
+    'geo.region': 'BR-SP',
+    'geo.placename': 'Itu',
+    'geo.position': '-23.263;-47.299',
+    ICBM: '-23.263, -47.299',
   },
 };
 
@@ -71,7 +90,7 @@ export default function RootLayout({
         
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#2563eb" />
+        <meta name="theme-color" content="#0f172a" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
         
         {/* Structured Data */}
@@ -82,6 +101,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
         />
         
         {/* Google Tag Manager */}
@@ -95,7 +118,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-sans">
+      <body className="font-sans bg-slate-950 text-slate-100 antialiased">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-950 to-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -17,8 +17,12 @@ export default function Footer() {
               Sua parceira especializada em consultoria de TI e desenvolvimento de soluções personalizadas.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/mattostechsolutions/" target="_blank" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Instagram className="h-6 w-6" />
+              <a
+                href="https://www.instagram.com/mattostechsolutions/"
+                target="_blank"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-gray-300 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500/20 hover:text-white"
+              >
+                <Instagram className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -27,12 +31,12 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Serviços</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Consultoria em TI</Link></li>
-              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Web</Link></li>
-              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Desenvolvimento Mobile</Link></li>
-              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Banco de Dados</Link></li>
-              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">Migração para Nuvem</Link></li>
-              <li><Link href="/#servicos" className="hover:text-blue-400 transition-colors">UX/UI Design</Link></li>
+              <li><Link href="/#servicos" className="transition-colors hover:text-blue-400">Consultoria em TI</Link></li>
+              <li><Link href="/#servicos" className="transition-colors hover:text-blue-400">Desenvolvimento Web</Link></li>
+              <li><Link href="/#servicos" className="transition-colors hover:text-blue-400">Desenvolvimento Mobile</Link></li>
+              <li><Link href="/#servicos" className="transition-colors hover:text-blue-400">Banco de Dados</Link></li>
+              <li><Link href="/#servicos" className="transition-colors hover:text-blue-400">Migração para Nuvem</Link></li>
+              <li><Link href="/#servicos" className="transition-colors hover:text-blue-400">UX/UI Design</Link></li>
             </ul>
           </div>
 
@@ -46,7 +50,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span>contato@mattostech.com</span>
+                <span>mattostechsolutions@gmail.com</span>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin className="h-5 w-5 text-blue-400 mt-1" />
@@ -65,10 +69,10 @@ export default function Footer() {
             </div>
             <div className="mt-4 md:mt-0">
               <div className="flex space-x-6 text-sm text-gray-400">
-                <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
-                <Link href="/politica-de-privacidade" className="hover:text-blue-400 transition-colors">Política de Privacidade</Link>
-                <Link href="#" className="hover:text-blue-400 transition-colors">Termos de Uso</Link>
-                <Link href="#" className="hover:text-blue-400 transition-colors">Cookies</Link>
+                <Link href="/faq" className="transition-colors hover:text-blue-400">FAQ</Link>
+                <Link href="/politica-de-privacidade" className="transition-colors hover:text-blue-400">Política de Privacidade</Link>
+                <Link href="#" className="transition-colors hover:text-blue-400">Termos de Uso</Link>
+                <Link href="#" className="transition-colors hover:text-blue-400">Cookies</Link>
               </div>
             </div>
           </div>

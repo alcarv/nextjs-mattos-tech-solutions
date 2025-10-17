@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Blog – Insights e Tendências',
     description:
       'Artigos sobre tecnologia, desenvolvimento e transformação digital pela Mattos Tech Solutions.',
-    url: 'https://mattostechsolutions.com/blog',
+    url: 'https://mattostechsolutions.com.br/blog',
     type: 'website',
   },
 };

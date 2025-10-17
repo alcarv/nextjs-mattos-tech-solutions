@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Consultoria em TI e Planejamento Estratégico - Mattos Tech Solutions',
     description: 'Consultoria especializada em TI para otimizar sua infraestrutura, reduzir custos e impulsionar o crescimento do seu negócio.',
-    url: 'https://mattostechsolutions.com/consultoria-ti',
+    url: 'https://mattostechsolutions.com.br/consultoria-ti',
   },
 };
 
@@ -28,7 +28,7 @@ export default function ConsultoriaTIPage() {
       <ServiceJsonLd
         name="Consultoria em TI e Planejamento Estratégico"
         description="Alinhamento estratégico, roadmap e governança para executar projetos de TI com foco em resultados e redução de custos."
-        url="https://mattostechsolutions.com/consultoria-ti"
+        url="https://mattostechsolutions.com.br/consultoria-ti"
         serviceType="Consultoria em TI"
       />
       <Header />

@@ -1,5 +1,5 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://mattostechsolutions.com';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://mattostechsolutions.com.br';
 export const SITE_NAME = 'Mattos Tech Solutions';
 export const SITE_DESCRIPTION =
   'Consultoria em TI, desenvolvimento de software, IA e soluções digitais que impulsionam empresas em Itu, Sorocaba, Campinas e todo o Brasil.';

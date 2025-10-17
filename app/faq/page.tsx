@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'FAQ – Perguntas Frequentes - Mattos Tech Solutions',
     description:
       'Perguntas e respostas sobre serviços, prazos, tecnologias, suporte e orçamento.',
-    url: 'https://mattostechsolutions.com/faq',
+    url: 'https://mattostechsolutions.com.br/faq',
   },
 };
 

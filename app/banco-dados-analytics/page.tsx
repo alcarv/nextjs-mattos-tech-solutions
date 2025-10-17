@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Banco de Dados e Analytics',
     description:
       'Arquitetura de dados, pipelines e BI para decisões baseadas em dados.',
-    url: 'https://mattostechsolutions.com/banco-dados-analytics',
+    url: 'https://mattostechsolutions.com.br/banco-dados-analytics',
     type: 'website',
   },
 };
@@ -32,7 +32,7 @@ export default function BancoDadosAnalyticsPage() {
       <ServiceJsonLd
         name="Banco de Dados e Analytics"
         description="Modelagem de dados, pipelines ETL/ELT, tuning de performance e BI com dashboards e KPIs."
-        url="https://mattostechsolutions.com/banco-dados-analytics"
+        url="https://mattostechsolutions.com.br/banco-dados-analytics"
         serviceType="Dados e Analytics"
       />
       <Header />

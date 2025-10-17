@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Avaliações de TI – Diagnóstico e Roadmap',
     description:
       'Diagnósticos completos para priorizar melhorias em infraestrutura, segurança e aplicações.',
-    url: 'https://mattostechsolutions.com/avaliacoes-ti',
+    url: 'https://mattostechsolutions.com.br/avaliacoes-ti',
     type: 'website',
   },
 };
@@ -32,7 +32,7 @@ export default function AvaliacoesTIPage() {
       <ServiceJsonLd
         name="Avaliações de TI"
         description="Diagnóstico de segurança, infraestrutura e aplicações com relatório de achados e roadmap de melhorias."
-        url="https://mattostechsolutions.com/avaliacoes-ti"
+        url="https://mattostechsolutions.com.br/avaliacoes-ti"
         serviceType="Avaliações de TI"
       />
       <Header />

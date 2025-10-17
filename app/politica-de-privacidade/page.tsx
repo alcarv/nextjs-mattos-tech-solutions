@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Política de Privacidade - Mattos Tech Solutions',
     description:
       'Entenda nossa política de privacidade e como protegemos seus dados pessoais em conformidade com a LGPD.',
-    url: 'https://mattostechsolutions.com/politica-de-privacidade',
+    url: 'https://mattostechsolutions.com.br/politica-de-privacidade',
   },
 };
 

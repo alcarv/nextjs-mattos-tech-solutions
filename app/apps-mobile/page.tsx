@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Desenvolvimento de Apps Mobile - iOS e Android - Mattos Tech Solutions',
     description: 'Criamos aplicativos móveis nativos e híbridos para iOS e Android. Apps com design moderno e performance excepcional.',
-    url: 'https://mattostechsolutions.com/apps-mobile',
+    url: 'https://mattostechsolutions.com.br/apps-mobile',
   },
 };
 
@@ -28,7 +28,7 @@ export default function AppsMobilePage() {
       <ServiceJsonLd
         name="Desenvolvimento de Apps Mobile"
         description="Aplicativos iOS/Android (nativo ou cross‑platform) com push, offline first, integrações e publicação nas lojas."
-        url="https://mattostechsolutions.com/apps-mobile"
+        url="https://mattostechsolutions.com.br/apps-mobile"
         serviceType="Desenvolvimento Mobile"
       />
       <Header />

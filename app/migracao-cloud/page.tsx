@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Migração para Nuvem - AWS, Azure, Google Cloud - Mattos Tech Solutions',
     description: 'Migração segura e eficiente para a nuvem. Reduzimos custos, aumentamos a escalabilidade e modernizamos sua infraestrutura.',
-    url: 'https://mattostechsolutions.com/migracao-cloud',
+    url: 'https://mattostechsolutions.com.br/migracao-cloud',
   },
 };
 
@@ -28,7 +28,7 @@ export default function MigracaoCloudPage() {
       <ServiceJsonLd
         name="Migração para Nuvem"
         description="Assessment, planejamento e execução de migração para AWS, Azure ou GCP com foco em performance, segurança e FinOps."
-        url="https://mattostechsolutions.com/migracao-cloud"
+        url="https://mattostechsolutions.com.br/migracao-cloud"
         serviceType="Migração para Nuvem"
       />
       <Header />

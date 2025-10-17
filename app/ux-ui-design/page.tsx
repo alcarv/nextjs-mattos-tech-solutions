@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'UX/UI Design – Experiências que Convertem',
     description:
       'UX/UI com foco em clareza, usabilidade e resultados de negócio.',
-    url: 'https://mattostechsolutions.com/ux-ui-design',
+    url: 'https://mattostechsolutions.com.br/ux-ui-design',
     type: 'website',
   },
 };
@@ -32,7 +32,7 @@ export default function UxUiDesignPage() {
       <ServiceJsonLd
         name="UX/UI Design"
         description="Pesquisa com usuários, protótipos navegáveis, design system e UI com foco em conversão e usabilidade."
-        url="https://mattostechsolutions.com/ux-ui-design"
+        url="https://mattostechsolutions.com.br/ux-ui-design"
         serviceType="UX/UI Design"
       />
       <Header />

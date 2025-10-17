@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Soluções E-commerce Completas - Loja Virtual Profissional - Mattos Tech Solutions',
     description: 'Desenvolvemos lojas virtuais completas e personalizadas. E-commerce com integração de pagamentos, gestão de estoque e design responsivo.',
-    url: 'https://mattostechsolutions.com/solucoes-ecommerce',
+    url: 'https://mattostechsolutions.com.br/solucoes-ecommerce',
   },
 };
 

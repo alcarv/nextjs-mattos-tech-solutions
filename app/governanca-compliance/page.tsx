@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Governança e Compliance em TI',
     description:
       'Governança, conformidade e segurança da informação para reduzir riscos e aumentar a confiança.',
-    url: 'https://mattostechsolutions.com/governanca-compliance',
+    url: 'https://mattostechsolutions.com.br/governanca-compliance',
     type: 'website',
   },
 };
@@ -32,7 +32,7 @@ export default function GovernancaCompliancePage() {
       <ServiceJsonLd
         name="Governança e Compliance em TI"
         description="Políticas, controles, conformidade (LGPD/ISO 27001) e gestão de riscos em TI, com auditoria e evidências."
-        url="https://mattostechsolutions.com/governanca-compliance"
+        url="https://mattostechsolutions.com.br/governanca-compliance"
         serviceType="Governança e Compliance"
       />
       <Header />

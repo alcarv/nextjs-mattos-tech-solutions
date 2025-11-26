@@ -12,7 +12,8 @@ import {
   ClipboardCheck,
   Palette,
   CheckCircle,
-  Brain
+  Brain,
+  ServerCog
 } from 'lucide-react';
 
 const servicosList = [
@@ -39,6 +40,18 @@ const servicosList = [
       'Treinamentos práticos em IA'
     ],
     href: '/inteligencia-artificial#detalhes-servico'
+  },
+  {
+    icon: ServerCog,
+    title: 'Consultoria em Protheus',
+    description: 'Estabilizamos, parametrizamos e integramos seu Protheus com foco em compliance fiscal e nos fluxos do seu negócio.',
+    features: [
+      'Assessment com quick wins',
+      'TAF, TSS, SPED e fiscal em dia',
+      'Integrações com canais e BI',
+      'Suporte e evolução contínua'
+    ],
+    href: '/consultoria-protheus#detalhes-servico'
   },
   {
     icon: Code2,

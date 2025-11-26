@@ -28,6 +28,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: 'https://mattostechsolutions.com.br/consultoria-protheus',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: 'https://mattostechsolutions.com.br/migracao-cloud',
       lastModified: new Date(),
       changeFrequency: 'monthly',

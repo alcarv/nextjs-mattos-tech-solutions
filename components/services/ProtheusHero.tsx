@@ -8,7 +8,7 @@ import { ServerCog, FileCheck, Cable, ShieldCheck } from 'lucide-react';
 export default function ProtheusHero() {
   const highlights = [
     { icon: ServerCog, label: 'Atualização, performance e estabilidade do Protheus' },
-    { icon: FileCheck, label: 'Fiscal/contábil em dia: TAF, TSS, SPED e obrigações acessórias' },
+    { icon: FileCheck, label: 'Backoffice em dia: TAF, TSS, SPED e obrigações acessórias' },
     { icon: Cable, label: 'Integrações seguras com portais, BI e canais de venda' },
   ];
 
@@ -32,7 +32,7 @@ export default function ProtheusHero() {
                 Protheus estável, aderente e integrado ao negócio
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Diagnosticamos e evoluímos seu ambiente Protheus: fiscal/contábil em conformidade, módulos parametrizados, integrações
+                Diagnosticamos e evoluímos seu ambiente Protheus: Backoffice em conformidade, módulos parametrizados, integrações
                 e customizações seguras. Atuamos do assessment à operação assistida para que o ERP entregue valor contínuo.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">

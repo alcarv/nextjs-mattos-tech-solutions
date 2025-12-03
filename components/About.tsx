@@ -55,9 +55,9 @@ export default function About() {
                 </ul>
               </div>
               <p className="text-slate-300">
-                Estamos sediados em Itu (SP) com forte atuação em Sorocaba, Campinas e Grande São Paulo, além
-                de projetos remotos em todo o Brasil. Essa proximidade nos permite combinar encontros presenciais
-                estratégicos com a agilidade de uma equipe digital.
+                Estamos sediados em São Paulo (SP), na região do Tatuapé, com forte atuação em Sorocaba, Campinas e
+                Grande São Paulo, além de projetos remotos em todo o Brasil. Essa proximidade nos permite combinar
+                encontros presenciais estratégicos com a agilidade de uma equipe digital.
               </p>
             </div>
           </div>

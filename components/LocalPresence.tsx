@@ -6,21 +6,21 @@ import Reveal from '@/components/Reveal';
 const highlights = [
   {
     icon: MapPin,
-    title: 'Base em Itu (SP)',
+    title: 'Base em São Paulo (Tatuapé)',
     description:
-      'Atendimento próximo às empresas de Itu e região, com possibilidade de reuniões presenciais sob demanda.',
+      'Atendimento próximo na Zona Leste e bairros centrais, com possibilidade de reuniões presenciais sob demanda.',
   },
   {
     icon: Building2,
-    title: 'Região Metropolitana de Sorocaba',
+    title: 'Capital e ABC',
     description:
-      'Projetos recorrentes em Sorocaba, Salto e cidades vizinhas, com suporte contínuo e visitas planejadas.',
+      'Projetos recorrentes na capital, Tatuapé, Mooca, Vila Carrão e região do ABC, com suporte contínuo e visitas planejadas.',
   },
   {
     icon: Globe2,
     title: 'Consultorias Remotas',
     description:
-      'Atuamos remotamente para Campinas, Grande São Paulo e outros estados com rituais ágeis e relatórios semanais.',
+      'Atuamos remotamente para Sorocaba, Campinas e outros estados com rituais ágeis e relatórios semanais.',
   },
   {
     icon: Clock,
@@ -43,16 +43,17 @@ export default function LocalPresence() {
                 Presença local, impacto nacional
               </span>
               <h2 id="local-presence-title" className="mt-4 text-3xl font-bold text-white sm:text-4xl">
-                Presença em Itu com alcance nacional
+                Presença em São Paulo (Tatuapé) com alcance nacional
               </h2>
               <p className="mt-6 text-lg text-slate-300 leading-relaxed">
-                A Mattos Tech Solutions nasceu em Itu (SP) e leva soluções digitais para toda a região de Sorocaba,
-                Campinas e capital paulista. Com uma operação flexível, combinamos atendimento consultivo presencial
-                com squads remotos especializados em desenvolvimento, nuvem e inteligência artificial.
+                A Mattos Tech Solutions está em São Paulo (SP), na região do Tatuapé, e leva soluções digitais para
+                toda a capital, ABC, Sorocaba e Campinas. Com uma operação flexível, combinamos atendimento consultivo
+                presencial com squads remotos especializados em desenvolvimento, nuvem e inteligência artificial.
               </p>
               <p className="mt-4 text-slate-400">
-                Adaptamos nossa rotina aos seus times: reuniões estratégicas in loco, acompanhamento remoto em tempo
-                real e canais diretos para demandas urgentes — tecnologia aplicada para entregar resultado.
+                Adaptamos nossa rotina aos seus times: reuniões estratégicas na Zona Leste ou in loco conforme
+                necessidade, acompanhamento remoto em tempo real e canais diretos para demandas urgentes — tecnologia
+                aplicada para entregar resultado.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link href="/#contact">

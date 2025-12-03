@@ -42,8 +42,8 @@ export default function Hero() {
               {config.heroSubtitle}
             </p>
             <p className="text-base text-slate-400">
-              Baseados em Itu (SP), prestamos consultoria e desenvolvimento para empresas da região de Sorocaba,
-              Campinas, Grande São Paulo e projetos remotos em todo o Brasil.
+              Baseados em São Paulo (SP), na região do Tatuapé, prestamos consultoria e desenvolvimento para empresas
+              da capital, Sorocaba, Campinas e projetos remotos em todo o Brasil.
             </p>
             
             <div className="mt-8 flex flex-col sm:flex-row gap-4">

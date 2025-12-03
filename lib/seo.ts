@@ -2,29 +2,30 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://mattostechsolutions.com.br';
 export const SITE_NAME = 'Mattos Tech Solutions';
 export const SITE_DESCRIPTION =
-  'Consultoria em TI, desenvolvimento de software, IA e soluções digitais que impulsionam empresas em Itu, Sorocaba, Campinas e todo o Brasil.';
+  'Consultoria em TI, desenvolvimento de software, IA e soluções digitais que impulsionam empresas a partir de São Paulo (região do Tatuapé), atendendo Sorocaba, Campinas e todo o Brasil.';
 
 export const BUSINESS_PHONE = '+5511990183194';
 export const BUSINESS_EMAIL = 'mattostechsolutions@gmail.com';
 export const SERVICE_AREAS = [
-  'Itu - SP',
+  'São Paulo - Tatuapé - SP',
+  'Zona Leste - SP',
   'Sorocaba - SP',
   'Campinas - SP',
-  'São Paulo - SP',
   'Brasil',
 ] as const;
 
 export const COMPANY_ADDRESS = {
   '@type': 'PostalAddress',
-  addressLocality: 'Itu',
+  streetAddress: 'Tatuapé',
+  addressLocality: 'São Paulo',
   addressRegion: 'SP',
   addressCountry: 'BR',
 } as const;
 
 export const COMPANY_GEO = {
   '@type': 'GeoCoordinates',
-  latitude: -23.263,
-  longitude: -47.299,
+  latitude: -23.536,
+  longitude: -46.575,
 } as const;
 
 export const ORG_LOGO = `${SITE_URL}/favicon.svg`;

@@ -55,7 +55,7 @@ export default function Footer() {
               <div className="flex items-start space-x-2">
                 <MapPin className="h-5 w-5 text-blue-400 mt-1" />
                 <span>
-                  Itu - SP
+                  São Paulo - SP (Tatuapé)
                 </span>
               </div>
             </div>

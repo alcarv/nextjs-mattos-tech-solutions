@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    'consultoria TI Itu',
+    'consultoria TI São Paulo Tatuapé',
     'desenvolvimento de software São Paulo',
     'empresa de tecnologia Sorocaba',
     'inteligência artificial Campinas',
@@ -68,9 +68,9 @@ export const metadata: Metadata = {
   },
   other: {
     'geo.region': 'BR-SP',
-    'geo.placename': 'Itu',
-    'geo.position': '-23.263;-47.299',
-    ICBM: '-23.263, -47.299',
+    'geo.placename': 'São Paulo - Tatuapé',
+    'geo.position': '-23.536;-46.575',
+    ICBM: '-23.536, -46.575',
   },
 };
 

@@ -130,7 +130,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-white">Endereço</h3>
                     <p className="mt-1 text-slate-300">
-                      Itu - SP<br />
+                      São Paulo - SP (Região do Tatuapé)<br />
                       Atendimento híbrido (remoto e presencial)
                     </p>
                   </div>

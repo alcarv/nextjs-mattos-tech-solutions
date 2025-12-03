@@ -68,8 +68,8 @@ export type CampaignConfig = {
 };
 
 export const getDefaultConfig = (): CampaignConfig => ({
-  heroTitle: 'Tecnologia Inteligente para empresas em Itu e todo o Brasil',
+  heroTitle: 'Tecnologia Inteligente para empresas em São Paulo (Tatuapé) e todo o Brasil',
   heroSubtitle:
-    'Consultoria de TI, desenvolvimento de software, IA e soluções digitais criadas a partir de Itu/SP para impulsionar resultados em Sorocaba, Campinas, São Paulo e em qualquer lugar com atendimento remoto.',
+    'Consultoria de TI, desenvolvimento de software, IA e soluções digitais criadas a partir de São Paulo (região do Tatuapé) para impulsionar resultados na capital, Sorocaba, Campinas e em qualquer lugar com atendimento remoto.',
   ctaText: 'Agendar diagnóstico gratuito'
 });

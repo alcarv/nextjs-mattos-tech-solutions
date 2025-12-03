@@ -165,8 +165,8 @@ export default function Servicos() {
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
             Maximize o potencial da sua empresa com nossa consultoria especializada em TI e soluções de
-            desenvolvimento personalizadas. Atuamos a partir de Itu (SP) para Sorocaba, Campinas, São Paulo e
-            projetos remotos em todo o Brasil.
+            desenvolvimento personalizadas. Atuamos a partir de São Paulo (SP), na região do Tatuapé, para Sorocaba,
+            Campinas, capital paulista e projetos remotos em todo o Brasil.
           </p>
         </div>
 

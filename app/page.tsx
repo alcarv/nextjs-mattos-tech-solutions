@@ -10,21 +10,21 @@ import LocalPresence from '@/components/LocalPresence';
 import { SITE_URL, SITE_NAME } from '@/lib/seo';
 
 const homeDescription =
-  'Consultoria de TI, desenvolvimento de software, IA e sites profissionais a partir de Itu (SP) para empresas em Sorocaba, Campinas, São Paulo e em todo o Brasil.';
+  'Consultoria de TI, desenvolvimento de software, IA e sites profissionais a partir de São Paulo (SP), na região do Tatuapé, para empresas em Sorocaba, Campinas, capital paulista e em todo o Brasil.';
 
 export const metadata: Metadata = {
-  title: 'Consultoria de TI e Desenvolvimento em Itu, Sorocaba e São Paulo',
+  title: 'Consultoria de TI e Desenvolvimento em São Paulo (Tatuapé) e todo o Brasil',
   description: homeDescription,
   keywords: [
-    'consultoria ti Itu',
+    'consultoria ti São Paulo Tatuapé',
     'desenvolvimento de software Sorocaba',
-    'empresa de tecnologia em Campinas',
+    'empresa de tecnologia na Zona Leste de São Paulo',
     'serviços de TI São Paulo',
-    'criação de sites profissionais em Itu',
+    'criação de sites profissionais em São Paulo',
   ],
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Consultoria de TI e Desenvolvimento na região de Itu - Mattos Tech Solutions',
+    title: 'Consultoria de TI e Desenvolvimento em São Paulo (Tatuapé) - Mattos Tech Solutions',
     description: homeDescription,
     url: SITE_URL,
     siteName: SITE_NAME,

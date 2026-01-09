@@ -58,6 +58,10 @@ export default function Footer() {
                   São Paulo - SP (Tatuapé)
                 </span>
               </div>
+              <div className="flex items-center space-x-2">
+                <Code2 className="h-5 w-5 text-blue-400" />
+                <span>CNPJ: 54.019.901/0001-54</span>
+              </div>
             </div>
           </div>
         </div>

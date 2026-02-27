@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import MetaPixel from '@/components/MetaPixel';
 import {
   SITE_URL,
   SITE_NAME,
@@ -128,7 +129,9 @@ export default function RootLayout({
             style={{display: 'none', visibility: 'hidden'}}
           />
         </noscript>
-        
+
+        <MetaPixel />
+
         {children}
 
         <FloatingWhatsApp />

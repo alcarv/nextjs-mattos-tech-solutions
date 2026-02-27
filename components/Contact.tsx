@@ -10,6 +10,12 @@ import { Mail, Phone, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-rea
 import { IMaskInput } from 'react-imask';
 import Reveal from '@/components/Reveal';
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -21,7 +27,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -40,19 +46,40 @@ export default function Contact() {
       to_name: 'Mattos Tech Solutions',
     };
 
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('Email sent successfully:', response);
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-        setSubmitStatus('error');
-      })
-      .finally(() => {
-        setIsSubmitting(false);
+    const eventId =
+      typeof window !== 'undefined' && typeof window.crypto?.randomUUID === 'function'
+        ? window.crypto.randomUUID()
+        : `lead-${Date.now()}`;
+
+    try {
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('Email sent successfully:', response);
+
+      if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', { content_name: 'Formulario de contato' }, { eventID: eventId });
+      }
+
+      await fetch('/api/meta/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          eventId,
+          email: formData.email,
+          phone: formData.phone,
+          name: formData.name,
+        }),
       });
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

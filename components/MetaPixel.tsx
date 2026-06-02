@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
 
@@ -20,7 +20,7 @@ function trackPageView() {
   window.fbq('track', 'PageView');
 }
 
-export default function MetaPixel() {
+function MetaPixelTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -54,5 +54,13 @@ export default function MetaPixel() {
         />
       </noscript>
     </>
+  );
+}
+
+export default function MetaPixel() {
+  return (
+    <Suspense fallback={null}>
+      <MetaPixelTracker />
+    </Suspense>
   );
 }

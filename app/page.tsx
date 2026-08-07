@@ -1,30 +1,23 @@
 import type { Metadata } from 'next';
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Blog from '@/components/Blog';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import Servicos from '@/components/Servicos';
-import LocalPresence from '@/components/LocalPresence';
+import HomeLanding from '@/components/home/HomeLanding';
 import { SITE_URL, SITE_NAME } from '@/lib/seo';
 
 const homeDescription =
-  'Consultoria de TI, desenvolvimento de software, IA e sites profissionais a partir de São Paulo (SP), na região do Tatuapé, para empresas em Sorocaba, Campinas, capital paulista e em todo o Brasil.';
+  'Sites profissionais, software sob medida, automação empresarial, Inteligência Artificial, cloud e DevOps para empresas que querem conectar processos e crescer com segurança.';
 
 export const metadata: Metadata = {
-  title: 'Consultoria de TI e Desenvolvimento em São Paulo (Tatuapé) e todo o Brasil',
+  title: 'Software sob medida, IA, automação e cloud para empresas',
   description: homeDescription,
   keywords: [
-    'consultoria ti São Paulo Tatuapé',
-    'desenvolvimento de software Sorocaba',
-    'empresa de tecnologia na Zona Leste de São Paulo',
-    'serviços de TI São Paulo',
-    'criação de sites profissionais em São Paulo',
+    'desenvolvimento de software sob medida',
+    'criação de sites profissionais',
+    'automação empresarial',
+    'inteligência artificial para empresas',
+    'consultoria cloud e DevOps',
   ],
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Consultoria de TI e Desenvolvimento em São Paulo (Tatuapé) - Mattos Tech Solutions',
+    title: 'Tecnologia sob medida para transformar operações em crescimento',
     description: homeDescription,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -34,16 +27,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <LocalPresence />
-      <Servicos />
-      <About />
-      <Blog />
-      <Contact />
-      <Footer />
-    </main>
-  );
+  return <HomeLanding />;
 }

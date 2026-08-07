@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function MigracaoCloudPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Migração para Nuvem"
         description="Assessment, planejamento e execução de migração para AWS, Azure ou GCP com foco em performance, segurança e FinOps."

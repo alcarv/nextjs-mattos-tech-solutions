@@ -1,4 +1,6 @@
 import './globals.css';
+import './home.css';
+import './services.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
@@ -85,14 +87,11 @@ export default function RootLayout({
       <head>
         {/* Canonical is handled via Next metadata alternates */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0f172a" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        <meta name="theme-color" content="#050816" />
         
         {/* Structured Data */}
         <script

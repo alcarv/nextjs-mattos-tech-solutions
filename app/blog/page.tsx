@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,24 +14,31 @@ import Reveal from '@/components/Reveal';
 
 export default function BlogPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [allTags, setAllTags] = useState<string[]>([]);
 
   useEffect(() => {
     fetchBlogPosts();
   }, []);
 
-  useEffect(() => {
-    filterPosts();
-  }, [blogPosts, searchTerm, selectedTag]);
+  const filteredPosts = useMemo(() => {
+    if (!searchTerm) return blogPosts;
+    const normalizedSearch = searchTerm.toLowerCase();
+    return blogPosts.filter(post =>
+      post.title.toLowerCase().includes(normalizedSearch) ||
+      (post.description && post.description.toLowerCase().includes(normalizedSearch))
+    );
+  }, [blogPosts, searchTerm]);
 
   const fetchBlogPosts = async () => {
+    setLoading(true);
+    setLoadError(false);
+
     try {
       if (!supabase) {
         console.error('Supabase client not initialized');
+        setLoadError(true);
         return;
       }
       
@@ -46,24 +53,11 @@ export default function BlogPage() {
       setBlogPosts(data || []);
       
     } catch (err) {
+      setLoadError(true);
       console.error('Error fetching blog posts:', err);
     } finally {
       setLoading(false);
     }
-  };
-
-  const filterPosts = () => {
-    let filtered = blogPosts;
-
-    if (searchTerm) {
-      filtered = filtered.filter(post =>
-        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (post.description && post.description.toLowerCase().includes(searchTerm.toLowerCase()))
-      );
-    }
-
-
-    setFilteredPosts(filtered);
   };
 
   const formatDate = (dateString: string) => {
@@ -133,10 +127,24 @@ export default function BlogPage() {
           </Reveal>
 
           {/* Blog Posts Grid */}
-          {filteredPosts.length === 0 ? (
+          {loadError ? (
+            <Reveal className="text-center py-12" delay={200}>
+              <p className="text-slate-300 text-lg mb-5">
+                Não foi possível carregar os artigos agora.
+              </p>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={fetchBlogPosts}
+                className="border-blue-500 text-blue-300 hover:bg-blue-500/20 hover:text-blue-100"
+              >
+                Tentar novamente
+              </Button>
+            </Reveal>
+          ) : filteredPosts.length === 0 ? (
             <Reveal className="text-center py-12" delay={200}>
               <p className="text-slate-400 text-lg">
-                {searchTerm || selectedTag 
+                {searchTerm
                   ? 'Nenhum post encontrado com os filtros aplicados.' 
                   : 'Nenhum post encontrado.'}
               </p>

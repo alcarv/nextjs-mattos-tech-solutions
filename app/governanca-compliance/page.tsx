@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function GovernancaCompliancePage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Governança e Compliance em TI"
         description="Políticas, controles, conformidade (LGPD/ISO 27001) e gestão de riscos em TI, com auditoria e evidências."

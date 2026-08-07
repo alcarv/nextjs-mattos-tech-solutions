@@ -1,76 +1,86 @@
 'use client';
 
+import { useRef, type PointerEvent } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import Reveal from '@/components/Reveal';
-import { Sparkles, Bot, Workflow, ShieldCheck } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Bot, Braces, Database, FileText, ShieldCheck, Workflow } from 'lucide-react';
 
 export default function AIHero() {
-  const highlights = [
-    { icon: Bot, label: 'Chatbots e copilots personalizados' },
-    { icon: Workflow, label: 'Automação ponta a ponta com IA' },
-    { icon: ShieldCheck, label: 'Governança, privacidade e monitoramento' },
-  ];
+  const visualRef = useRef<HTMLDivElement>(null);
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (!window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+    visualRef.current?.style.setProperty('--ai-parallax-x', `${x * 10}px`);
+    visualRef.current?.style.setProperty('--ai-parallax-y', `${y * 10}px`);
+  };
+
+  const resetPointer = () => {
+    visualRef.current?.style.setProperty('--ai-parallax-x', '0px');
+    visualRef.current?.style.setProperty('--ai-parallax-y', '0px');
+  };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-24 text-slate-100">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.2),transparent_60%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.18),transparent_55%)] motion-safe:animate-gradient-slow" />
-        <div className="absolute -top-24 -right-16 h-72 w-72 rounded-full bg-blue-500/30 blur-3xl" />
-        <div className="absolute bottom-10 left-1/4 h-96 w-96 rounded-full bg-indigo-600/20 blur-3xl" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/90 to-transparent" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="rounded-3xl border border-slate-800 bg-slate-900/60 p-10 shadow-2xl backdrop-blur">
-          <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
-            <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-blue-600/20 px-4 py-2 text-sm font-semibold text-blue-300">
-                <Sparkles className="h-4 w-4" />
-                Inteligência Artificial aplicada ao negócio
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
-                Projetos de IA que começam com estratégia e geram resultado em produção
-              </h1>
-              <p className="text-lg text-slate-300 leading-relaxed">
-                Desenhamos, implementamos e operamos soluções de IA generativa conectadas aos seus processos, dados e canais de atendimento. Entregamos do discovery à evolução contínua: copilots, automações, RAG com LLMs e treinamentos para sua equipe.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Link href="#contact">
-                  <Button className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 px-8 text-base font-semibold text-white shadow-lg shadow-blue-900/40 transition-all duration-300 hover:from-blue-500 hover:to-indigo-400">
-                    Falar com especialista em IA
-                  </Button>
-                </Link>
-                <Link href="https://cal.com/daniel-mattos/30min" target="_blank" rel="noopener noreferrer">
-                  <Button
-                    variant="outline"
-                    className="rounded-full border-slate-700 bg-transparent text-slate-100 shadow-sm backdrop-blur transition-colors duration-300 hover:border-blue-500 hover:bg-slate-800/70 hover:text-blue-300"
-                  >
-                    Agendar diagnóstico
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="mt-12 lg:mt-0">
-              <div className="grid gap-4">
-                {highlights.map((item, index) => (
-                  <div
-                    key={item.label}
-                    className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 px-5 py-4 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/60 hover:shadow-xl"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/20 text-blue-300">
-                      <item.icon className="h-6 w-6" />
-                    </div>
-                    <div className="text-base text-slate-200">{item.label}</div>
-                    <div className="ml-auto text-sm font-semibold text-blue-300">0{index + 1}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+    <section className="ai-hero">
+      <div className="ai-hero__grid" />
+      <div className="ai-hero__ambient" />
+      <div className="mts-container ai-hero__inner">
+        <div className="ai-hero__copy">
+          <span className="service-eyebrow"><i /> INTELIGÊNCIA ARTIFICIAL / APLICADA</span>
+          <h1>IA conectada ao seu negócio. <em>Preparada para operar.</em></h1>
+          <p>Desenhamos soluções de Inteligência Artificial ligadas aos seus dados, processos e canais — com integração, governança e acompanhamento para gerar valor real na operação.</p>
+          <div className="ai-hero__actions">
+            <Link href="#contact" className="mts-button mts-button--primary">Falar sobre meu cenário <ArrowUpRight /></Link>
+            <Link href="#ai-journey" className="mts-button mts-button--outline">Ver como funciona <ArrowDown /></Link>
           </div>
-        </Reveal>
+          <div className="ai-hero__principles">
+            <span><Bot /> Aplicação prática</span>
+            <span><Workflow /> Integração real</span>
+            <span><ShieldCheck /> Uso responsável</span>
+          </div>
+        </div>
+
+        <div
+          ref={visualRef}
+          className="ai-operating-layer"
+          onPointerMove={handlePointerMove}
+          onPointerLeave={resetPointer}
+          aria-hidden="true"
+        >
+          <div className="ai-operating-layer__grid" />
+          <div className="ai-operating-layer__meta"><span>AI OPERATING LAYER</span><span className="mts-status"><i /> READY</span></div>
+
+          <div className="ai-operating-layer__orbit orbit-1" />
+          <div className="ai-operating-layer__orbit orbit-2" />
+          <div className="ai-operating-layer__orbit orbit-3" />
+          <div className="ai-operating-layer__core">
+            <span>AI</span>
+            <small>ORCHESTRATOR</small>
+          </div>
+
+          <svg viewBox="0 0 620 560">
+            <path className="path-a" d="M68 104C164 104 183 238 263 266" />
+            <path className="path-b" d="M552 104C452 104 438 228 357 266" />
+            <path className="path-c" d="M68 456C163 456 180 325 263 294" />
+            <path className="path-d" d="M552 456C455 456 440 331 357 294" />
+          </svg>
+
+          <div className="ai-source ai-source--docs"><FileText /><span>DOCUMENTOS</span></div>
+          <div className="ai-source ai-source--data"><Database /><span>DADOS</span></div>
+          <div className="ai-source ai-source--rules"><Braces /><span>REGRAS</span></div>
+          <div className="ai-source ai-source--flows"><Workflow /><span>PROCESSOS</span></div>
+
+          <div className="ai-operating-layer__prompt">
+            <span>PROMPT / CONTEXTO</span>
+            <p>Como posso apoiar esta decisão?</p>
+            <i />
+          </div>
+          <div className="ai-operating-layer__guardrail"><ShieldCheck /> GOVERNED OUTPUT</div>
+          <div className="ai-operating-layer__coordinates">MTS_AI / 23°32&apos;S 46°37&apos;W</div>
+        </div>
       </div>
+      <a className="ai-hero__scroll" href="#ai-journey"><span>CONTINUE PARA CONECTAR AS CAMADAS</span><ArrowDown /></a>
     </section>
   );
 }

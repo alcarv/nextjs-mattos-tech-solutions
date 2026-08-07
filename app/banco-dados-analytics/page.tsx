@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function BancoDadosAnalyticsPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Banco de Dados e Analytics"
         description="Modelagem de dados, pipelines ETL/ELT, tuning de performance e BI com dashboards e KPIs."

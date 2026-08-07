@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function CriacaoSoftwarePage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Desenvolvimento de Software Personalizado"
         description="Sistemas web sob medida, APIs e integrações, automação de processos e arquitetura cloud‑native com foco em segurança e qualidade."

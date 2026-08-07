@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function ConsultoriaProtheusPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Consultoria em Protheus"
         description="Diagnóstico, conformidade fiscal, integrações, performance e sustentação do Protheus 12 com governança."

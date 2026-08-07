@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function AvaliacoesTIPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Avaliações de TI"
         description="Diagnóstico de segurança, infraestrutura e aplicações com relatório de achados e roadmap de melhorias."

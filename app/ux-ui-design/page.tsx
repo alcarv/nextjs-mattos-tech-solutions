@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function UxUiDesignPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="UX/UI Design"
         description="Pesquisa com usuários, protótipos navegáveis, design system e UI com foco em conversão e usabilidade."

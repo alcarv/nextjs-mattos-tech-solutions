@@ -15,8 +15,8 @@ export const campaignConfigs = {
     ctaText: 'Solicitar Consultoria'
   },
   'migracao-cloud': {
-    heroTitle: 'Migração Segura para Nuvem',
-    heroSubtitle: 'Reduza custos de infraestrutura em até 40% e aumente a performance com nossa migração especializada para nuvem.',
+    heroTitle: 'Migração para cloud com segurança e continuidade',
+    heroSubtitle: 'Planejamos e executamos a evolução da infraestrutura com critérios claros de disponibilidade, segurança, custo e capacidade de crescimento.',
     ctaText: 'Migrar para Nuvem'
   },
   'apps-mobile': {
@@ -25,8 +25,8 @@ export const campaignConfigs = {
     ctaText: 'Criar Aplicativo'
   },
   'solucoes-ecommerce': {
-    heroTitle: 'E-commerce que Vende Mais',
-    heroSubtitle: 'Aumente suas vendas online com lojas virtuais otimizadas para conversão, integradas com os melhores sistemas de pagamento.',
+    heroTitle: 'E-commerce conectado à sua operação',
+    heroSubtitle: 'Criamos lojas virtuais rápidas e profissionais, integradas a pagamentos, catálogo, estoque e aos processos que sustentam a venda.',
     ctaText: 'Criar Loja Virtual'
   },
   'inteligencia-artificial': {
@@ -50,7 +50,7 @@ export const campaignConfigs = {
   'avaliacoes-ti': {
     heroTitle: 'Avaliações de TI para priorizar o que importa',
     heroSubtitle:
-      'Diagnóstico de infraestrutura, segurança e aplicações para um roadmap claro de melhorias, riscos e ROI.',
+      'Diagnóstico de infraestrutura, segurança e aplicações para um roadmap claro de melhorias, riscos e impacto operacional.',
     ctaText: 'Solicitar Avaliação'
   },
   'ux-ui-design': {

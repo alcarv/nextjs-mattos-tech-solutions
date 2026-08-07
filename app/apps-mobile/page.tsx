@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function AppsMobilePage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Desenvolvimento de Apps Mobile"
         description="Aplicativos iOS/Android (nativo ou cross‑platform) com push, offline first, integrações e publicação nas lojas."

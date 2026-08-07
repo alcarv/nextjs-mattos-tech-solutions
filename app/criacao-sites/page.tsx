@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function CriacaoSitesPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Criação de Sites Profissionais"
         description="Sites e aplicações web rápidas, responsivas e otimizadas para SEO, com integração a CMS e foco em conversão."

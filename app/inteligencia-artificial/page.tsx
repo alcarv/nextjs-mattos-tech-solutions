@@ -5,11 +5,7 @@ import Footer from '@/components/Footer';
 import ServiceJsonLd from '@/components/ServiceJsonLd';
 import BackToServices from '@/components/BackToServices';
 import AIHero from '@/components/services/AIHero';
-import AISection from '@/components/services/AISection';
-import AIUseCases from '@/components/services/AIUseCases';
-import AITechStack from '@/components/services/AITechStack';
-import AIEnablement from '@/components/services/AIEnablement';
-import AIFAQ from '@/components/services/AIFAQ';
+import AIExperience from '@/components/services/AIExperience';
 
 export const metadata: Metadata = {
   title: 'Inteligência Artificial – Integrações, Automação e Treinamentos - Mattos Tech Solutions',
@@ -29,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function InteligenciaArtificialPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Inteligência Artificial – Integrações e Treinamentos"
         description="Integramos IA generativa, criamos chatbots e automações, implementamos RAG/LLMs e capacitamos sua equipe."
@@ -39,11 +35,7 @@ export default function InteligenciaArtificialPage() {
       <Header />
       <AIHero />
       <BackToServices />
-      <AISection />
-      <AIUseCases />
-      <AITechStack />
-      <AIEnablement />
-      <AIFAQ />
+      <AIExperience />
       <Contact />
       <Footer />
     </main>

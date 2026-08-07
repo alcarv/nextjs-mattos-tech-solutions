@@ -36,10 +36,10 @@ export default function FloatingWhatsApp() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-5 right-5 z-50 sm:bottom-6 sm:right-6">
       <button
         onClick={handleWhatsAppClick}
-        className="group bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-pulse hover:animate-none"
+        className="group rounded-lg border border-emerald-400/40 bg-slate-950/90 p-3.5 text-emerald-300 shadow-xl shadow-slate-950/40 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-500 hover:text-white sm:p-4"
         aria-label="Falar no WhatsApp"
         title="Falar no WhatsApp"
       >

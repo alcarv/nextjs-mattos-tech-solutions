@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function ConsultoriaTIPage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <ServiceJsonLd
         name="Consultoria em TI e Planejamento Estratégico"
         description="Alinhamento estratégico, roadmap e governança para executar projetos de TI com foco em resultados e redução de custos."

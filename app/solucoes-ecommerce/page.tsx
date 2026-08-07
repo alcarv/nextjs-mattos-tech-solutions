@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function SolucoesEcommercePage() {
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <Header />
       <Hero />
       <BackToServices />

@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="mts-footer__top">
           <Brand />
           <p>Tecnologia sob medida para operações que precisam avançar com clareza, integração e segurança.</p>
-          <a href="https://www.instagram.com/mattostechsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Mattos Tech Solutions">
+          <a className="mts-footer__social" href="https://www.instagram.com/mattostechsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Mattos Tech Solutions">
             <Instagram />
           </a>
         </div>

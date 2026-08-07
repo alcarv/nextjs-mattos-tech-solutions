@@ -350,7 +350,7 @@ export default function HomeLanding() {
           <div className="mts-footer__top">
             <Brand />
             <p>Tecnologia sob medida para operações que precisam avançar com clareza, integração e segurança.</p>
-            <a href="https://www.instagram.com/mattostechsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Mattos Tech Solutions"><Instagram /></a>
+            <a className="mts-footer__social" href="https://www.instagram.com/mattostechsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Mattos Tech Solutions"><Instagram /></a>
           </div>
           <div className="mts-footer__nav">
             <div><span>SOLUÇÕES</span><a href="#solucoes">Serviços</a><a href="#metodo">Como trabalhamos</a><a href="#experiencia">Experiência</a></div>

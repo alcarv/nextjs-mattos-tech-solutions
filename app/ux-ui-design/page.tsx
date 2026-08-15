@@ -9,22 +9,14 @@ import Footer from '@/components/Footer';
 import UXUISection from '@/components/services/UXUISection';
 import ServiceJsonLd from '@/components/ServiceJsonLd';
 import BackToServices from '@/components/BackToServices';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'UX/UI Design - Experiências que Convertem - Mattos Tech Solutions',
-  description:
-    'Interfaces claras, protótipos navegáveis, testes de usabilidade e design system para elevar conversão e satisfação dos usuários.',
-  keywords:
-    'UX, UI, design de interfaces, prototipagem, testes de usabilidade, design system, experiência do usuário',
-  alternates: { canonical: '/ux-ui-design' },
-  openGraph: {
-    title: 'UX/UI Design – Experiências que Convertem',
-    description:
-      'UX/UI com foco em clareza, usabilidade e resultados de negócio.',
-    url: 'https://mattostechsolutions.com.br/ux-ui-design',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'UX/UI Design e Experiência do Usuário',
+  description: 'Pesquisa, arquitetura de informação, protótipos, testes de usabilidade e design systems para criar interfaces claras e orientadas à conversão.',
+  path: '/ux-ui-design',
+  keywords: ['UX/UI design', 'design de interfaces', 'testes de usabilidade', 'prototipagem', 'design system'],
+});
 
 export default function UxUiDesignPage() {
   return (
@@ -32,7 +24,7 @@ export default function UxUiDesignPage() {
       <ServiceJsonLd
         name="UX/UI Design"
         description="Pesquisa com usuários, protótipos navegáveis, design system e UI com foco em conversão e usabilidade."
-        url="https://mattostechsolutions.com.br/ux-ui-design"
+        url="/ux-ui-design"
         serviceType="UX/UI Design"
       />
       <Header />

@@ -9,22 +9,14 @@ import Footer from '@/components/Footer';
 import DadosAnalyticsSection from '@/components/services/DadosAnalyticsSection';
 import ServiceJsonLd from '@/components/ServiceJsonLd';
 import BackToServices from '@/components/BackToServices';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Banco de Dados e Analytics - Mattos Tech Solutions',
-  description:
-    'Modelagem de dados, ETL/ELT, otimização de consultas, BI e dashboards. Transforme dados em decisões com arquitetura eficiente.',
-  keywords:
-    'banco de dados, analytics, BI, ETL, ELT, modelagem de dados, otimização de queries, dashboards',
-  alternates: { canonical: '/banco-dados-analytics' },
-  openGraph: {
-    title: 'Banco de Dados e Analytics',
-    description:
-      'Arquitetura de dados, pipelines e BI para decisões baseadas em dados.',
-    url: 'https://mattostechsolutions.com.br/banco-dados-analytics',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Banco de Dados, BI e Analytics',
+  description: 'Modelagem de dados, pipelines ETL/ELT, otimização de consultas, BI e dashboards para transformar dados confiáveis em decisões.',
+  path: '/banco-dados-analytics',
+  keywords: ['consultoria em banco de dados', 'BI e analytics', 'ETL e ELT', 'dashboards empresariais'],
+});
 
 export default function BancoDadosAnalyticsPage() {
   return (
@@ -32,7 +24,7 @@ export default function BancoDadosAnalyticsPage() {
       <ServiceJsonLd
         name="Banco de Dados e Analytics"
         description="Modelagem de dados, pipelines ETL/ELT, tuning de performance e BI com dashboards e KPIs."
-        url="https://mattostechsolutions.com.br/banco-dados-analytics"
+        url="/banco-dados-analytics"
         serviceType="Dados e Analytics"
       />
       <Header />

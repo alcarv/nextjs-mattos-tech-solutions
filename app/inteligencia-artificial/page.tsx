@@ -6,22 +6,14 @@ import ServiceJsonLd from '@/components/ServiceJsonLd';
 import BackToServices from '@/components/BackToServices';
 import AIHero from '@/components/services/AIHero';
 import AIExperience from '@/components/services/AIExperience';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Inteligência Artificial – Integrações, Automação e Treinamentos - Mattos Tech Solutions',
-  description:
-    'Integramos IA generativa aos seus processos, criamos chatbots e automações, implementamos RAG/LLMs e capacitamos sua equipe com treinamentos práticos.',
-  keywords:
-    'inteligência artificial, IA, automação, chatbots, integrações IA, modelos, LLM, RAG, agentes, treinamento IA',
-  alternates: { canonical: '/inteligencia-artificial' },
-  openGraph: {
-    title: 'Inteligência Artificial – Integrações, Automação e Treinamentos',
-    description:
-      'Integramos IA generativa aos seus processos, criamos chatbots e automações, implementamos RAG/LLMs e capacitamos sua equipe com treinamentos práticos.',
-    url: 'https://mattostechsolutions.com.br/inteligencia-artificial',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Inteligência Artificial para Empresas',
+  description: 'Aplicamos IA generativa a processos, documentos e atendimento com assistentes, RAG, automações, integrações e governança para operar com segurança.',
+  path: '/inteligencia-artificial',
+  keywords: ['inteligência artificial para empresas', 'IA generativa', 'RAG', 'assistentes com IA', 'automação com IA'],
+});
 
 export default function InteligenciaArtificialPage() {
   return (
@@ -29,7 +21,7 @@ export default function InteligenciaArtificialPage() {
       <ServiceJsonLd
         name="Inteligência Artificial – Integrações e Treinamentos"
         description="Integramos IA generativa, criamos chatbots e automações, implementamos RAG/LLMs e capacitamos sua equipe."
-        url="https://mattostechsolutions.com.br/inteligencia-artificial"
+        url="/inteligencia-artificial"
         serviceType="Inteligência Artificial"
       />
       <Header />

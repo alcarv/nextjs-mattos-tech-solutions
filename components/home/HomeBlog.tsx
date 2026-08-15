@@ -1,18 +1,7 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, CalendarDays, Newspaper } from 'lucide-react';
-import { supabase, type BlogPost } from '@/lib/supabase';
-
-type BlogState = {
-  posts: BlogPost[];
-  loading: boolean;
-  unavailable: boolean;
-};
-
-const initialState: BlogState = { posts: [], loading: true, unavailable: false };
+import type { BlogPost } from '@/lib/supabase';
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat('pt-BR', {
@@ -22,41 +11,9 @@ function formatDate(date: string) {
   }).format(new Date(date));
 }
 
-export default function HomeBlog() {
-  const [state, setState] = useState<BlogState>(initialState);
-
-  useEffect(() => {
-    let active = true;
-
-    async function loadPosts() {
-      if (!supabase) {
-        if (active) setState({ posts: [], loading: false, unavailable: true });
-        return;
-      }
-
-      try {
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('published', true)
-          .order('created_at', { ascending: false })
-          .limit(3);
-
-        if (!active) return;
-        setState({ posts: data ?? [], loading: false, unavailable: Boolean(error) });
-      } catch {
-        if (active) setState({ posts: [], loading: false, unavailable: true });
-      }
-    }
-
-    void loadPosts();
-    return () => {
-      active = false;
-    };
-  }, []);
-
+export default function HomeBlog({ posts }: { posts: BlogPost[] }) {
   return (
-    <section id="blog" className="mts-blog" aria-labelledby="home-blog-title" aria-busy={state.loading}>
+    <section id="blog" className="mts-blog" aria-labelledby="home-blog-title">
       <div className="mts-blog__grid" aria-hidden="true" />
       <div className="mts-container">
         <div className="mts-blog__header reveal-on-scroll">
@@ -70,13 +27,9 @@ export default function HomeBlog() {
           </div>
         </div>
 
-        {state.loading ? (
-          <div className="mts-blog__cards" aria-label="Carregando artigos">
-            {[0, 1, 2].map((item) => <div key={item} className="mts-blog-card mts-blog-card--skeleton" aria-hidden="true" />)}
-          </div>
-        ) : state.posts.length > 0 ? (
+        {posts.length > 0 ? (
           <div className="mts-blog__cards">
-            {state.posts.map((post, index) => (
+            {posts.map((post, index) => (
               <article key={post.id} className="mts-blog-card">
                 <Link href={`/blog/${post.slug}`} className="mts-blog-card__media" tabIndex={-1} aria-hidden="true">
                   {post.image_url ? (
@@ -96,11 +49,11 @@ export default function HomeBlog() {
             ))}
           </div>
         ) : (
-          <div className="mts-blog__empty" role={state.unavailable ? 'alert' : 'status'}>
+          <div className="mts-blog__empty" role="status">
             <Newspaper aria-hidden="true" />
             <div>
-              <h3>{state.unavailable ? 'Não foi possível carregar os artigos agora.' : 'Novos artigos estão a caminho.'}</h3>
-              <p>{state.unavailable ? 'A página completa do blog continua disponível e a conexão pode ser tentada novamente por lá.' : 'Enquanto isso, explore nossas soluções e veja como aplicamos tecnologia em cenários reais.'}</p>
+              <h3>Novos artigos estão a caminho.</h3>
+              <p>Enquanto isso, explore nossas soluções e veja como aplicamos tecnologia em cenários reais.</p>
             </div>
             <Link href="/blog">Ir para o blog <ArrowRight /></Link>
           </div>

@@ -9,18 +9,14 @@ import Footer from '@/components/Footer';
 import CloudMigrationSection from '@/components/services/CloudMigrationSection';
 import ServiceJsonLd from '@/components/ServiceJsonLd';
 import BackToServices from '@/components/BackToServices';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Migração para Nuvem - AWS, Azure, Google Cloud - Mattos Tech Solutions',
-  description: 'Migração segura e eficiente para a nuvem. Reduzimos custos, aumentamos a escalabilidade e modernizamos sua infraestrutura.',
-  keywords: 'migração nuvem, AWS, Azure, Google Cloud, cloud computing, infraestrutura nuvem, migração cloud',
-  alternates: { canonical: '/migracao-cloud' },
-  openGraph: {
-    title: 'Migração para Nuvem - AWS, Azure, Google Cloud - Mattos Tech Solutions',
-    description: 'Migração segura e eficiente para a nuvem. Reduzimos custos, aumentamos a escalabilidade e modernizamos sua infraestrutura.',
-    url: 'https://mattostechsolutions.com.br/migracao-cloud',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Migração para Nuvem e Cloud',
+  description: 'Planejamos e executamos migrações para AWS, Azure ou Google Cloud com foco em continuidade, segurança, performance, observabilidade e custos.',
+  path: '/migracao-cloud',
+  keywords: ['migração para nuvem', 'consultoria cloud', 'AWS', 'Azure', 'Google Cloud', 'FinOps'],
+});
 
 export default function MigracaoCloudPage() {
   return (
@@ -28,7 +24,7 @@ export default function MigracaoCloudPage() {
       <ServiceJsonLd
         name="Migração para Nuvem"
         description="Assessment, planejamento e execução de migração para AWS, Azure ou GCP com foco em performance, segurança e FinOps."
-        url="https://mattostechsolutions.com.br/migracao-cloud"
+        url="/migracao-cloud"
         serviceType="Migração para Nuvem"
       />
       <Header />

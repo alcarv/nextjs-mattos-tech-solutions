@@ -10,18 +10,14 @@ import WebUseCases from '@/components/services/WebUseCases';
 import WebMethodology from '@/components/services/WebMethodology';
 import WebStack from '@/components/services/WebStack';
 import WebFAQ from '@/components/services/WebFAQ';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Criação de Sites Profissionais - Mattos Tech Solutions',
-  description: 'Desenvolvimento de sites profissionais, responsivos e otimizados para SEO. Criamos sua presença digital com tecnologia de ponta e design moderno.',
-  keywords: 'criação de sites, desenvolvimento web, sites responsivos, SEO, design web, sites profissionais',
-  alternates: { canonical: '/criacao-sites' },
-  openGraph: {
-    title: 'Criação de Sites Profissionais - Mattos Tech Solutions',
-    description: 'Desenvolvimento de sites profissionais, responsivos e otimizados para SEO. Criamos sua presença digital com tecnologia de ponta e design moderno.',
-    url: 'https://mattostechsolutions.com.br/criacao-sites',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Criação de Sites Profissionais',
+  description: 'Criamos sites profissionais, rápidos, responsivos e preparados para SEO, com conteúdo claro, integrações e foco em geração de oportunidades.',
+  path: '/criacao-sites',
+  keywords: ['criação de sites profissionais', 'desenvolvimento de sites', 'site otimizado para SEO', 'desenvolvimento web'],
+});
 
 export default function CriacaoSitesPage() {
   return (
@@ -29,7 +25,7 @@ export default function CriacaoSitesPage() {
       <ServiceJsonLd
         name="Criação de Sites Profissionais"
         description="Sites e aplicações web rápidas, responsivas e otimizadas para SEO, com integração a CMS e foco em conversão."
-        url="https://mattostechsolutions.com.br/criacao-sites"
+        url="/criacao-sites"
         serviceType="Desenvolvimento Web"
       />
       <Header />

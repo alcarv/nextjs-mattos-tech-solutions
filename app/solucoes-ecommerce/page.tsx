@@ -1,32 +1,35 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Servicos from '@/components/Servicos';
 import About from '@/components/About';
 import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import BackToServices from '@/components/BackToServices';
+import ServiceJsonLd from '@/components/ServiceJsonLd';
+import EcommerceSection from '@/components/services/EcommerceSection';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Soluções E-commerce Completas - Loja Virtual Profissional - Mattos Tech Solutions',
-  description: 'Desenvolvemos lojas virtuais completas e personalizadas. E-commerce com integração de pagamentos, gestão de estoque e design responsivo.',
-  keywords: 'e-commerce, loja virtual, desenvolvimento e-commerce, loja online, comércio eletrônico, plataforma vendas',
-  alternates: { canonical: '/solucoes-ecommerce' },
-  openGraph: {
-    title: 'Soluções E-commerce Completas - Loja Virtual Profissional - Mattos Tech Solutions',
-    description: 'Desenvolvemos lojas virtuais completas e personalizadas. E-commerce com integração de pagamentos, gestão de estoque e design responsivo.',
-    url: 'https://mattostechsolutions.com.br/solucoes-ecommerce',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Desenvolvimento de Loja Virtual',
+  description: 'Desenvolvemos lojas virtuais integradas a pagamentos, catálogo, estoque e operação, com experiência responsiva, performance e base para crescer.',
+  path: '/solucoes-ecommerce',
+  keywords: ['desenvolvimento de loja virtual', 'criação de e-commerce', 'integração de pagamentos', 'plataforma de vendas online'],
+});
 
 export default function SolucoesEcommercePage() {
   return (
     <main className="mts-service-page min-h-screen">
+      <ServiceJsonLd
+        name="Desenvolvimento de Loja Virtual"
+        description="Lojas virtuais integradas a pagamentos, catálogo, estoque e processos de venda, com performance e design responsivo."
+        url="/solucoes-ecommerce"
+        serviceType="Desenvolvimento de E-commerce"
+      />
       <Header />
       <Hero />
       <BackToServices />
-      <Servicos />
+      <EcommerceSection />
       <About />
       <Blog />
       <Contact />

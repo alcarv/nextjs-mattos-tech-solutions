@@ -130,7 +130,7 @@ export default function HomeContact() {
             <h3>Conte o que está travando sua operação.</h3>
             <p>Uma conversa objetiva para entender contexto, prioridade e aderência — antes de falar em tecnologia.</p>
             <div className="mts-contact__direct">
-              <a href="mailto:mattostechsolutions@gmail.com"><Mail /> mattostechsolutions@gmail.com</a>
+              <a href="mailto:contato@mattostechsolutions.com"><Mail /> contato@mattostechsolutions.com</a>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><MessageCircle /> +55 (11) 99018-3194</a>
             </div>
             <div className="mts-contact__availability"><i /> Atendimento remoto em todo o Brasil</div>

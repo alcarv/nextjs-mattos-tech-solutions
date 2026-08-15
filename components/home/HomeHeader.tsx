@@ -14,6 +14,7 @@ const navigation = [
 ];
 
 function resolveHref(href: string, rootLinks: boolean) {
+  if (rootLinks && href === '#solucoes') return '/servicos';
   return rootLinks && href.startsWith('#') ? `/${href}` : href;
 }
 

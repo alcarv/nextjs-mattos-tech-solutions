@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Mattos Tech Solutions</title>
+  <desc id="desc">Símbolo MTS em azul-marinho, branco e ciano</desc>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="#07101f" stroke="#29436f" stroke-width="16"/>
+  <path d="M112 358V154h48l96 88 96-88h48v204h-44V218l-100 90-100-90v140h-44Z" fill="#f3f7fc"/>
+  <path d="M112 126h98" fill="none" stroke="#38bdf8" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="406" cy="388" r="20" fill="#22d3ee"/>
+</svg>

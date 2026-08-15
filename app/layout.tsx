@@ -1,7 +1,7 @@
 import './globals.css';
 import './home.css';
 import './services.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import MetaPixel from '@/components/MetaPixel';
@@ -9,9 +9,9 @@ import {
   SITE_URL,
   SITE_NAME,
   SITE_DESCRIPTION,
-  organizationJsonLd,
-  websiteJsonLd,
-  localBusinessJsonLd,
+  SOCIAL_IMAGE,
+  safeJsonLd,
+  siteJsonLd,
 } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -21,17 +21,21 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  keywords: [
-    'consultoria TI São Paulo Tatuapé',
-    'desenvolvimento de software São Paulo',
-    'empresa de tecnologia Sorocaba',
-    'inteligência artificial Campinas',
-    'criação de sites profissionais',
-    'suporte e manutenção de sistemas',
-    'mattos tech solutions',
-  ],
+  applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   category: 'technology',
+  manifest: '/manifest.json',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: '/',
   },
@@ -41,13 +45,12 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: 'pt_BR',
-    alternateLocale: ['pt_PT'],
     type: 'website',
     images: [
       {
-        url: `${SITE_URL}/favicon.svg`,
-        width: 512,
-        height: 512,
+        url: SOCIAL_IMAGE,
+        width: 1200,
+        height: 630,
         alt: SITE_NAME,
       },
     ],
@@ -56,7 +59,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${SITE_NAME} – Consultoria e Desenvolvimento em TI`,
     description: SITE_DESCRIPTION,
-    images: [`${SITE_URL}/favicon.svg`],
+    images: [SOCIAL_IMAGE],
   },
   robots: {
     index: true,
@@ -69,12 +72,15 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  other: {
-    'geo.region': 'BR-SP',
-    'geo.placename': 'São Paulo - Tatuapé',
-    'geo.position': '-23.536;-46.575',
-    ICBM: '-23.536, -46.575',
-  },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#050816',
 };
 
 export default function RootLayout({
@@ -85,26 +91,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* Canonical is handled via Next metadata alternates */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        
-        {/* PWA Manifest */}
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#050816" />
-        
-        {/* Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(siteJsonLd()) }}
         />
         
         {/* Google Tag Manager */}
@@ -137,7 +126,7 @@ export default function RootLayout({
 
         <Script
           src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/e1e8582b-eb55-4673-9c77-04989c8c9b1c-loader.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </body>
     </html>

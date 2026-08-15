@@ -1,14 +1,21 @@
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://mattostechsolutions.com.br';
+import type { Metadata } from 'next';
+
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://mattostechsolutions.com'
+).replace(/\/$/, '');
 export const SITE_NAME = 'Mattos Tech Solutions';
 export const SITE_DESCRIPTION =
-  'Consultoria em TI, desenvolvimento de software, IA e soluções digitais que impulsionam empresas a partir de São Paulo (região do Tatuapé), atendendo Sorocaba, Campinas e todo o Brasil.';
+  'Consultoria em TI, software sob medida, automação, Inteligência Artificial e cloud para empresas em São Paulo e em todo o Brasil.';
 
 export const BUSINESS_PHONE = '+5511990183194';
-export const BUSINESS_EMAIL = 'mattostechsolutions@gmail.com';
+export const BUSINESS_EMAIL = 'contato@mattostechsolutions.com';
+export const BUSINESS_TAX_ID = '54.019.901/0001-54';
+export const ORG_LOGO = `${SITE_URL}/logo.svg`;
+export const SOCIAL_IMAGE = `${SITE_URL}/opengraph-image`;
+
 export const SERVICE_AREAS = [
-  'São Paulo - Tatuapé - SP',
-  'Zona Leste - SP',
+  'São Paulo - SP',
+  'Grande São Paulo - SP',
   'Sorocaba - SP',
   'Campinas - SP',
   'Brasil',
@@ -16,100 +23,132 @@ export const SERVICE_AREAS = [
 
 export const COMPANY_ADDRESS = {
   '@type': 'PostalAddress',
-  streetAddress: 'Tatuapé',
   addressLocality: 'São Paulo',
   addressRegion: 'SP',
   addressCountry: 'BR',
 } as const;
 
-export const COMPANY_GEO = {
-  '@type': 'GeoCoordinates',
-  latitude: -23.536,
-  longitude: -46.575,
-} as const;
+type PageMetadataOptions = {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+};
 
-export const ORG_LOGO = `${SITE_URL}/favicon.svg`;
-
-export function organizationJsonLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE_NAME,
-    url: SITE_URL,
-    logo: ORG_LOGO,
-    email: BUSINESS_EMAIL,
-    address: COMPANY_ADDRESS,
-    geo: COMPANY_GEO,
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        telephone: BUSINESS_PHONE,
-        email: BUSINESS_EMAIL,
-        contactType: 'sales',
-        areaServed: SERVICE_AREAS.map((area) => ({
-          '@type': 'AdministrativeArea',
-          name: area,
-        })),
-        availableLanguage: ['pt-BR'],
-      },
-    ],
-    sameAs: [
-      'https://www.instagram.com/mattostechsolutions/',
-      'https://wa.me/5511990183194',
-    ],
-  } as const;
+export function absoluteUrl(path = '/') {
+  return new URL(path, `${SITE_URL}/`).toString();
 }
 
-export function localBusinessJsonLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    url: SITE_URL,
-    image: ORG_LOGO,
-    email: BUSINESS_EMAIL,
-    telephone: BUSINESS_PHONE,
-    priceRange: '$$',
-    address: COMPANY_ADDRESS,
-    geo: COMPANY_GEO,
-    areaServed: SERVICE_AREAS.map((area) => ({
-      '@type': 'AdministrativeArea',
-      name: area,
-    })),
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:00',
-        closes: '18:00',
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Saturday'],
-        opens: '09:00',
-        closes: '14:00',
-      },
-    ],
-    sameAs: [
-      'https://www.instagram.com/mattostechsolutions/',
-      'https://wa.me/5511990183194',
-    ],
-  } as const;
-}
+export function createPageMetadata({
+  title,
+  description,
+  path,
+  keywords,
+}: PageMetadataOptions): Metadata {
+  const url = absoluteUrl(path);
 
-export function websiteJsonLd() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: SITE_URL,
-    inLanguage: 'pt-BR',
-    description: SITE_DESCRIPTION,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/blog?query={search_term_string}`,
-      'query-input': 'required name=search_term_string',
+    title,
+    description,
+    keywords,
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${title} | ${SITE_NAME}`,
+      description,
+      url,
+      siteName: SITE_NAME,
+      locale: 'pt_BR',
+      type: 'website',
+      images: [{ url: SOCIAL_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | ${SITE_NAME}`,
+      description,
+      images: [SOCIAL_IMAGE],
+    },
+  };
+}
+
+function areaServedJsonLd() {
+  return SERVICE_AREAS.map((area) => ({
+    '@type': area === 'Brasil' ? 'Country' : 'AdministrativeArea',
+    name: area,
+  }));
+}
+
+export function siteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        description: SITE_DESCRIPTION,
+        logo: {
+          '@type': 'ImageObject',
+          url: ORG_LOGO,
+          width: 512,
+          height: 512,
+        },
+        email: BUSINESS_EMAIL,
+        telephone: BUSINESS_PHONE,
+        taxID: BUSINESS_TAX_ID,
+        address: COMPANY_ADDRESS,
+        areaServed: areaServedJsonLd(),
+        founder: {
+          '@type': 'Person',
+          name: 'Alefe de Carvalho',
+          jobTitle: 'Founder e Tech Lead',
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: BUSINESS_PHONE,
+          email: BUSINESS_EMAIL,
+          contactType: 'sales',
+          areaServed: 'BR',
+          availableLanguage: 'pt-BR',
+        },
+        sameAs: ['https://www.instagram.com/mattostechsolutions/'],
+        knowsAbout: [
+          'Desenvolvimento de software',
+          'Inteligência Artificial',
+          'Automação de processos',
+          'Cloud computing',
+          'DevOps',
+          'Consultoria em TI',
+        ],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        inLanguage: 'pt-BR',
+        description: SITE_DESCRIPTION,
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+    ],
   } as const;
+}
+
+export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+export function safeJsonLd(value: unknown) {
+  return JSON.stringify(value)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
 }

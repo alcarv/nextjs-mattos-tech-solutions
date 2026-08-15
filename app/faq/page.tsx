@@ -1,22 +1,15 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { createPageMetadata, safeJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'FAQ – Perguntas Frequentes - Mattos Tech Solutions',
-  description:
-    'Tire dúvidas sobre serviços, prazos, tecnologias, suporte, orçamento e mais. Veja as principais perguntas e respostas sobre a Mattos Tech Solutions.',
-  alternates: { canonical: '/faq' },
-  openGraph: {
-    title: 'FAQ – Perguntas Frequentes - Mattos Tech Solutions',
-    description:
-      'Perguntas e respostas sobre serviços, prazos, tecnologias, suporte e orçamento.',
-    url: 'https://mattostechsolutions.com.br/faq',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Perguntas Frequentes',
+  description: 'Respostas sobre serviços, orçamento, prazos, tecnologias, segurança, propriedade intelectual, suporte e forma de trabalho da Mattos Tech Solutions.',
+  path: '/faq',
+});
 
-export default function FAQPage() {
-  const faqs = [
+const faqs = [
     {
       q: 'Quais serviços vocês oferecem?',
       a:
@@ -60,12 +53,27 @@ export default function FAQPage() {
     {
       q: 'Como posso falar com a equipe?',
       a:
-        'Envie um e-mail para mattostechsolutions@gmail.com ou fale pelo WhatsApp no rodapé do site. Também podemos agendar uma call para entender o seu projeto.',
+        'Envie um e-mail para contato@mattostechsolutions.com ou fale pelo WhatsApp no rodapé do site. Também podemos agendar uma call para entender o seu projeto.',
     },
-  ];
+];
+
+export default function FAQPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  };
 
   return (
     <main className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <Header />
       <section className="bg-white py-16">
         <div className="max-w-3xl mx-auto px-4">
@@ -84,7 +92,7 @@ export default function FAQPage() {
           <div className="mt-10 text-gray-700">
             <p>
               Não encontrou sua resposta? Fale com a gente em{' '}
-              <a href="mailto:mattostechsolutions@gmail.com" className="text-blue-600 hover:underline">mattostechsolutions@gmail.com</a>.
+              <a href="mailto:contato@mattostechsolutions.com" className="text-blue-600 hover:underline">contato@mattostechsolutions.com</a>.
             </p>
           </div>
         </div>

@@ -1,127 +1,40 @@
-import { MetadataRoute } from 'next';
-import { supabase } from '@/lib/supabase';
+import type { MetadataRoute } from 'next';
+import { getPublishedPosts } from '@/lib/blog';
+import { absoluteUrl } from '@/lib/seo';
+
+export const revalidate = 3600;
+
+const staticPaths = [
+  '/',
+  '/servicos',
+  '/criacao-sites',
+  '/criacao-software',
+  '/consultoria-ti',
+  '/consultoria-protheus',
+  '/migracao-cloud',
+  '/apps-mobile',
+  '/solucoes-ecommerce',
+  '/inteligencia-artificial',
+  '/governanca-compliance',
+  '/banco-dados-analytics',
+  '/avaliacoes-ti',
+  '/ux-ui-design',
+  '/blog',
+  '/faq',
+  '/politica-de-privacidade',
+] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrls: MetadataRoute.Sitemap = [
-    {
-      url: 'https://mattostechsolutions.com.br',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/criacao-sites',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/criacao-software',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/consultoria-ti',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/consultoria-protheus',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/migracao-cloud',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/apps-mobile',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/solucoes-ecommerce',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/inteligencia-artificial',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/governanca-compliance',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/banco-dados-analytics',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/avaliacoes-ti',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/ux-ui-design',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/blog',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/faq',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: 'https://mattostechsolutions.com.br/politica-de-privacidade',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ];
+  const posts = await getPublishedPosts();
 
-  let blogUrls: MetadataRoute.Sitemap = [];
-  
-  if (supabase) {
-    try {
-      const { data: blogPosts, error } = await supabase
-        .from('blog_posts')
-        .select('slug, updated_at, created_at')
-        .eq('published', true);
+  const staticUrls: MetadataRoute.Sitemap = staticPaths.map((path) => ({
+    url: absoluteUrl(path),
+  }));
 
-      if (!error && blogPosts) {
-        blogUrls = blogPosts.map((post) => ({
-          url: `https://mattostechsolutions.com.br/blog/${post.slug}`,
-          lastModified: new Date(post.updated_at || post.created_at),
-          changeFrequency: 'monthly' as const,
-          priority: 0.6,
-        }));
-      }
-    } catch (error) {
-      console.error('Error fetching blog posts for sitemap:', error);
-    }
-  }
+  const blogUrls: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: absoluteUrl(`/blog/${post.slug}`),
+    lastModified: new Date(post.updated_at || post.published_at || post.created_at),
+  }));
 
-  return [...baseUrls, ...blogUrls];
+  return [...staticUrls, ...blogUrls];
 }

@@ -1,29 +1,17 @@
 import type { Metadata } from 'next';
-import ScrollProgress from '@/components/ScrollProgress';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Blog – Insights e Tendências',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Blog de Tecnologia para Empresas',
   description:
-    'Artigos sobre tecnologia, desenvolvimento e transformação digital pela Mattos Tech Solutions.',
-  alternates: { canonical: '/blog' },
-  openGraph: {
-    title: 'Blog – Insights e Tendências',
-    description:
-      'Artigos sobre tecnologia, desenvolvimento e transformação digital pela Mattos Tech Solutions.',
-    url: 'https://mattostechsolutions.com.br/blog',
-    type: 'website',
-  },
-};
+    'Artigos práticos sobre software, Inteligência Artificial, cloud, automação e decisões de tecnologia para empresas.',
+  path: '/blog',
+});
 
 export default function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <ScrollProgress />
-      {children}
-    </>
-  );
+  return children;
 }

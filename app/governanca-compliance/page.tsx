@@ -9,22 +9,14 @@ import Footer from '@/components/Footer';
 import GovernancaSection from '@/components/services/GovernancaSection';
 import ServiceJsonLd from '@/components/ServiceJsonLd';
 import BackToServices from '@/components/BackToServices';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Governança e Compliance em TI - Mattos Tech Solutions',
-  description:
-    'Implementamos governança, conformidade (LGPD, ISO 27001) e políticas de segurança em TI para reduzir riscos e aumentar a confiança do seu negócio.',
-  keywords:
-    'governança de TI, compliance, LGPD, ISO 27001, segurança da informação, políticas de TI, gestão de riscos',
-  alternates: { canonical: '/governanca-compliance' },
-  openGraph: {
-    title: 'Governança e Compliance em TI',
-    description:
-      'Governança, conformidade e segurança da informação para reduzir riscos e aumentar a confiança.',
-    url: 'https://mattostechsolutions.com.br/governanca-compliance',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Governança e Compliance em TI',
+  description: 'Estruturamos políticas, controles, gestão de riscos e conformidade com LGPD e ISO 27001 para fortalecer a segurança e a governança de TI.',
+  path: '/governanca-compliance',
+  keywords: ['governança de TI', 'compliance em TI', 'LGPD', 'ISO 27001', 'gestão de riscos de TI'],
+});
 
 export default function GovernancaCompliancePage() {
   return (
@@ -32,7 +24,7 @@ export default function GovernancaCompliancePage() {
       <ServiceJsonLd
         name="Governança e Compliance em TI"
         description="Políticas, controles, conformidade (LGPD/ISO 27001) e gestão de riscos em TI, com auditoria e evidências."
-        url="https://mattostechsolutions.com.br/governanca-compliance"
+        url="/governanca-compliance"
         serviceType="Governança e Compliance"
       />
       <Header />

@@ -9,18 +9,14 @@ import Footer from '@/components/Footer';
 import ConsultoriaTISection from '@/components/services/ConsultoriaTISection';
 import ServiceJsonLd from '@/components/ServiceJsonLd';
 import BackToServices from '@/components/BackToServices';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Consultoria em TI e Planejamento Estratégico - Mattos Tech Solutions',
-  description: 'Consultoria especializada em TI para otimizar sua infraestrutura, reduzir custos e impulsionar o crescimento do seu negócio.',
-  keywords: 'consultoria TI, planejamento estratégico, infraestrutura TI, otimização processos, consultoria tecnológica',
-  alternates: { canonical: '/consultoria-ti' },
-  openGraph: {
-    title: 'Consultoria em TI e Planejamento Estratégico - Mattos Tech Solutions',
-    description: 'Consultoria especializada em TI para otimizar sua infraestrutura, reduzir custos e impulsionar o crescimento do seu negócio.',
-    url: 'https://mattostechsolutions.com.br/consultoria-ti',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Consultoria em TI Estratégica',
+  description: 'Consultoria em TI para diagnosticar o cenário, reduzir riscos e custos e construir um roadmap de tecnologia alinhado aos objetivos do negócio.',
+  path: '/consultoria-ti',
+  keywords: ['consultoria em TI', 'planejamento estratégico de TI', 'roadmap de tecnologia', 'infraestrutura de TI'],
+});
 
 export default function ConsultoriaTIPage() {
   return (
@@ -28,7 +24,7 @@ export default function ConsultoriaTIPage() {
       <ServiceJsonLd
         name="Consultoria em TI e Planejamento Estratégico"
         description="Alinhamento estratégico, roadmap e governança para executar projetos de TI com foco em resultados e redução de custos."
-        url="https://mattostechsolutions.com.br/consultoria-ti"
+        url="/consultoria-ti"
         serviceType="Consultoria em TI"
       />
       <Header />

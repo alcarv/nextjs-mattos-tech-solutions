@@ -1,31 +1,31 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Award, Briefcase, TrendingUp } from 'lucide-react';
+import { Briefcase, MapPin, Route, Workflow } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 
 const stats = [
   {
-    icon: Users,
-    value: '150+',
-    label: 'Projetos Entregues',
-    description: 'Soluções implementadas com sucesso'
-  },
-  {
-    icon: Award,
-    value: '98%',
-    label: 'Satisfação do Cliente',
-    description: 'Taxa de satisfação comprovada'
-  },
-  {
     icon: Briefcase,
-    value: '10+',
-    label: 'Anos de Experiência',
-    description: 'Expertise consolidada no mercado'
+    value: '9+ anos',
+    label: 'Experiência profissional',
+    description: 'Atuação em ambientes críticos de tecnologia'
   },
   {
-    icon: TrendingUp,
-    value: '40%',
-    label: 'Crescimento Médio',
-    description: 'Aumento de eficiência dos clientes'
+    icon: MapPin,
+    value: 'São Paulo',
+    label: 'Base da operação',
+    description: 'Atendimento híbrido e consultivo'
+  },
+  {
+    icon: Route,
+    value: 'Brasil',
+    label: 'Alcance nacional',
+    description: 'Projetos e acompanhamento remoto'
+  },
+  {
+    icon: Workflow,
+    value: 'Ponta a ponta',
+    label: 'Modelo de entrega',
+    description: 'Do diagnóstico à evolução contínua'
   }
 ];
 

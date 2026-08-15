@@ -31,6 +31,7 @@ import HomeHeader from './HomeHeader';
 import MagneticLink from './MagneticLink';
 import MTSCore from './MTSCore';
 import ScrollStory from './ScrollStory';
+import type { BlogPost } from '@/lib/supabase';
 
 type Solution = {
   number: string;
@@ -149,7 +150,7 @@ function SolutionVisual({ solution }: { solution: Solution }) {
   );
 }
 
-export default function HomeLanding() {
+export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -341,7 +342,7 @@ export default function HomeLanding() {
           </div>
         </section>
 
-        <HomeBlog />
+        <HomeBlog posts={blogPosts} />
         <HomeContact />
       </main>
 
@@ -353,9 +354,9 @@ export default function HomeLanding() {
             <a className="mts-footer__social" href="https://www.instagram.com/mattostechsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Mattos Tech Solutions"><Instagram /></a>
           </div>
           <div className="mts-footer__nav">
-            <div><span>SOLUÇÕES</span><a href="#solucoes">Serviços</a><a href="#metodo">Como trabalhamos</a><a href="#experiencia">Experiência</a></div>
+            <div><span>SOLUÇÕES</span><Link href="/servicos">Todos os serviços</Link><Link href="/criacao-software">Software sob medida</Link><Link href="/inteligencia-artificial">Inteligência Artificial</Link><Link href="/criacao-sites">Sites profissionais</Link><Link href="/migracao-cloud">Cloud e infraestrutura</Link></div>
             <div><span>EMPRESA</span><a href="#sobre">Sobre</a><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
-            <div><span>CONTATO</span><a href="mailto:mattostechsolutions@gmail.com">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
+            <div><span>CONTATO</span><a href="mailto:contato@mattostechsolutions.com">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
           </div>
           <div className="mts-footer__bottom">
             <span>© {new Date().getFullYear()} MATTOS TECH SOLUTIONS</span>

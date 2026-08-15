@@ -1,19 +1,13 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { BUSINESS_EMAIL, createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Política de Privacidade - Mattos Tech Solutions',
-  description:
-    'Saiba como a Mattos Tech Solutions coleta, utiliza e protege seus dados pessoais. Transparência, segurança e conformidade com a LGPD.',
-  alternates: { canonical: '/politica-de-privacidade' },
-  openGraph: {
-    title: 'Política de Privacidade - Mattos Tech Solutions',
-    description:
-      'Entenda nossa política de privacidade e como protegemos seus dados pessoais em conformidade com a LGPD.',
-    url: 'https://mattostechsolutions.com.br/politica-de-privacidade',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Política de Privacidade',
+  description: 'Saiba como a Mattos Tech Solutions coleta, utiliza, armazena e protege dados pessoais em conformidade com a LGPD.',
+  path: '/politica-de-privacidade',
+});
 
 export default function PoliticaPrivacidadePage() {
   return (
@@ -109,7 +103,7 @@ export default function PoliticaPrivacidadePage() {
             <section>
               <h2 className="text-xl font-semibold text-gray-900 mb-2">9. Contato do Encarregado (DPO)</h2>
               <p>
-                E‑mail: <a href="mailto:contato@mattostech.com" className="text-blue-600 hover:underline">contato@mattostech.com</a>
+                E‑mail: <a href={`mailto:${BUSINESS_EMAIL}`} className="text-blue-600 hover:underline">{BUSINESS_EMAIL}</a>
               </p>
             </section>
 
@@ -127,4 +121,3 @@ export default function PoliticaPrivacidadePage() {
     </main>
   );
 }
-

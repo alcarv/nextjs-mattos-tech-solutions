@@ -9,22 +9,14 @@ import ProtheusSection from '@/components/services/ProtheusSection';
 import ProtheusUseCases from '@/components/services/ProtheusUseCases';
 import ProtheusTechStack from '@/components/services/ProtheusTechStack';
 import ProtheusFAQ from '@/components/services/ProtheusFAQ';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Consultoria em Protheus – Fiscal, Integrações e Performance | Mattos Tech Solutions',
-  description:
-    'Consultoria especializada em TOTVS Protheus para conformidade fiscal, performance, integrações e customizações seguras. Assessment, quick wins e operação assistida.',
-  keywords:
-    'consultoria protheus, totvs protheus, TAF, TSS, SPED, nf-e, integrações protheus, performance protheus, advpl',
-  alternates: { canonical: '/consultoria-protheus' },
-  openGraph: {
-    title: 'Consultoria em Protheus – Fiscal, Integrações e Performance',
-    description:
-      'Assessment, ajustes fiscais, integrações e customizações seguras para Protheus 12 com governança e operação contínua.',
-    url: 'https://mattostechsolutions.com.br/consultoria-protheus',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = createPageMetadata({
+  title: 'Consultoria Protheus e TOTVS',
+  description: 'Consultoria em TOTVS Protheus para fiscal, TAF, TSS, SPED, integrações, performance, customizações e sustentação com governança.',
+  path: '/consultoria-protheus',
+  keywords: ['consultoria Protheus', 'TOTVS Protheus', 'TAF e TSS', 'integrações Protheus', 'ADVPL'],
+});
 
 export default function ConsultoriaProtheusPage() {
   return (
@@ -32,7 +24,7 @@ export default function ConsultoriaProtheusPage() {
       <ServiceJsonLd
         name="Consultoria em Protheus"
         description="Diagnóstico, conformidade fiscal, integrações, performance e sustentação do Protheus 12 com governança."
-        url="https://mattostechsolutions.com.br/consultoria-protheus"
+        url="/consultoria-protheus"
         serviceType="Consultoria em Protheus"
       />
       <Header />

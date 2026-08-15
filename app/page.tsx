@@ -1,31 +1,30 @@
 import type { Metadata } from 'next';
 import HomeLanding from '@/components/home/HomeLanding';
-import { SITE_URL, SITE_NAME } from '@/lib/seo';
+import { getPublishedPosts } from '@/lib/blog';
+import { createPageMetadata } from '@/lib/seo';
 
 const homeDescription =
-  'Sites profissionais, software sob medida, automação empresarial, Inteligência Artificial, cloud e DevOps para empresas que querem conectar processos e crescer com segurança.';
+  'Software sob medida, sites, automação, IA, cloud e DevOps para conectar processos, reduzir trabalho manual e fazer sua empresa crescer com segurança.';
 
 export const metadata: Metadata = {
-  title: 'Software sob medida, IA, automação e cloud para empresas',
-  description: homeDescription,
-  keywords: [
-    'desenvolvimento de software sob medida',
-    'criação de sites profissionais',
-    'automação empresarial',
-    'inteligência artificial para empresas',
-    'consultoria cloud e DevOps',
-  ],
-  alternates: { canonical: '/' },
-  openGraph: {
-    title: 'Tecnologia sob medida para transformar operações em crescimento',
+  ...createPageMetadata({
+    title: 'Software sob medida, IA e automação para empresas',
     description: homeDescription,
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    locale: 'pt_BR',
-    type: 'website',
-  },
+    path: '/',
+    keywords: [
+      'desenvolvimento de software sob medida',
+      'criação de sites profissionais',
+      'automação empresarial',
+      'inteligência artificial para empresas',
+      'consultoria cloud e DevOps',
+    ],
+  }),
+  title: 'Software sob medida, IA e automação | Mattos Tech Solutions',
 };
 
-export default function Home() {
-  return <HomeLanding />;
+export const revalidate = 3600;
+
+export default async function Home() {
+  const blogPosts = await getPublishedPosts(3);
+  return <HomeLanding blogPosts={blogPosts} />;
 }

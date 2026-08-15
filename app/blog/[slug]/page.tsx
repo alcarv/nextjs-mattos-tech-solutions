@@ -1,80 +1,118 @@
-import { Suspense } from 'react';
-import BlogPostClient from '@/components/BlogPostClient';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import type { Metadata } from 'next';
-import { supabase } from '@/lib/supabase';
-import { SITE_URL, SITE_NAME } from '@/lib/seo';
+import BlogPostClient from '@/components/BlogPostClient';
+import { getPublishedPost, getPublishedPosts } from '@/lib/blog';
+import {
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_IMAGE,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  safeJsonLd,
+} from '@/lib/seo';
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata(
-  { params }: BlogPostPageProps
-): Promise<Metadata> {
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const post = await getPublishedPost(slug);
 
-  try {
-    if (supabase) {
-      const { data } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('slug', slug)
-        .eq('published', true)
-        .single();
-
-      if (data) {
-        const title = data.title;
-        const description = data.description || undefined;
-        const url = `${SITE_URL}/blog/${slug}`;
-        const image = data.image_url || undefined;
-
-        return {
-          title,
-          description,
-          alternates: { canonical: `/blog/${slug}` },
-          openGraph: {
-            title,
-            description,
-            url,
-            type: 'article',
-            siteName: SITE_NAME,
-            images: image ? [{ url: image }] : undefined,
-          },
-          twitter: {
-            card: 'summary_large_image',
-            title,
-            description,
-            images: image ? [image] : undefined,
-          },
-        } satisfies Metadata;
-      }
-    }
-  } catch (e) {
-    // No-op: fallback metadata below
+  if (!post) {
+    return {
+      title: 'Artigo não encontrado',
+      robots: { index: false, follow: false },
+    };
   }
 
+  const description = post.description || `Leia ${post.title} no blog da ${SITE_NAME}.`;
+  const url = absoluteUrl(`/blog/${post.slug}`);
+  const image = post.image_url || SOCIAL_IMAGE;
+
   return {
-    title: 'Artigo do Blog',
-    alternates: { canonical: `/blog/${slug}` },
-  } satisfies Metadata;
+    title: post.title,
+    description,
+    authors: [{ name: post.author }],
+    keywords: post.tags,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description,
+      url,
+      type: 'article',
+      siteName: SITE_NAME,
+      locale: 'pt_BR',
+      publishedTime: post.published_at || post.created_at,
+      modifiedTime: post.updated_at,
+      authors: [post.author],
+      tags: post.tags,
+      images: [{ url: image, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: [image],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
+  const post = await getPublishedPost(slug);
+
+  if (!post) notFound();
+
+  const url = absoluteUrl(`/blog/${post.slug}`);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${url}#article`,
+        headline: post.title,
+        description: post.description || undefined,
+        image: [post.image_url || SOCIAL_IMAGE],
+        datePublished: post.published_at || post.created_at,
+        dateModified: post.updated_at,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+        author: {
+          '@type': post.author === SITE_NAME ? 'Organization' : 'Person',
+          name: post.author,
+        },
+        publisher: {
+          '@type': 'Organization',
+          '@id': `${SITE_URL}/#organization`,
+          name: SITE_NAME,
+        },
+        keywords: post.tags.join(', '),
+        inLanguage: 'pt-BR',
+      },
+      breadcrumbJsonLd([
+        { name: 'Início', path: '/' },
+        { name: 'Blog', path: '/blog' },
+        { name: post.title, path: `/blog/${post.slug}` },
+      ]),
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <Header />
-      <Suspense fallback={
-        <div className="py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400">
-            <p className="text-xl">Carregando post...</p>
-          </div>
-        </div>
-      }>
-        <BlogPostClient slug={slug} />
-      </Suspense>
+      <main id="conteudo">
+        <BlogPostClient post={post} />
+      </main>
       <Footer />
     </div>
   );

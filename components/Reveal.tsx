@@ -34,7 +34,10 @@ export default function Reveal({ children, className = '', delay = 0 }: RevealPr
         }
       },
       {
-        threshold: 0.1,
+        // Containers such as service grids can be several viewports tall. A low
+        // threshold prevents their entire contents from remaining invisible
+        // until the visitor has scrolled through a large blank area.
+        threshold: 0.01,
         rootMargin: '0px 0px -15% 0px',
       }
     );

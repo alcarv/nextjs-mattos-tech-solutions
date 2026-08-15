@@ -80,7 +80,7 @@ export default function BlogIndexClient({ posts }: { posts: BlogPost[] }) {
                     <Link href={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
                       <Image
                         src={post.image_url}
-                        alt=""
+                        alt={`Capa do artigo: ${post.title}`}
                         width={400}
                         height={225}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"

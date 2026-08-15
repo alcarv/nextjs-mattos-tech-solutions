@@ -31,9 +31,9 @@ export default function HomeBlog({ posts }: { posts: BlogPost[] }) {
           <div className="mts-blog__cards">
             {posts.map((post, index) => (
               <article key={post.id} className="mts-blog-card">
-                <Link href={`/blog/${post.slug}`} className="mts-blog-card__media" tabIndex={-1} aria-hidden="true">
+                <Link href={`/blog/${post.slug}`} className="mts-blog-card__media">
                   {post.image_url ? (
-                    <Image src={post.image_url} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" />
+                    <Image src={post.image_url} alt={`Capa do artigo: ${post.title}`} fill sizes="(max-width: 900px) 100vw, 33vw" />
                   ) : (
                     <span><Newspaper /></span>
                   )}

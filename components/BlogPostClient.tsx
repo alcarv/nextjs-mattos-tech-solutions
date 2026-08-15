@@ -99,7 +99,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           <div className="aspect-video overflow-hidden rounded-lg mb-8">
             <Image
               src={post.image_url}
-              alt=""
+              alt={`Capa do artigo: ${post.title}`}
               width={800}
               height={450}
               className="w-full h-full object-cover"

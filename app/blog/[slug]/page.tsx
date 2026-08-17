@@ -38,12 +38,18 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const description = post.description || `Leia ${post.title} no blog da ${SITE_NAME}.`;
   const url = absoluteUrl(`/blog/${post.slug}`);
   const image = post.image_url || SOCIAL_IMAGE;
+  const isOrganizationAuthor = post.author === SITE_NAME;
 
   return {
     title: post.title,
     description,
-    authors: [{ name: post.author }],
-    keywords: post.tags,
+    authors: [
+      {
+        name: post.author,
+        url: isOrganizationAuthor ? SITE_URL : undefined,
+      },
+    ],
+    keywords: post.tags.length ? post.tags : undefined,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       title: post.title,
@@ -55,7 +61,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       publishedTime: post.published_at || post.created_at,
       modifiedTime: post.updated_at,
       authors: [post.author],
-      tags: post.tags,
+      tags: post.tags.length ? post.tags : undefined,
       images: [{ url: image, alt: post.title }],
     },
     twitter: {
@@ -74,6 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   const url = absoluteUrl(`/blog/${post.slug}`);
+  const isOrganizationAuthor = post.author === SITE_NAME;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -86,16 +93,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         datePublished: post.published_at || post.created_at,
         dateModified: post.updated_at,
         mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-        author: {
-          '@type': post.author === SITE_NAME ? 'Organization' : 'Person',
-          name: post.author,
-        },
+        author: isOrganizationAuthor
+          ? {
+              '@type': 'Organization',
+              '@id': `${SITE_URL}/#organization`,
+              name: post.author,
+              url: SITE_URL,
+            }
+          : {
+              '@type': 'Person',
+              name: post.author,
+            },
         publisher: {
           '@type': 'Organization',
           '@id': `${SITE_URL}/#organization`,
           name: SITE_NAME,
         },
-        keywords: post.tags.join(', '),
+        keywords: post.tags.length ? post.tags.join(', ') : undefined,
         inLanguage: 'pt-BR',
       },
       breadcrumbJsonLd([

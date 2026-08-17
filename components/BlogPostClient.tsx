@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, History, UserRound } from 'lucide-react';
 import type { BlogPost } from '@/lib/supabase';
 import ShareButton from '@/components/ShareButton';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,20 @@ function formatDate(dateString: string) {
   });
 }
 
+function hasMaterialUpdate(publishedAt: string, updatedAt: string) {
+  const publishedTime = new Date(publishedAt).getTime();
+  const updatedTime = new Date(updatedAt).getTime();
+
+  return (
+    Number.isFinite(publishedTime) &&
+    Number.isFinite(updatedTime) &&
+    updatedTime - publishedTime >= 24 * 60 * 60 * 1000
+  );
+}
+
 export default function BlogPostClient({ post }: { post: BlogPost }) {
+  const publishedAt = post.published_at || post.created_at;
+  const showUpdatedAt = hasMaterialUpdate(publishedAt, post.updated_at);
   const markdownComponents: Components = {
     h1: ({ children }) => <h2 className="text-3xl font-bold mt-8 mb-6 text-white">{children}</h2>,
     h2: ({ children }) => <h2 className="text-2xl font-bold mt-8 mb-4 text-slate-100">{children}</h2>,
@@ -71,9 +84,9 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
       );
     },
     table: ({ children }) => (
-      <span className="block mb-6 overflow-x-auto">
+      <div className="mb-6 overflow-x-auto">
         <table className="min-w-full border border-slate-700 rounded-lg">{children}</table>
-      </span>
+      </div>
     ),
     thead: ({ children }) => <thead className="bg-slate-900/60">{children}</thead>,
     th: ({ children }) => <th className="px-4 py-2 text-left font-semibold text-slate-200 border-b border-slate-700">{children}</th>,
@@ -112,10 +125,23 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           <h1 className="text-4xl font-bold text-white mb-6 leading-tight">{post.title}</h1>
           <div className="flex items-center justify-between flex-wrap gap-4 text-slate-400">
             <div className="flex items-center flex-wrap gap-6">
-              <time className="flex items-center gap-2" dateTime={post.published_at || post.created_at}>
+              <span className="flex items-center gap-2">
+                <UserRound className="h-5 w-5" aria-hidden="true" />
+                Por{' '}
+                <Link href="/#sobre" className="text-slate-300 underline decoration-slate-600 underline-offset-4 hover:text-white">
+                  {post.author}
+                </Link>
+              </span>
+              <time className="flex items-center gap-2" dateTime={publishedAt}>
                 <Calendar className="h-5 w-5" aria-hidden="true" />
-                {formatDate(post.published_at || post.created_at)}
+                Publicado em {formatDate(publishedAt)}
               </time>
+              {showUpdatedAt && (
+                <time className="flex items-center gap-2" dateTime={post.updated_at}>
+                  <History className="h-5 w-5" aria-hidden="true" />
+                  Atualizado em {formatDate(post.updated_at)}
+                </time>
+              )}
               <span className="flex items-center gap-2">
                 <Clock className="h-5 w-5" aria-hidden="true" />
                 {post.reading_time} min de leitura

@@ -10,7 +10,7 @@
 
 A Mattos Tech Solutions é uma empresa B2B de tecnologia baseada em São Paulo. O site oferece consultoria de TI, software sob medida, consultoria TOTVS Protheus, Inteligência Artificial, criação de sites, e-commerce, aplicativos, cloud, dados e BI, governança, assessments e UX/UI. O público mais provável são gestores, líderes de tecnologia e donos de empresas que precisam resolver gargalos de operação, integração, confiabilidade ou crescimento.
 
-O projeto já possuía uma base técnica acima da média: Next.js com páginas estáticas, conteúdo renderizado no HTML, URLs canônicas, sitemap, robots, metadados próprios, blog com artigos aprofundados e dados estruturados. A produção retornou HTTP 200 para as 50 URLs do sitemap, os redirecionamentos de HTTP e `www` estão corretos e não foram encontrados links internos quebrados.
+O projeto já possuía uma base técnica acima da média: Next.js com páginas estáticas, conteúdo renderizado no HTML, URLs canônicas, sitemap, robots, metadados próprios, blog com artigos aprofundados e dados estruturados. Antes do deploy, a produção retornou HTTP 200 para as 50 URLs do sitemap; após o deploy de 30/08, o sitemap passou a 51 URLs pela publicação do artigo `finops-para-empresas`. Os redirecionamentos de HTTP e `www` estão corretos e não foram encontrados links internos quebrados.
 
 Os maiores limitadores encontrados foram:
 
@@ -88,7 +88,7 @@ A análise utilizou:
 |---|---|---|
 | Indexabilidade | Produção acessível e 50 URLs do sitemap retornaram 200; GSC tinha 15 indexadas de 45 conhecidas em 20/08 | Prioridade imediata de recrawl e qualidade/descoberta |
 | Robots | Permite rastreamento e bloqueia apenas `/api/` e `/private/`; aponta para sitemap | Mantido |
-| Sitemap | 17 URLs estáticas e 33 artigos em produção; GSC processou 49 URLs na leitura de 29/08 | Mantido; reenviar após deploy para nova leitura |
+| Sitemap | 17 URLs estáticas e 34 artigos em produção após o deploy; GSC havia processado 49 URLs na leitura de 29/08 | Mantido; reenviar para nova leitura |
 | Canonicals | Próprios e coerentes com o caminho em todas as páginas verificadas | Mantidos; validação automatizada |
 | HTTP/HTTPS | HTTP redireciona 301 para HTTPS | Correto |
 | `www` | `https://www...` redireciona 301 para o domínio sem `www` | Correto |
@@ -358,7 +358,7 @@ Continuam úteis, mas não bloqueiam o plano atual:
 - o script verifica sitemap, robots, HTTP, title, description, canonical, H1, `noindex`, JSON-LD, links internos, fragmentos e duplicidade de metadados;
 - adicionados redirects permanentes para os 20 IDs históricos de artigos, com destino nos slugs descritivos registrados no backup do CMS;
 - validação local: 17 páginas estáticas, sem erros;
-- validação da produção atual: 50 páginas e 50 destinos internos, sem erros.
+- validação da produção após o deploy: 51 páginas e 51 destinos internos, sem erros.
 
 ## Tabela priorizada de problemas e oportunidades
 
@@ -373,7 +373,7 @@ Continuam úteis, mas não bloqueiam o plano atual:
 | FAQs não marcadas nas landings | Software, sites, Protheus, IA | Conteúdo visível sem ligação a FAQPage | Reusar exatamente perguntas/respostas visíveis | Médio | Baixo | P1 | Implementado |
 | 404 genérica | URLs inválidas | Status correto, experiência padrão | Criar 404 navegável e noindex | Baixo/médio | Baixo | P1 | Implementado |
 | URLs antigas com sinais em 404 | 20 URLs `/blog/{uuid}` | 9 URLs somavam 29 impressões e 1 clique; mapeamento confirmado no backup | Redirect permanente para o slug atual | Alto | Baixo | P0 | Implementado; aguarda deploy |
-| Snippets antigos | Várias URLs | Busca ainda mostrou e-mail/conteúdo antigos em algumas páginas | Deploy, inspeção e solicitação de recrawl | Alto | Baixo | P0 | Pendente externo |
+| Snippets antigos | Várias URLs | Busca ainda mostrou e-mail/conteúdo antigos em algumas páginas | Deploy, inspeção e solicitação de recrawl | Alto | Baixo | P0 | Deploy concluído; recrawl pendente |
 | Cobertura de indexação baixa | 27 URLs canônicas | GSC: 21 detectadas sem rastreamento e 6 rastreadas sem indexação | Deploy, sitemap, links e inspeção seletiva; melhorar/consolidar artigos antigos | Muito alto | Médio | P0 | Em execução |
 | Consultas 11–30 com CTR zero | Cloud, apps e CI/CD | 26 impressões para “migração para nuvem”, 18 para apps empresariais e 3 para “pipeline ci cd” | Atualizar os artigos donos da intenção e fortalecer links para serviços | Alto | Médio | P0 | Dados importados; conteúdo pendente |
 | Páginas top 10 com CTR zero | `/blog`, `/faq`, software, dados e sites | Posições 4,33–9,20 em amostras de 6–25 impressões | Priorizar recrawl e monitorar 28 dias antes de novo teste de snippet | Médio/alto | Baixo | P1 | Monitorar após deploy |
@@ -644,7 +644,7 @@ O plano prioriza um conteúdo útil por semana. Publicar menos e incluir experi�
 
 ### Primeiros 30 dias
 
-1. Fazer deploy das alterações e executar `npm run seo:validate` no ambiente publicado.
+1. **Concluído em 30/08:** deploy das alterações e `npm run seo:validate` em 51 URLs publicadas.
 2. Inspecionar e solicitar recrawl da home, `/servicos`, software, consultoria de TI, Protheus, IA e sites.
 3. Enviar novamente o sitemap e acompanhar indexação/snippets antigos.
 4. **Concluído em 30/08:** importar Search Console, mapear consultas 11–30 e documentar cobertura, dispositivos e links.
@@ -673,8 +673,7 @@ O plano prioriza um conteúdo útil por semana. Publicar menos e incluir experi�
 
 ## Alterações pendentes e dependências
 
-- commit/push e deploy do conjunto atual; a produção ainda não contém estas mudanças;
-- reenvio do sitemap e solicitação de indexação no Search Console após confirmar a produção;
+- reenvio do sitemap e solicitação seletiva de indexação no Search Console; a produção já foi confirmada;
 - nova exportação do Search Console após 28 e 90 dias para medir o efeito agregado;
 - validação do Perfil da Empresa no Google, endereço e horário;
 - aprovação de clientes para casos, logos, depoimentos e métricas;

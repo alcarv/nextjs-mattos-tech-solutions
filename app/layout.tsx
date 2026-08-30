@@ -1,10 +1,12 @@
 import './globals.css';
 import './home.css';
 import './services.css';
+import './theme-light.css';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import MetaPixel from '@/components/MetaPixel';
+import ThemeProvider from '@/components/ThemeProvider';
 import {
   SITE_URL,
   SITE_NAME,
@@ -85,7 +87,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#050816',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#050816' },
+  ],
 };
 
 export default function RootLayout({
@@ -94,7 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -112,7 +117,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-sans bg-slate-950 text-slate-100 antialiased">
+      <body className="font-sans bg-background text-foreground antialiased">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
@@ -123,11 +128,13 @@ export default function RootLayout({
           />
         </noscript>
 
-        <MetaPixel />
+        <ThemeProvider>
+          <MetaPixel />
 
-        {children}
+          {children}
 
-        <FloatingWhatsApp />
+          <FloatingWhatsApp />
+        </ThemeProvider>
 
         <Script
           src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/e1e8582b-eb55-4673-9c77-04989c8c9b1c-loader.js"

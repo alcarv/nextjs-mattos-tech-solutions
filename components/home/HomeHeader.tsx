@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Brand } from './Brand';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 
 const navigation = [
   { label: 'Soluções', href: '#solucoes' },
@@ -47,20 +48,24 @@ export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean 
           ))}
         </div>
 
-        <a className="mts-header__cta" href={rootLinks ? '/#contato' : '#contato'}>
-          Agendar uma conversa <ArrowUpRight aria-hidden="true" />
-        </a>
+        <div className="mts-header__actions">
+          <a className="mts-header__cta" href={rootLinks ? '/#contato' : '#contato'}>
+            Agendar uma conversa <ArrowUpRight aria-hidden="true" />
+          </a>
 
-        <button
-          className="mts-header__menu"
-          type="button"
-          aria-expanded={open}
-          aria-controls="mts-mobile-menu"
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? <X /> : <Menu />}
-        </button>
+          <ThemeSwitcher />
+
+          <button
+            className="mts-header__menu"
+            type="button"
+            aria-expanded={open}
+            aria-controls="mts-mobile-menu"
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X /> : <Menu />}
+          </button>
+        </div>
       </nav>
 
       <div id="mts-mobile-menu" className={`mts-mobile-menu ${open ? 'is-open' : ''}`} aria-hidden={!open}>

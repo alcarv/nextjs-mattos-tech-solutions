@@ -75,12 +75,12 @@ export default function FAQPage() {
     <main className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <Header />
-      <section className="bg-white py-16">
+      <section className="bg-card py-16 pt-32">
         <div className="max-w-3xl mx-auto px-4">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">FAQ – Perguntas Frequentes</h1>
           <p className="text-gray-500 mb-8">Encontre respostas rápidas sobre nossos serviços e forma de trabalho.</p>
 
-          <div className="divide-y divide-gray-200 rounded-md border border-gray-200 bg-white">
+          <div className="divide-y divide-gray-200 rounded-md border border-gray-200 bg-card">
             {faqs.map((item, idx) => (
               <div key={idx} className="p-5">
                 <h2 className="text-lg font-semibold text-gray-900">{item.q}</h2>

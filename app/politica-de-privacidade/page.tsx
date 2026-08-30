@@ -13,7 +13,7 @@ export default function PoliticaPrivacidadePage() {
   return (
     <main className="min-h-screen">
       <Header />
-      <section className="bg-white py-16">
+      <section className="bg-card py-16 pt-32">
         <div className="max-w-3xl mx-auto px-4">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Política de Privacidade</h1>
           <p className="text-gray-500 mb-8">Última atualização: setembro de 2025</p>

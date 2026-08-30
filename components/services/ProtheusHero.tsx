@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
@@ -22,14 +20,14 @@ export default function ProtheusHero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="rounded-3xl border border-slate-800 bg-slate-900/60 p-10 shadow-2xl backdrop-blur">
+        <Reveal eager className="rounded-3xl border border-slate-800 bg-slate-900/60 p-10 shadow-2xl backdrop-blur">
           <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6">
               <span className="inline-flex items-center gap-2 rounded-full bg-blue-600/20 px-4 py-2 text-sm font-semibold text-blue-300">
                 Consultoria especializada em TOTVS Protheus
               </span>
               <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
-                Protheus estável, aderente e integrado ao negócio
+                Consultoria TOTVS Protheus para uma operação estável e integrada
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed">
                 Diagnosticamos e evoluímos seu ambiente Protheus: Backoffice em conformidade, módulos parametrizados, integrações

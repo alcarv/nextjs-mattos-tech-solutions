@@ -1,7 +1,7 @@
 import Reveal from '@/components/Reveal';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-const faqItems = [
+export const webFaqItems = [
   {
     question: 'Quanto tempo leva para lançar um site com vocês?',
     answer:
@@ -31,7 +31,7 @@ const faqItems = [
 
 export default function WebFAQ() {
   return (
-    <section className="bg-slate-950 py-20">
+    <section id="faq" className="bg-slate-950 py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center">
           <span className="inline-flex items-center rounded-full bg-blue-600/20 px-4 py-1 text-sm font-semibold text-blue-300">
@@ -45,7 +45,7 @@ export default function WebFAQ() {
 
         <div className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/70 p-6 shadow-lg backdrop-blur">
           <Accordion type="single" collapsible defaultValue="item-1">
-            {faqItems.map((item, index) => (
+            {webFaqItems.map((item, index) => (
               <AccordionItem key={item.question} value={`item-${index + 1}`} className="border-slate-800">
                 <AccordionTrigger className="text-left text-base text-white hover:text-blue-300">
                   {item.question}

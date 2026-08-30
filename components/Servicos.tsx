@@ -13,7 +13,8 @@ import {
   Palette,
   CheckCircle,
   Brain,
-  ServerCog
+  ServerCog,
+  ShoppingCart
 } from 'lucide-react';
 
 const servicosList = [
@@ -76,6 +77,18 @@ const servicosList = [
       'Integração com CMS'
     ],
     href: '/criacao-sites#detalhes-servico'
+  },
+  {
+    icon: ShoppingCart,
+    title: 'Desenvolvimento de E-commerce',
+    description: 'Criamos lojas virtuais conectadas à operação, com performance, integrações e uma jornada de compra clara.',
+    features: [
+      'Catálogo e checkout',
+      'Pagamentos e antifraude',
+      'Estoque e pedidos',
+      'ERP, CRM e marketplaces'
+    ],
+    href: '/solucoes-ecommerce#detalhes-servico'
   },
   {
     icon: Shield,

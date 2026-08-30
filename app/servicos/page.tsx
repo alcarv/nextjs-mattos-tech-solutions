@@ -3,12 +3,13 @@ import Header from '@/components/Header';
 import Servicos from '@/components/Servicos';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import { breadcrumbJsonLd, createPageMetadata, safeJsonLd } from '@/lib/seo';
+import { SITE_URL, absoluteUrl, breadcrumbJsonLd, createPageMetadata, safeJsonLd } from '@/lib/seo';
+import { serviceCatalog } from '@/lib/services';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Serviços de Tecnologia para Empresas',
   description:
-    'Conheça nossas soluções de consultoria em TI, software sob medida, IA, automação, cloud, dados, Protheus, sites, apps e UX/UI.',
+    'Serviços de tecnologia em São Paulo: consultoria de TI, software sob medida, IA, automação, cloud, dados, Protheus, sites, e-commerce, apps e UX/UI.',
   path: '/servicos',
   keywords: [
     'serviços de tecnologia para empresas',
@@ -19,12 +20,43 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function ServicosPage() {
-  const jsonLd = {
-    '@context': 'https://schema.org',
+  const pageUrl = absoluteUrl('/servicos');
+  const breadcrumb = {
     ...breadcrumbJsonLd([
       { name: 'Início', path: '/' },
       { name: 'Serviços', path: '/servicos' },
     ]),
+    '@id': `${pageUrl}#breadcrumb`,
+  };
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: 'Serviços de Tecnologia para Empresas',
+        description: 'Consultoria, engenharia e operação de tecnologia para empresas em São Paulo e em todo o Brasil.',
+        inLanguage: 'pt-BR',
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        about: { '@id': `${SITE_URL}/#organization` },
+        breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+        mainEntity: { '@id': `${pageUrl}#services` },
+      },
+      {
+        '@type': 'ItemList',
+        '@id': `${pageUrl}#services`,
+        name: 'Serviços da Mattos Tech Solutions',
+        numberOfItems: serviceCatalog.length,
+        itemListElement: serviceCatalog.map((service, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: service.name,
+          url: absoluteUrl(service.path),
+        })),
+      },
+      breadcrumb,
+    ],
   };
 
   return (

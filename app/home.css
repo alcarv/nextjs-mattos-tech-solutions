@@ -396,7 +396,7 @@
 }
 
 .mts-hero__kicker {
-  animation: mts-hero-enter 800ms 100ms both cubic-bezier(.2,.8,.2,1);
+  animation: none;
 }
 
 .mts-hero h1 {
@@ -409,7 +409,7 @@
   letter-spacing: -0.065em;
   line-height: 0.98;
   text-wrap: balance;
-  animation: mts-hero-enter 850ms 180ms both cubic-bezier(.2,.8,.2,1);
+  animation: none;
 }
 
 .mts-hero h1 em,
@@ -425,14 +425,14 @@
   color: #9eabbd;
   font-size: clamp(16px, 1.3vw, 19px);
   line-height: 1.72;
-  animation: mts-hero-enter 850ms 260ms both cubic-bezier(.2,.8,.2,1);
+  animation: none;
 }
 
 .mts-hero__actions {
   display: flex;
   margin-top: 36px;
   gap: 12px;
-  animation: mts-hero-enter 850ms 340ms both cubic-bezier(.2,.8,.2,1);
+  animation: none;
 }
 
 .mts-hero__core {

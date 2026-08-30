@@ -6,13 +6,15 @@ type RevealProps = {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  eager?: boolean;
 };
 
-export default function Reveal({ children, className = '', delay = 0 }: RevealProps) {
+export default function Reveal({ children, className = '', delay = 0, eager = false }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(eager);
 
   useEffect(() => {
+    if (eager) return;
     const element = ref.current;
     if (!element) return;
 
@@ -45,7 +47,7 @@ export default function Reveal({ children, className = '', delay = 0 }: RevealPr
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, []);
+  }, [eager]);
 
   return (
     <div

@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
@@ -22,7 +20,7 @@ export default function SoftwareHero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="rounded-3xl border border-slate-800 bg-slate-900/60 p-10 shadow-2xl backdrop-blur">
+        <Reveal eager className="rounded-3xl border border-slate-800 bg-slate-900/60 p-10 shadow-2xl backdrop-blur">
           <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-6">
               <span className="inline-flex items-center gap-2 rounded-full bg-blue-600/20 px-4 py-2 text-sm font-semibold text-blue-300">
@@ -30,10 +28,10 @@ export default function SoftwareHero() {
                 Software personalizado de ponta a ponta
               </span>
               <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
-                Produtos digitais sob medida com foco em ROI, segurança e evolução contínua
+                Desenvolvimento de software sob medida para empresas em São Paulo
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Planejamos, construímos e operamos sistemas web, APIs e integrações feitos para sua realidade.
+                Planejamos, construímos e operamos sistemas web, APIs e integrações feitos para sua realidade, com atendimento em São Paulo e projetos remotos em todo o Brasil.
                 Trabalhamos com squads multidisciplinares, pipeline CI/CD e acompanhamento próximo da sua equipe.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">

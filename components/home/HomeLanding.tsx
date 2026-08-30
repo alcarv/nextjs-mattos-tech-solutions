@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Activity,
@@ -27,6 +24,7 @@ import {
 import { Brand } from './Brand';
 import HomeBlog from './HomeBlog';
 import HomeContact from './HomeContact';
+import HomeEffects from './HomeEffects';
 import HomeHeader from './HomeHeader';
 import MagneticLink from './MagneticLink';
 import MTSCore from './MTSCore';
@@ -151,48 +149,8 @@ function SolutionVisual({ solution }: { solution: Solution }) {
 }
 
 export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
-  const pageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const root = pageRef.current;
-    if (!root) return;
-
-    root.classList.add('is-enhanced');
-    const items = root.querySelectorAll<HTMLElement>('.reveal-on-scroll');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      items.forEach((item) => item.classList.add('is-visible'));
-      return () => root.classList.remove('is-enhanced');
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-    items.forEach((item) => observer.observe(item));
-    return () => {
-      observer.disconnect();
-      root.classList.remove('is-enhanced');
-    };
-  }, []);
-
-  useEffect(() => {
-    const root = pageRef.current;
-    if (!root || !window.matchMedia('(pointer: fine)').matches) return;
-    const updateGlow = (event: PointerEvent) => {
-      root.style.setProperty('--pointer-x', `${event.clientX}px`);
-      root.style.setProperty('--pointer-y', `${event.clientY}px`);
-    };
-    window.addEventListener('pointermove', updateGlow, { passive: true });
-    return () => window.removeEventListener('pointermove', updateGlow);
-  }, []);
-
   return (
-    <div ref={pageRef} className="mts-page">
+    <HomeEffects>
       <a className="mts-skip-link" href="#conteudo">Pular para o conteúdo</a>
       <div className="mts-cursor-glow" aria-hidden="true" />
       <HomeHeader />
@@ -205,7 +163,7 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
             <div className="mts-hero__content">
               <span className="mts-kicker mts-hero__kicker"><i /> ESTRATÉGIA <b>•</b> SOFTWARE <b>•</b> IA <b>•</b> CLOUD</span>
               <h1>Tecnologia sob medida para transformar operações em <em>crescimento.</em></h1>
-              <p>Criamos sites, sistemas, automações, soluções com Inteligência Artificial e infraestruturas preparadas para conectar processos, reduzir trabalho manual e fazer empresas avançarem com segurança.</p>
+              <p>Somos uma empresa de tecnologia em São Paulo especializada em sites, sistemas, automações, Inteligência Artificial e cloud para conectar processos, reduzir trabalho manual e fazer negócios avançarem em todo o Brasil.</p>
               <div className="mts-hero__actions">
                 <MagneticLink className="mts-button mts-button--primary" href="#contato">
                   Agendar uma conversa <ArrowUpRight />
@@ -365,6 +323,6 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
           </div>
         </div>
       </footer>
-    </div>
+    </HomeEffects>
   );
 }

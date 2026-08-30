@@ -4,11 +4,11 @@ import { getPublishedPosts } from '@/lib/blog';
 import { createPageMetadata } from '@/lib/seo';
 
 const homeDescription =
-  'Software sob medida, sites, automação, IA, cloud e DevOps para conectar processos, reduzir trabalho manual e fazer sua empresa crescer com segurança.';
+  'Empresa de tecnologia em São Paulo especializada em software sob medida, sites, automação, IA, cloud e DevOps para negócios em todo o Brasil.';
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: 'Software sob medida, IA e automação para empresas',
+    title: 'Empresa de Tecnologia em São Paulo',
     description: homeDescription,
     path: '/',
     keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       'consultoria cloud e DevOps',
     ],
   }),
-  title: 'Software sob medida, IA e automação | Mattos Tech Solutions',
+  title: 'Empresa de Tecnologia em São Paulo | Mattos Tech Solutions',
 };
 
 export const revalidate = 3600;

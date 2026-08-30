@@ -23,6 +23,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { aiExperienceFaqItems } from '@/lib/service-faqs';
 
 const journeyChapters = [
   {
@@ -111,25 +112,6 @@ const stack = [
   { icon: Database, label: 'Dados', text: 'Postgres, vetores, APIs, documentos e bases internas' },
   { icon: Workflow, label: 'Orquestração', text: 'Fluxos próprios, LangChain, LlamaIndex e automações' },
   { icon: CloudCog, label: 'Infraestrutura', text: 'Cloud, pipelines, observabilidade e controle de acesso' },
-];
-
-const faq = [
-  {
-    question: 'Como saber se um processo realmente precisa de IA?',
-    answer: 'Começamos pelo problema e pelo fluxo atual. Em alguns cenários, automação tradicional ou integração resolve melhor. IA entra quando contexto, linguagem, documentos ou variabilidade tornam a abordagem inteligente justificável.',
-  },
-  {
-    question: 'É possível usar dados internos com segurança?',
-    answer: 'Sim, desde que arquitetura, acessos, retenção, provedores e registros de uso sejam definidos conforme a sensibilidade do cenário. Esses requisitos fazem parte do desenho, não são adicionados apenas no final.',
-  },
-  {
-    question: 'A solução pode integrar com sistemas que já usamos?',
-    answer: 'Esse é normalmente o caminho mais útil. Trabalhamos com APIs, webhooks, bancos de dados e automações para levar a IA até os canais e processos existentes, evitando criar mais uma ferramenta isolada.',
-  },
-  {
-    question: 'Como vocês avaliam a qualidade das respostas?',
-    answer: 'Definimos critérios ligados ao caso de uso, criamos conjuntos de avaliação, registramos respostas e combinamos testes automatizados com revisão humana. O objetivo é tornar qualidade e limitações visíveis.',
-  },
 ];
 
 function AIJourney() {
@@ -347,12 +329,12 @@ export default function AIExperience() {
         </div>
       </section>
 
-      <section className="ai-faq">
+      <section id="faq" className="ai-faq">
         <div className="mts-container ai-faq__layout">
           <div className="ai-faq__intro"><span>06 / PERGUNTAS FREQUENTES</span><h2>Clareza antes de começar.</h2><p>IA aplicada exige perguntas técnicas e de negócio. Estas são algumas das mais importantes.</p></div>
           <div className="ai-faq__accordion">
             <Accordion type="single" collapsible defaultValue="item-1">
-              {faq.map((item, index) => (
+              {aiExperienceFaqItems.map((item, index) => (
                 <AccordionItem key={item.question} value={`item-${index + 1}`}>
                   <AccordionTrigger><span>0{index + 1}</span>{item.question}</AccordionTrigger>
                   <AccordionContent><p>{item.answer}</p></AccordionContent>

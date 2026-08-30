@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { ArrowLeft, CornerDownLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
-export default function BackToServices() {
+export default function BackToServices({ current }: { current: string }) {
   return (
-    <div className="service-backbar">
+    <nav className="service-backbar" aria-label="Breadcrumb">
       <div className="mts-container service-backbar__inner">
-        <Link href="/servicos"><ArrowLeft /> Todas as soluções</Link>
-        <span>MTS / SERVICE DETAIL <CornerDownLeft /></span>
+        <Link href="/servicos"><ArrowLeft aria-hidden="true" /> Serviços</Link>
+        <span aria-current="page">{current}</span>
       </div>
-    </div>
+    </nav>
   );
 }

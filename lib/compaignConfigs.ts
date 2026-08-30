@@ -10,8 +10,8 @@ export const campaignConfigs = {
     ctaText: 'Criar meu Software'
   },
   'consultoria-ti': {
-    heroTitle: 'Consultoria em TI para Modernizar Sua Infraestrutura e Melhorar a Eficiência Operacional',
-    heroSubtitle: 'Analisamos suas necessidades tecnológicas e implementamos soluções personalizadas para otimizar sua infraestrutura, reduzir custos e aumentar a produtividade da sua equipe.',
+    heroTitle: 'Consultoria de TI em São Paulo para modernizar a operação e reduzir riscos',
+    heroSubtitle: 'Diagnosticamos tecnologia, processos e fornecedores para construir um roadmap executável, reduzir custos e aumentar a produtividade. Atendimento consultivo em São Paulo e remoto em todo o Brasil.',
     ctaText: 'Solicitar Consultoria'
   },
   'migracao-cloud': {

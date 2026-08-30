@@ -39,10 +39,10 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: 'flex',
+            position: 'relative',
             flexDirection: 'column',
             justifyContent: 'space-between',
             padding: '72px 82px',
-            zIndex: 1,
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>

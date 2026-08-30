@@ -1,12 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
+const supabasePublishableKey =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  'placeholder-key';
 
-// Only create Supabase client if environment variables are properly set
-export const supabase = (supabaseUrl && supabaseUrl !== 'https://placeholder.supabase.co' && 
-                        supabaseAnonKey && supabaseAnonKey !== 'placeholder-key')
-  ? createClient(supabaseUrl, supabaseAnonKey)
+const hasSupabaseConfig =
+  supabaseUrl !== 'https://placeholder.supabase.co' &&
+  supabasePublishableKey !== 'placeholder-key';
+
+// Evita criar um cliente quebrado durante builds locais sem arquivo .env.
+export const supabase = hasSupabaseConfig
+  ? createClient(supabaseUrl, supabasePublishableKey)
   : null;
 
 export type BlogPost = {

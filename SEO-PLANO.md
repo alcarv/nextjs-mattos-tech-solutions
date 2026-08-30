@@ -42,7 +42,7 @@ O principal limitador confirmado não é uma penalidade nem uma falha de HTTPS: 
 | Fundador | Alefe de Carvalho, identificado no conteúdo existente como Founder e Tech Lead, com mais de 9 anos de experiência profissional |
 | Contato canônico atual | `contato@mattostechsolutions.com` e `+55 (11) 99018-3194` |
 | Domínio | `https://mattostechsolutions.com`, definido em `.env.example` e `lib/seo.ts` |
-| Framework | Next.js 16.1.1, React 19, TypeScript e App Router |
+| Framework | Next.js 16.3.3, React 19, TypeScript e App Router |
 | Renderização | Páginas comerciais pré-renderizadas; blog com SSG/ISR e revalidação de uma hora; API própria para lead do Meta |
 | CMS/dados | Supabase para posts do blog |
 | Hospedagem | Netlify com `@netlify/plugin-nextjs` |
@@ -111,6 +111,22 @@ A análise utilizou:
 | Segurança básica | HTTPS, HSTS e `X-Content-Type-Options` presentes na produção | Correto; CSP exigiria inventário dos scripts de marketing |
 | Dados estruturados | Organization, WebSite, Service, BlogPosting, Breadcrumb e FAQ geral | Acrescentados WebPage, FAQ real de serviços e CollectionPage/ItemList |
 | Ações manuais/segurança | Nenhuma ação manual e nenhum problema de segurança no GSC | Correto |
+
+### Ambiente e segurança do deploy
+
+A configuração do Netlify foi conferida em 30/08/2026. Já estão presentes `NEXT_PUBLIC_SITE_URL`, as três variáveis públicas do EmailJS, `NEXT_PUBLIC_SUPABASE_URL` e a chave `NEXT_PUBLIC_SUPABASE_ANON_KEY`. `SEO_BASE_URL` não faz parte do aplicativo publicado: é usada apenas pelo crawler local `npm run seo:validate`, portanto não deve ser criada no Netlify e não precisa do prefixo `NEXT_PUBLIC_`.
+
+Foram aplicadas as seguintes correções:
+
+- atualização do Next.js de 16.1.1 para 16.3.3, versão de segurança recomendada em 30/08/2026;
+- atualização das dependências transitivas auditadas; `npm audit --omit=dev` passou sem vulnerabilidades conhecidas;
+- remoção do token da Meta Conversions API que estava codificado na rota do servidor;
+- suporte a `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, com fallback temporário para a chave `anon` legada;
+- atualização da base `caniuse-lite` usada pelo Browserslist.
+
+O token antigo da Meta esteve em um repositório público e deve ser considerado comprometido. Removê-lo do código atual não o revoga nem o elimina do histórico Git. É obrigatório revogá-lo/rotacioná-lo no Meta Events Manager e cadastrar somente o novo valor como `META_CAPI_ACCESS_TOKEN` no escopo de Functions do Netlify. A variável nunca deve receber o prefixo `NEXT_PUBLIC_`.
+
+Para concluir a migração recomendada do Supabase, deve-se copiar a chave `sb_publishable_...` disponível no painel do projeto para `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` no Netlify. A chave `NEXT_PUBLIC_SUPABASE_ANON_KEY` pode permanecer durante a primeira publicação e ser removida somente depois da validação do blog. Chaves `sb_secret_...` e `service_role` nunca devem ser expostas no navegador.
 
 ### Linha de base e resultado de laboratório
 
@@ -673,6 +689,9 @@ O plano prioriza um conteúdo útil por semana. Publicar menos e incluir experi�
 
 ## Alterações pendentes e dependências
 
+- revogar/rotacionar o token antigo da Meta Conversions API e salvar o novo `META_CAPI_ACCESS_TOKEN` somente no escopo de Functions do Netlify;
+- cadastrar `NEXT_PUBLIC_META_PIXEL_ID` no escopo de Builds e `META_PIXEL_ID` no escopo de Functions, removendo a dependência dos IDs públicos de compatibilidade presentes no código;
+- migrar o blog para `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` e, após validar a publicação, remover a chave `anon` legada;
 - reenvio do sitemap e solicitação seletiva de indexação no Search Console; a produção já foi confirmada;
 - nova exportação do Search Console após 28 e 90 dias para medir o efeito agregado;
 - validação do Perfil da Empresa no Google, endereço e horário;
@@ -681,7 +700,7 @@ O plano prioriza um conteúdo útil por semana. Publicar menos e incluir experi�
 - ferramenta externa de backlinks para comparar autoridade com concorrentes; o GSC mostrou somente 1 link;
 - decisão de privacidade/consentimento antes de alterar GTM, Meta Pixel ou RD Station;
 - Rich Results Test e Schema Markup Validator na URL publicada após o deploy;
-- atualização de `caniuse-lite`, que apareceu como aviso não bloqueante no build.
+- definir e aplicar uma política de consentimento antes de alterar o carregamento de GTM, Meta Pixel ou outras tags de marketing.
 
 ## Critérios de revisão contínua
 
@@ -700,3 +719,6 @@ O plano prioriza um conteúdo útil por semana. Publicar menos e incluir experi�
 - [Dados estruturados de organização](https://developers.google.com/search/docs/appearance/structured-data/organization)
 - [Breadcrumbs](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb)
 - [Criar e enviar sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
+- [Variáveis de ambiente do Next.js](https://nextjs.org/docs/app/guides/environment-variables)
+- [Variáveis de ambiente do Netlify](https://docs.netlify.com/build/configure-builds/environment-variables/)
+- [Chaves de API do Supabase](https://supabase.com/docs/guides/getting-started/api-keys)

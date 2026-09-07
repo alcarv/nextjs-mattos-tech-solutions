@@ -20,8 +20,8 @@ export const campaignConfigs = {
     ctaText: 'Migrar para Nuvem'
   },
   'apps-mobile': {
-    heroTitle: 'Aplicativos Mobile de Alta Performance',
-    heroSubtitle: 'Alcance seus clientes onde eles estão com aplicativos móveis modernos, intuitivos e otimizados para iOS e Android.',
+    heroTitle: 'Aplicativos para simplificar a rotina de clientes e equipes',
+    heroSubtitle: 'Criamos apps para tarefas recorrentes no celular, com integrações e experiência de uso planejadas. Primeiro avaliamos se um aplicativo faz sentido para o seu público e sua operação.',
     ctaText: 'Criar Aplicativo'
   },
   'solucoes-ecommerce': {
@@ -36,15 +36,15 @@ export const campaignConfigs = {
     ctaText: 'Falar com Especialista em IA'
   },
   'governanca-compliance': {
-    heroTitle: 'Governança e Compliance de TI sem dor de cabeça',
+    heroTitle: 'Governança de TI para organizar controles e responsabilidades',
     heroSubtitle:
-      'Implantamos políticas, processos e controles para conformidade (LGPD, ISO 27001) e segurança, reduzindo riscos e aumentando a confiança.',
+      'Organizamos políticas, acessos e evidências para apoiar a gestão de riscos e os requisitos da sua empresa. O escopo distingue implantação de controles, adequação e certificação.',
     ctaText: 'Fortalecer Governança'
   },
   'banco-dados-analytics': {
-    heroTitle: 'Dados que geram decisões — da modelagem ao BI',
+    heroTitle: 'Dados consistentes para decidir sem reunir planilhas a cada reunião',
     heroSubtitle:
-      'Projetamos bancos de dados, pipelines e dashboards para transformar dados em insights: modelagem, ETL/ELT, performance e visualização.',
+      'Conectamos fontes e definimos indicadores para sua equipe acompanhar a operação com menos consolidação manual. Cada painel mostra números com regras de cálculo acordadas.',
     ctaText: 'Evoluir Dados e Analytics'
   },
   'avaliacoes-ti': {
@@ -54,9 +54,9 @@ export const campaignConfigs = {
     ctaText: 'Solicitar Avaliação'
   },
   'ux-ui-design': {
-    heroTitle: 'UX/UI que converte e encanta',
+    heroTitle: 'UX/UI para ajudar seus usuários a concluir o que precisam',
     heroSubtitle:
-      'Interfaces claras, prototipagem e testes de usabilidade para elevar a experiência do usuário e resultados de negócio.',
+      'Investigamos onde as pessoas encontram dificuldades e testamos caminhos mais simples em protótipos. Você valida a experiência antes de investir na programação.',
     ctaText: 'Melhorar a Experiência'
   }
 };
@@ -71,5 +71,5 @@ export const getDefaultConfig = (): CampaignConfig => ({
   heroTitle: 'Tecnologia Inteligente para empresas em São Paulo (Tatuapé) e todo o Brasil',
   heroSubtitle:
     'Consultoria de TI, desenvolvimento de software, IA e soluções digitais criadas a partir de São Paulo (região do Tatuapé) para impulsionar resultados na capital, Sorocaba, Campinas e em qualquer lugar com atendimento remoto.',
-  ctaText: 'Agendar diagnóstico gratuito'
+  ctaText: 'Conversar sobre meu desafio'
 });

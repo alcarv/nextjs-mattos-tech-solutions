@@ -9,7 +9,7 @@ const phases = [
     icon: Users2,
   },
   {
-    title: 'MVP em semanas',
+    title: 'Piloto com escopo definido',
     description:
       'Prototipamos fluxos e copilots em ciclos curtos, validando com usuários reais antes de escalar para produção.',
     icon: Rocket,
@@ -39,7 +39,7 @@ export default function AIEnablement() {
             <span className="inline-flex items-center rounded-full bg-blue-600/20 px-4 py-1 text-sm font-semibold text-blue-300">
               Do piloto ao scale-up
             </span>
-            <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Como garantimos adoção e ROI em IA</h2>
+            <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Como avaliamos adoção e retorno em IA</h2>
             <p className="mt-3 text-lg text-slate-300 max-w-3xl mx-auto">
               IA não é só modelo: combinamos estratégia, operação e capacitação para entregar resultados tangíveis e
               sustentáveis.

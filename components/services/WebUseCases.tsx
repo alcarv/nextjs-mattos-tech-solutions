@@ -22,14 +22,14 @@ const useCases: UseCase[] = [
     title: 'Sites institucionais completos',
     description:
       'Estruturamos páginas para segmentos B2B e B2C com navegação clara, storytelling e formulários inteligentes.',
-    impact: 'Fortalece autoridade da marca e aumenta a geração de leads qualificados.',
+    impact: 'Oferta e diferenciais claros, com acompanhamento dos contatos recebidos.',
   },
   {
     icon: ShoppingBag,
     title: 'Landing pages de campanhas',
     description:
       'Lançamentos e ofertas com copy estratégica, componentes reusáveis e experimentos A/B para maximizar conversão.',
-    impact: 'Campanhas mais previsíveis e custo de aquisição menor.',
+    impact: 'Conversão e custo por contato acompanhados para orientar ajustes na campanha.',
   },
   {
     icon: PenTool,
@@ -43,7 +43,7 @@ const useCases: UseCase[] = [
     title: 'Plataformas educacionais e eventos',
     description:
       'Experiências para cursos, comunidades ou eventos com áreas logadas, catálogos e integração a pagamentos.',
-    impact: 'Engajamento contínuo com alunos e monetização previsível.',
+    impact: 'Acesso organizado ao conteúdo e acompanhamento de inscrições e pagamentos.',
   },
   {
     icon: Headset,

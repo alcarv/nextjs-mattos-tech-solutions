@@ -66,12 +66,12 @@ export default function ServicosPage() {
       <main id="conteudo">
         <section className="bg-slate-950 px-4 pb-4 pt-32 text-center">
           <div className="mx-auto max-w-4xl">
-            <span className="service-eyebrow">PORTFÓLIO DE SERVIÇOS</span>
+            <span className="service-eyebrow">SERVIÇOS PARA PROBLEMAS REAIS</span>
             <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Tecnologia conectada aos objetivos da sua empresa
+              Invista no que faz diferença na sua operação
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
-              Do diagnóstico à evolução contínua, combinamos estratégia, engenharia e operação para resolver desafios reais com segurança e clareza.
+              Reduzir tarefas manuais, facilitar vendas, organizar dados ou investigar falhas: entenda quando cada serviço faz sentido e o que avaliar antes de contratar.
             </p>
           </div>
         </section>

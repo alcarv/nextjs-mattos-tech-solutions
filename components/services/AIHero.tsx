@@ -29,7 +29,7 @@ export default function AIHero() {
         <div className="ai-hero__copy">
           <span className="service-eyebrow"><i /> INTELIGÊNCIA ARTIFICIAL / APLICADA</span>
           <h1>Consultoria de Inteligência Artificial para empresas. <em>Preparada para operar.</em></h1>
-          <p>Desenhamos soluções de Inteligência Artificial ligadas aos seus dados, processos e canais — com integração, governança e acompanhamento para gerar valor real na operação.</p>
+          <p>Sua equipe perde tempo procurando informações e respondendo às mesmas dúvidas? Aplicamos IA a tarefas específicas, testando a qualidade das respostas, a necessidade de revisão humana e o custo antes de ampliar o uso.</p>
           <div className="ai-hero__actions">
             <Link href="#contact" className="mts-button mts-button--primary">Falar sobre meu cenário <ArrowUpRight /></Link>
             <Link href="#ai-journey" className="mts-button mts-button--outline">Ver como funciona <ArrowDown /></Link>

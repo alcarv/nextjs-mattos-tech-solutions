@@ -4,9 +4,9 @@ import Reveal from '@/components/Reveal';
 import { CircuitBoard, Kanban, ShieldCheck, Sparkles } from 'lucide-react';
 
 const highlights = [
-  { icon: CircuitBoard, label: 'Arquitetura escalável e observável' },
-  { icon: Kanban, label: 'Sprints quinzenais com demonstrações' },
-  { icon: ShieldCheck, label: 'Segurança, testes e LGPD embutidos' },
+  { icon: CircuitBoard, label: 'Processos e sistemas conectados' },
+  { icon: Kanban, label: 'Demonstrações e validações por etapa' },
+  { icon: ShieldCheck, label: 'Testes e controles definidos no projeto' },
 ];
 
 export default function SoftwareHero() {
@@ -31,8 +31,7 @@ export default function SoftwareHero() {
                 Desenvolvimento de software sob medida para empresas em São Paulo
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Planejamos, construímos e operamos sistemas web, APIs e integrações feitos para sua realidade, com atendimento em São Paulo e projetos remotos em todo o Brasil.
-                Trabalhamos com squads multidisciplinares, pipeline CI/CD e acompanhamento próximo da sua equipe.
+                Quando planilhas e sistemas isolados exigem retrabalho, criamos software para organizar regras e conectar informações. Você acompanha o que está sendo construído e valida as entregas. Atendimento em São Paulo e remoto em todo o Brasil.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link href="#contact">

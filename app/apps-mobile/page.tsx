@@ -1,3 +1,4 @@
+import ServiceValue from '@/components/services/ServiceValue';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -30,6 +31,7 @@ export default function AppsMobilePage() {
       <Header />
       <Hero />
       <BackToServices current="Desenvolvimento de aplicativos" />
+      <ServiceValue path="/apps-mobile" />
       <MobileSection />
       <About />
       <Blog />

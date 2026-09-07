@@ -5,7 +5,7 @@ const faqItems = [
   {
     question: 'Quanto tempo leva para colocar um projeto de IA em produção?',
     answer:
-      'Nosso processo começa com discovery e definição de indicadores. Em seguida, rodamos um MVP funcional em 3 a 6 semanas. A partir da validação, seguimos para integrações completas e governança contínua.',
+      'Nosso processo começa com discovery e definição de indicadores. Em seguida, definimos o prazo de um piloto conforme dados, integrações e critérios de validação. A partir da validação, seguimos para integrações completas e governança contínua.',
   },
   {
     question: 'Vocês trabalham com dados sensíveis e LGPD?',

@@ -1,3 +1,4 @@
+import { buyingFaqs } from '@/lib/service-value';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,51 +11,10 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const faqs = [
-    {
-      q: 'Quais serviços vocês oferecem?',
-      a:
-        'Consultoria em TI, desenvolvimento web e mobile, migração para nuvem, soluções de e-commerce, UX/UI, dados e analytics, além de avaliações e governança de TI.',
-    },
-    {
-      q: 'Como funciona o processo de orçamento?',
-      a:
-        'Após entender suas necessidades, enviamos uma proposta com escopo, prazos e investimentos estimados. Projetos podem ser por escopo fechado ou horas dedicadas (time & material).',
-    },
-    {
-      q: 'Quais tecnologias vocês utilizam?',
-      a:
-        'Trabalhamos com tecnologias modernas como React/Next.js, Node.js, bancos de dados relacionais e não relacionais, integrações com APIs e provedores cloud líderes.',
-    },
-    {
-      q: 'Qual é o prazo típico de um projeto?',
-      a:
-        'Depende do escopo. Projetos menores podem levar de 2 a 6 semanas; soluções mais complexas variam de 2 a 4 meses ou mais. Definimos milestones e entregas parciais.',
-    },
-    {
-      q: 'Vocês oferecem suporte e manutenção?',
-      a:
-        'Sim. Podemos firmar planos de suporte e manutenção contínua com SLA, incluindo correções, atualizações e melhorias evolutivas.',
-    },
-    {
-      q: 'Como é feita a gestão do projeto?',
-      a:
-        'Seguimos boas práticas ágeis com sprints, checkpoints e comunicação transparente. Utilizamos ferramentas de planejamento, versionamento e monitoramento.',
-    },
-    {
-      q: 'Como garantem a segurança e confidencialidade?',
-      a:
-        'Aplicamos padrões de segurança, controle de acesso e boas práticas de desenvolvimento seguro. Podemos assinar acordos de confidencialidade (NDA) quando necessário.',
-    },
-    {
-      q: 'Quem é o dono do código e da propriedade intelectual?',
-      a:
-        'Salvo acordo em contrário, o cliente detém os direitos do código/entregáveis produzidos mediante quitação, excetuando-se bibliotecas e componentes de terceiros utilizados.',
-    },
-    {
-      q: 'Como posso falar com a equipe?',
-      a:
-        'Envie um e-mail para contato@mattostechsolutions.com ou fale pelo WhatsApp no rodapé do site. Também podemos agendar uma call para entender o seu projeto.',
-    },
+  ...buyingFaqs,
+  { q: 'Quais serviços vocês oferecem?', a: 'Consultoria de TI, software sob medida, sites, aplicativos, e-commerce, inteligência artificial, Protheus, nuvem, dados, UX/UI, avaliações e governança. A escolha começa pelo problema que sua empresa precisa resolver.' },
+  { q: 'Qual é o prazo de um projeto?', a: 'O prazo depende das entregas, integrações, disponibilidade de dados e validações da sua equipe. A proposta apresenta uma estimativa por etapa e as dependências. Mudanças nessas condições precisam ser reavaliadas em conjunto.' },
+  { q: 'Como tratam segurança e confidencialidade?', a: 'Definimos acessos e práticas de segurança de acordo com o escopo e a sensibilidade dos dados. Acordos de confidencialidade podem ser formalizados quando necessários. Responsabilidades e requisitos devem ser alinhados antes do acesso ao ambiente.' },
 ];
 
 export default function FAQPage() {
@@ -72,24 +32,24 @@ export default function FAQPage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="mts-service-page min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <Header />
       <section className="bg-card py-16 pt-32">
         <div className="max-w-3xl mx-auto px-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">FAQ – Perguntas Frequentes</h1>
-          <p className="text-gray-500 mb-8">Encontre respostas rápidas sobre nossos serviços e forma de trabalho.</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">FAQ – Perguntas Frequentes</h1>
+          <p className="text-muted-foreground mb-8">Entenda escopo, investimento, prazos e responsabilidades antes de contratar.</p>
 
-          <div className="divide-y divide-gray-200 rounded-md border border-gray-200 bg-card">
+          <div className="divide-y divide-border rounded-md border border-border bg-card">
             {faqs.map((item, idx) => (
               <div key={idx} className="p-5">
-                <h2 className="text-lg font-semibold text-gray-900">{item.q}</h2>
-                <p className="mt-2 text-gray-700 leading-relaxed">{item.a}</p>
+                <h2 className="text-lg font-semibold text-foreground">{item.q}</h2>
+                <p className="mt-2 text-muted-foreground leading-relaxed">{item.a}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 text-gray-700">
+          <div className="mt-10 text-muted-foreground">
             <p>
               Não encontrou sua resposta? Fale com a gente em{' '}
               <a href="mailto:contato@mattostechsolutions.com" className="text-blue-600 hover:underline">contato@mattostechsolutions.com</a>.

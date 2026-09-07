@@ -4,8 +4,8 @@ import Reveal from '@/components/Reveal';
 import { MonitorSmartphone, Palette, Search, Rocket, Sparkles } from 'lucide-react';
 
 const highlights = [
-  { icon: MonitorSmartphone, label: 'Layout responsivo focado em conversão' },
-  { icon: Search, label: 'SEO técnico e Core Web Vitals desde o início' },
+  { icon: MonitorSmartphone, label: 'Uma jornada simples também no celular' },
+  { icon: Search, label: 'Estrutura para busca e páginas rápidas' },
   { icon: Palette, label: 'Design alinhado à identidade da sua marca' },
 ];
 
@@ -31,8 +31,7 @@ export default function WebHero() {
                 Criação de sites profissionais em São Paulo com foco em conversão
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Planejamos, criamos e evoluímos sites institucionais, landing pages e portais completos. Entregamos
-                design, conteúdo, SEO técnico e integrações para empresas de São Paulo e de todo o Brasil transformarem visitantes em oportunidades.
+                Seu cliente precisa entender o que você oferece, por que confiar e como falar com você. Criamos sites que organizam essa jornada, com conteúdo claro, boa experiência no celular e medição dos contatos. Atendimento em São Paulo e em todo o Brasil.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link href="#contact">

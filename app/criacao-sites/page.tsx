@@ -1,3 +1,4 @@
+import ServiceValue from '@/components/services/ServiceValue';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Contact from '@/components/Contact';
@@ -33,6 +34,7 @@ export default function CriacaoSitesPage() {
       <Header />
       <WebHero />
       <BackToServices current="Criação de sites profissionais" />
+      <ServiceValue path="/criacao-sites" />
       <WebDevSection />
       <WebUseCases />
       <WebMethodology />

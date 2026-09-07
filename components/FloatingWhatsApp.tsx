@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { getContactService, whatsappLink } from '@/lib/contact';
 
 // WhatsApp SVG Icon Component
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -14,43 +15,28 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 export default function FloatingWhatsApp() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Show button after a short delay to avoid flash
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleWhatsAppClick = () => {
-    const phoneNumber = '5511990183194';
-    const message = encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços da Mattos Tech Solutions.');
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  if (!isVisible) return null;
+  const service = getContactService(usePathname());
+  const href = whatsappLink(service ? `Olá! Quero conversar sobre ${service.name}.` : undefined);
 
   return (
     <div className="fixed bottom-5 right-5 z-50 sm:bottom-6 sm:right-6">
-      <button
-        onClick={handleWhatsAppClick}
-        className="group rounded-lg border border-emerald-400/40 bg-slate-950/90 p-3.5 text-emerald-300 shadow-xl shadow-slate-950/40 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-500 hover:text-white sm:p-4"
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group inline-flex items-center gap-2 rounded-lg border border-emerald-400/40 bg-slate-950/90 p-3.5 text-emerald-300 shadow-xl shadow-slate-950/40 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-500 hover:text-white sm:p-4"
         aria-label="Falar no WhatsApp"
         title="Falar no WhatsApp"
       >
         <WhatsAppIcon className="h-6 w-6" />
+        <span className="hidden sm:inline text-sm font-semibold">Vamos conversar</span>
         
         {/* Tooltip */}
         <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
           Falar no WhatsApp
           <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
         </div>
-      </button>
+      </a>
     </div>
   );
 }

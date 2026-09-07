@@ -1,12 +1,14 @@
 import type { MetadataRoute } from 'next';
 import { getPublishedPosts } from '@/lib/blog';
 import { absoluteUrl } from '@/lib/seo';
+import { decisionGuides } from '@/lib/decision-guides';
 
 export const revalidate = 3600;
 
 const staticPaths = [
   '/',
   '/servicos',
+  '/guias',
   '/criacao-sites',
   '/criacao-software',
   '/consultoria-ti',
@@ -36,5 +38,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(post.updated_at || post.published_at || post.created_at),
   }));
 
-  return [...staticUrls, ...blogUrls];
+  return [...staticUrls, ...decisionGuides.map(guide => ({ url: absoluteUrl(`/guias/${guide.slug}`) })), ...blogUrls];
 }

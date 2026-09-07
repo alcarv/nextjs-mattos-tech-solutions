@@ -1,3 +1,4 @@
+import ServiceValue from '@/components/services/ServiceValue';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Contact from '@/components/Contact';
@@ -33,6 +34,7 @@ export default function CriacaoSoftwarePage() {
       <Header />
       <SoftwareHero />
       <BackToServices current="Software sob medida" />
+      <ServiceValue path="/criacao-software" />
       <SoftwareSection />
       <SoftwareUseCases />
       <SoftwareDelivery />

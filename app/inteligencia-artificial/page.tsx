@@ -1,3 +1,4 @@
+import ServiceValue from '@/components/services/ServiceValue';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Contact from '@/components/Contact';
@@ -30,6 +31,7 @@ export default function InteligenciaArtificialPage() {
       <Header />
       <AIHero />
       <BackToServices current="Inteligência Artificial para empresas" />
+      <ServiceValue path="/inteligencia-artificial" />
       <AIExperience />
       <RelatedServices currentPath="/inteligencia-artificial" />
       <Contact />

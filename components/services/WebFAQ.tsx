@@ -5,7 +5,7 @@ export const webFaqItems = [
   {
     question: 'Quanto tempo leva para lançar um site com vocês?',
     answer:
-      'Projetos institucionais costumam levar de 6 a 10 semanas, incluindo discovery, conteúdo, design e implementação. Landing pages podem ficar prontas em ciclos de 2 a 4 semanas conforme escopo.',
+      'Projetos institucionais costumam levar de 6 a 10 semanas, incluindo discovery, conteúdo, design e implementação. Landing pages podem ficar prontas em ciclos de 2 a 4 semanas conforme escopo. São referências de planejamento; prazo e dependências são confirmados na proposta.',
   },
   {
     question: 'Posso editar o conteúdo do site depois?',

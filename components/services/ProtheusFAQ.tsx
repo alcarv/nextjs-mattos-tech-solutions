@@ -15,7 +15,7 @@ export const protheusFaqItems = [
   {
     question: 'Podemos começar com um diagnóstico rápido?',
     answer:
-      'Rodamos um assessment em 1 a 2 semanas para identificar gargalos, riscos fiscais, integrações frágeis e oportunidades de quick wins.',
+      'Definimos o prazo da avaliação conforme módulos, acessos e complexidade para identificar gargalos, riscos fiscais, integrações frágeis e oportunidades de quick wins.',
   },
   {
     question: 'Como vocês evitam impactos ao customizar o Protheus?',

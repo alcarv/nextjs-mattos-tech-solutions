@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import DecisionGuides from '@/components/DecisionGuides';
 import Footer from '@/components/Footer';
 import BlogIndexClient from '@/components/BlogIndexClient';
 import { getPublishedPosts } from '@/lib/blog';
@@ -13,6 +14,7 @@ export default async function BlogPage() {
       <Header />
       <main id="conteudo">
         <BlogIndexClient posts={posts} />
+        <DecisionGuides />
       </main>
       <Footer />
     </div>

@@ -49,9 +49,9 @@ export default function About() {
               <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-md backdrop-blur">
                 <h3 className="text-lg font-semibold text-white">Como entregamos valor</h3>
                 <ul className="mt-4 space-y-3 text-sm text-slate-300">
-                  <li>• Roadmaps estratégicos e governança clara para acelerar decisões.</li>
-                  <li>• Times multidisciplinares alinhados com squads internos do cliente.</li>
-                  <li>• KPIs, rituais ágeis e comunicação transparente para medir impacto.</li>
+                  <li>• Prioridades documentadas para você saber por onde começar.</li>
+                  <li>• Entregas e responsabilidades alinhadas com sua equipe.</li>
+                  <li>• Demonstrações e indicadores para acompanhar o que mudou.</li>
                 </ul>
               </div>
               <p className="text-slate-300">

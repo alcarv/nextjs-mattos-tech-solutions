@@ -23,12 +23,15 @@ import {
 } from 'lucide-react';
 import { Brand } from './Brand';
 import HomeBlog from './HomeBlog';
+import DecisionGuides from '@/components/DecisionGuides';
+import { whatsappLink } from '@/lib/contact';
 import HomeContact from './HomeContact';
 import HomeEffects from './HomeEffects';
 import HomeHeader from './HomeHeader';
 import MagneticLink from './MagneticLink';
 import MTSCore from './MTSCore';
-import ScrollStory from './ScrollStory';
+import ChallengeExplorer from './ChallengeExplorer';
+import BuyingGuide from '@/components/BuyingGuide';
 import type { BlogPost } from '@/lib/supabase';
 
 type Solution = {
@@ -38,115 +41,71 @@ type Solution = {
   outcome: string;
   href: string;
   icon: LucideIcon;
-  labels: string[];
-  variant: string;
 };
 
 const solutions: Solution[] = [
   {
     number: '01',
     title: 'Sites e presença digital',
-    description: 'Experiências digitais profissionais, rápidas e construídas para gerar oportunidades.',
-    outcome: 'Clareza de marca, credibilidade e uma jornada orientada à conversão.',
+    description: 'Para quando visitantes chegam ao seu site, mas não entendem sua oferta ou não entram em contato.',
+    outcome: 'Sua oferta explicada com clareza, navegação simples e contatos que podem ser acompanhados.',
     href: '/criacao-sites',
     icon: Globe2,
-    labels: ['ESTRATÉGIA', 'EXPERIÊNCIA', 'PERFORMANCE'],
-    variant: 'web',
   },
   {
     number: '02',
     title: 'Sistemas sob medida',
-    description: 'Aplicações alinhadas aos processos, regras e objetivos de cada operação.',
-    outcome: 'Tecnologia que acompanha a rotina real do negócio e pode evoluir com ela.',
+    description: 'Para quando planilhas, controles paralelos e ferramentas prontas já não atendem à sua rotina.',
+    outcome: 'Regras da empresa organizadas em um sistema, com histórico e menos trabalho duplicado.',
     href: '/criacao-software',
     icon: Braces,
-    labels: ['REGRA', 'APLICAÇÃO', 'EVOLUÇÃO'],
-    variant: 'software',
   },
   {
     number: '03',
     title: 'Automações e integrações',
-    description: 'Menos tarefas repetitivas, menos retrabalho e informações conectadas.',
-    outcome: 'Fluxos consistentes entre ferramentas, equipes e pontos de decisão.',
-    href: '/consultoria-ti',
+    description: 'Para quando a equipe copia informações de um sistema para outro e confere tudo à mão.',
+    outcome: 'Dados circulando entre ferramentas e pessoas focadas nas exceções que exigem atenção.',
+    href: '/criacao-software',
     icon: Workflow,
-    labels: ['ENTRADA', 'ORQUESTRAÇÃO', 'AÇÃO'],
-    variant: 'automation',
   },
   {
     number: '04',
     title: 'Inteligência Artificial',
-    description: 'IA aplicada a fluxos, documentos, dados, atendimento e produtividade.',
-    outcome: 'Mais capacidade de análise e execução, com governança e propósito claro.',
+    description: 'Para quando buscar informações, analisar documentos ou responder dúvidas consome a capacidade do time.',
+    outcome: 'Assistentes para tarefas específicas, avaliados por qualidade, tempo e custo de uso.',
     href: '/inteligencia-artificial',
     icon: Bot,
-    labels: ['CONTEXTO', 'MODELO', 'RESPOSTA'],
-    variant: 'ai',
   },
   {
     number: '05',
     title: 'Cloud, DevOps e infraestrutura',
-    description: 'Ambientes seguros, escaláveis e preparados para acompanhar o negócio.',
-    outcome: 'Entregas mais previsíveis, operação protegida e capacidade para crescer.',
+    description: 'Para quando a infraestrutura limita a operação ou seus custos crescem sem explicação.',
+    outcome: 'Um plano de infraestrutura com capacidade, continuidade e custos avaliados juntos.',
     href: '/migracao-cloud',
     icon: CloudCog,
-    labels: ['BUILD', 'DEPLOY', 'SCALE'],
-    variant: 'cloud',
   },
   {
     number: '06',
     title: 'Observabilidade e confiabilidade',
-    description: 'Mais visibilidade sobre sistemas, falhas, desempenho e disponibilidade.',
-    outcome: 'Problemas encontrados mais cedo e decisões técnicas baseadas em evidências.',
+    description: 'Para quando os mesmos incidentes voltam e o time só descobre um problema após a reclamação.',
+    outcome: 'Diagnóstico das causas e prioridades para orientar correções e melhorar o acompanhamento.',
     href: '/avaliacoes-ti',
     icon: Activity,
-    labels: ['MÉTRICAS', 'TRACES', 'ALERTAS'],
-    variant: 'observe',
   },
 ];
 
 const method = [
-  { number: '01', title: 'Diagnóstico', text: 'Entendimento do negócio, dos processos e do problema.', icon: Search },
-  { number: '02', title: 'Plano', text: 'Definição da solução, arquitetura, prioridades e etapas.', icon: Layers3 },
-  { number: '03', title: 'Construção', text: 'Desenvolvimento com acompanhamento e comunicação transparente.', icon: CodeXml },
-  { number: '04', title: 'Implantação', text: 'Entrada em produção, validação, segurança e documentação.', icon: GitBranch },
-  { number: '05', title: 'Evolução', text: 'Monitoramento, suporte e melhoria contínua.', icon: Radar },
+  { number: '01', title: 'Diagnóstico', text: 'Mapeamos o problema, quem é afetado e como medir o cenário atual.', icon: Search },
+  { number: '02', title: 'Plano', text: 'Você avalia escopo, entregas, estimativas e custos recorrentes na proposta.', icon: Layers3 },
+  { number: '03', title: 'Construção', text: 'Você acompanha demonstrações e valida as entregas pelos critérios combinados.', icon: CodeXml },
+  { number: '04', title: 'Implantação', text: 'Testamos o que foi acordado, documentamos e orientamos a entrada em operação.', icon: GitBranch },
+  { number: '05', title: 'Evolução', text: 'Avaliamos os indicadores. Suporte e novas melhorias seguem o plano contratado.', icon: Radar },
 ];
 
 const expertise = [
   'Desenvolvimento de software', 'Cloud', 'Kubernetes', 'Kafka e integração de dados',
   'Automação', 'Inteligência Artificial', 'DevOps', 'Observabilidade', 'Arquitetura e confiabilidade',
 ];
-
-function SolutionVisual({ solution }: { solution: Solution }) {
-  const Icon = solution.icon;
-  return (
-    <div className={`solution-visual solution-visual--${solution.variant}`} aria-hidden="true">
-      <div className="solution-visual__grid" />
-      <div className="solution-visual__header">
-        <span>SOLUTION_LAYER / {solution.number}</span>
-        <span className="mts-status"><i /> READY</span>
-      </div>
-      <div className="solution-visual__diagram">
-        <div className="solution-visual__orbit orbit-a" />
-        <div className="solution-visual__orbit orbit-b" />
-        <div className="solution-visual__center"><Icon /></div>
-        <svg viewBox="0 0 560 250" preserveAspectRatio="none">
-          <path d="M42 125C130 125 141 50 230 50S352 198 518 125" pathLength="1" />
-          <path d="M42 184C166 184 175 122 280 122s126-70 238-70" pathLength="1" />
-          <path d="M42 66c107 0 131 136 238 136s130-42 238-42" pathLength="1" />
-        </svg>
-        <span className="solution-visual__node node-a" />
-        <span className="solution-visual__node node-b" />
-        <span className="solution-visual__node node-c" />
-        {solution.labels.map((label, index) => (
-          <span key={label} className={`solution-visual__label label-${index + 1}`}>{label}</span>
-        ))}
-      </div>
-      <div className="solution-visual__footer"><span>INPUT</span><i /><span>PROCESS</span><i /><span>OUTCOME</span></div>
-    </div>
-  );
-}
 
 export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
   return (
@@ -161,17 +120,18 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
           <div className="mts-hero__ambient" />
           <div className="mts-container mts-hero__inner">
             <div className="mts-hero__content">
-              <span className="mts-kicker mts-hero__kicker"><i /> ESTRATÉGIA <b>•</b> SOFTWARE <b>•</b> IA <b>•</b> CLOUD</span>
-              <h1>Tecnologia sob medida para transformar operações em <em>crescimento.</em></h1>
-              <p>Somos uma empresa de tecnologia em São Paulo especializada em sites, sistemas, automações, Inteligência Artificial e cloud para conectar processos, reduzir trabalho manual e fazer negócios avançarem em todo o Brasil.</p>
+              <span className="mts-kicker mts-hero__kicker"><i /> SITES <b>•</b> SOFTWARE <b>•</b> AUTOMAÇÃO</span>
+              <h1>Sites e software para vender melhor e <em>simplificar sua operação.</em></h1>
+              <p>Transforme um site que não explica sua oferta em um caminho para novos contatos. Troque controles manuais por processos conectados. Desenvolvimento de sites, software sob medida e automação em São Paulo, com atendimento em todo o Brasil.</p>
               <div className="mts-hero__actions">
-                <MagneticLink className="mts-button mts-button--primary" href="#contato">
-                  Agendar uma conversa <ArrowUpRight />
+                <MagneticLink className="mts-button mts-button--primary" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
+                  Falar sobre meu negócio <ArrowUpRight />
                 </MagneticLink>
-                <MagneticLink className="mts-button mts-button--outline" href="#solucoes">
-                  Conhecer nossas soluções <ArrowDown />
+                <MagneticLink className="mts-button mts-button--outline" href="#seu-desafio">
+                  Encontrar meu caminho <ArrowDown />
                 </MagneticLink>
               </div>
+              <div className="mts-hero__assurance">Primeiro entendemos o problema. Escopo e investimento vêm antes da contratação.</div>
             </div>
 
             <div className="mts-hero__core">
@@ -183,49 +143,40 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
 
           <div className="mts-container mts-hero__footer">
             <div className="mts-hero__principles">
-              <span><b>01</b> Estratégia orientada ao negócio</span>
-              <span><b>02</b> Arquitetura sob medida</span>
-              <span><b>03</b> Evolução contínua</span>
+              <span><b>01</b> Problema e prioridades claros</span>
+              <span><b>02</b> Entregas definidas na proposta</span>
+              <span><b>03</b> Resultado acompanhado</span>
             </div>
-            <a href="#experiencia" className="mts-scroll-cue"><span>SCROLL PARA EXPLORAR</span><i><ArrowDown /></i></a>
+            <a href="#seu-desafio" className="mts-scroll-cue"><span>ENCONTRE SUA SOLUÇÃO</span><i><ArrowDown /></i></a>
           </div>
         </section>
 
-        <section className="mts-manifesto">
-          <div className="mts-container mts-manifesto__inner reveal-on-scroll">
-            <span className="mts-section-number">01 / O PONTO DE PARTIDA</span>
-            <p>Tecnologia só faz sentido quando <em>remove fricção</em>, conecta decisões e abre espaço para o negócio avançar.</p>
-          </div>
-        </section>
-
-        <ScrollStory />
+        <ChallengeExplorer />
 
         <section id="solucoes" className="mts-solutions">
           <div className="mts-container">
             <div className="mts-section-head reveal-on-scroll">
               <div>
                 <span className="mts-section-number">02 / SOLUÇÕES</span>
-                <h2>Uma base tecnológica.<br />Múltiplas frentes de evolução.</h2>
+                <h2>O serviço certo começa<br />pelo seu problema.</h2>
               </div>
-              <p>Do primeiro ponto de contato à infraestrutura que sustenta a operação, desenhamos cada camada para resolver um problema real do negócio.</p>
+              <p>Entenda em que situação cada solução ajuda. O ponto de partida é o que precisa mudar na empresa; a escolha da tecnologia vem depois.</p>
             </div>
 
-            <div className="mts-solutions__list">
-              {solutions.map((solution, index) => (
-                <article key={solution.number} className={`solution-chapter reveal-on-scroll ${index % 2 ? 'is-reversed' : ''}`}>
-                  <div className="solution-chapter__copy">
-                    <span className="solution-chapter__number">{solution.number} / 06</span>
-                    <div className="solution-chapter__icon"><solution.icon /></div>
-                    <h3>{solution.title}</h3>
-                    <p>{solution.description}</p>
-                    <div className="solution-chapter__outcome"><Check /> <span>{solution.outcome}</span></div>
-                    <Link href={solution.href} className="solution-chapter__link">
-                      Explorar solução <ArrowRight />
-                    </Link>
-                  </div>
-                  <SolutionVisual solution={solution} />
+            <div className="home-solutions-grid">
+              {solutions.map(solution => (
+                <article key={solution.number} className="home-solution-card">
+                  <solution.icon aria-hidden="true" />
+                  <h3><Link href={solution.href}>{solution.title}</Link></h3>
+                  <p>{solution.description}</p>
+                  <div className="solution-chapter__outcome"><Check aria-hidden="true" /><span>{solution.outcome}</span></div>
+                  <Link href={solution.href} className="solution-chapter__link">Conhecer {solution.title.toLowerCase()} <ArrowRight aria-hidden="true" /></Link>
                 </article>
               ))}
+            </div>
+            <div className="home-solutions-next">
+              <Link className="solution-chapter__link" href="/servicos">Comparar todos os 12 serviços <ArrowRight aria-hidden="true" /></Link>
+              <a className="mts-button mts-button--primary" href={whatsappLink() } target="_blank" rel="noopener noreferrer">Me ajude a escolher <ArrowUpRight aria-hidden="true" /></a>
             </div>
           </div>
         </section>
@@ -238,7 +189,7 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
                 <span className="mts-section-number">03 / COMO TRABALHAMOS</span>
                 <h2>Clareza do diagnóstico<br />à evolução.</h2>
               </div>
-              <p>Um processo consultivo, com decisões visíveis e etapas que reduzem incerteza sem engessar o projeto.</p>
+              <p>Você participa das decisões e acompanha entregas concretas. Cada etapa esclarece o próximo investimento e o que depende da sua equipe.</p>
             </div>
 
             <ol className="mts-method__timeline reveal-on-scroll">
@@ -254,7 +205,7 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
 
             <div className="mts-method__note reveal-on-scroll">
               <span><ShieldCheck /> DECISÕES COM CONTEXTO</span>
-              <p>Arquitetura, segurança e experiência consideradas desde o início — com comunicação transparente durante toda a construção.</p>
+              <p>Mudou a prioridade? Avaliamos juntos o impacto no escopo, no prazo e no investimento antes de seguir com a mudança.</p>
             </div>
           </div>
         </section>
@@ -286,22 +237,24 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
         <section className="mts-results">
           <div className="mts-container">
             <div className="mts-results__header reveal-on-scroll">
-              <span className="mts-section-number">05 / PROJETOS E RESULTADOS</span>
-              <h2>Resultado começa com uma pergunta melhor.</h2>
-              <p>Não usamos números genéricos nem promessas prontas. Em cada projeto, definimos o que precisa mudar, como medir e qual tecnologia faz sentido.</p>
+              <span className="mts-section-number">05 / COMO AVALIAR O INVESTIMENTO</span>
+              <h2>O que melhorou precisa ser visível.</h2>
+              <p>Comparamos o cenário inicial com o que foi implantado. Os indicadores dependem do projeto: tempo por tarefa, erros recorrentes, contatos qualificados ou custo de operação.</p>
             </div>
             <div className="mts-results__flow reveal-on-scroll">
-              <div><span>01</span><Search /><h3>Problema</h3><p>Onde está a fricção e qual impacto ela causa na operação?</p></div>
+              <div><span>01</span><Search /><h3>Antes</h3><p>Registramos como o processo funciona hoje, seu volume e as dificuldades da equipe.</p></div>
               <i><ArrowRight /></i>
-              <div><span>02</span><DatabaseZap /><h3>Solução</h3><p>Qual arquitetura resolve o cenário com simplicidade e segurança?</p></div>
+              <div><span>02</span><DatabaseZap /><h3>Na entrega</h3><p>Conferimos as funcionalidades e os critérios de aceite definidos na proposta.</p></div>
               <i><ArrowRight /></i>
-              <div><span>03</span><Sparkles /><h3>Evolução</h3><p>Como acompanhar o resultado e melhorar continuamente?</p></div>
+              <div><span>03</span><Sparkles /><h3>Em uso</h3><p>Comparamos períodos equivalentes e observamos o que depende de ajustes e adoção.</p></div>
             </div>
           </div>
         </section>
 
-        <HomeBlog posts={blogPosts} />
+        <BuyingGuide />
         <HomeContact />
+        <DecisionGuides />
+        {blogPosts.length > 0 && <HomeBlog posts={blogPosts} />}
       </main>
 
       <footer className="mts-footer">
@@ -313,7 +266,7 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
           </div>
           <div className="mts-footer__nav">
             <div><span>SOLUÇÕES</span><Link href="/servicos">Todos os serviços</Link><Link href="/criacao-software">Software sob medida</Link><Link href="/inteligencia-artificial">Inteligência Artificial</Link><Link href="/criacao-sites">Sites profissionais</Link><Link href="/migracao-cloud">Cloud e infraestrutura</Link></div>
-            <div><span>EMPRESA</span><a href="#sobre">Sobre</a><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
+            <div><span>EMPRESA</span><a href="#sobre">Sobre</a><Link href="/guias">Guias para decidir</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
             <div><span>CONTATO</span><a href="mailto:contato@mattostechsolutions.com">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
           </div>
           <div className="mts-footer__bottom">

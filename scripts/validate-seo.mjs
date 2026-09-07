@@ -139,6 +139,7 @@ for (const url of pageUrls) {
   if (path === '/servicos') requiredTypes.push('CollectionPage', 'ItemList', 'BreadcrumbList');
   if (path === '/faq') requiredTypes.push('FAQPage');
   if (path.startsWith('/blog/')) requiredTypes.push('BlogPosting', 'BreadcrumbList');
+  if (path.startsWith('/guias/')) requiredTypes.push('Article', 'BreadcrumbList');
   for (const type of requiredTypes) {
     if (!schemaTypes.includes(type)) failures.push(`${path} não possui schema ${type}`);
   }

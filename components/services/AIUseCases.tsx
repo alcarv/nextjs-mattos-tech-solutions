@@ -14,7 +14,7 @@ const useCases: UseCase[] = [
     title: 'Atendimento inteligente',
     description:
       'Chatbots e copilots multicanal para WhatsApp, web e apps internos com transferência para humanos sem atrito.',
-    outcomes: 'Redução de até 70% no tempo de resposta e disponibilidade 24/7.',
+    outcomes: 'Avaliar tempo de resposta, resolução e necessidade de atendimento humano em um piloto.',
   },
   {
     icon: Workflow,
@@ -28,7 +28,7 @@ const useCases: UseCase[] = [
     title: 'Decisões data-driven',
     description:
       'RAG e modelos preditivos conectados aos seus bancos de dados, ERPs e CRMs para consultas contextuais.',
-    outcomes: 'Insights confiáveis e time com autonomia para explorar dados.',
+    outcomes: 'Consultas apoiadas em fontes identificadas, com avaliação da qualidade das respostas.',
   },
   {
     icon: Lightbulb,
@@ -47,8 +47,8 @@ const useCases: UseCase[] = [
     icon: ShieldCheck,
     title: 'Segurança e governança',
     description:
-      'Definição de políticas, guardrails, monitoramento e métricas de qualidade dos outputs para evitar riscos.',
-    outcomes: 'Implementações seguras e aderentes a LGPD e compliance.',
+      'Definição de políticas, guardrails, monitoramento e métricas de qualidade dos outputs para identificar e tratar riscos.',
+    outcomes: 'Controles de acesso e revisão de uso definidos conforme os requisitos do projeto.',
   },
 ];
 
@@ -64,7 +64,7 @@ export default function AIUseCases() {
             Casos de uso que aceleram operações e atendimento
           </h2>
           <p className="mt-3 text-lg text-slate-300">
-            Co-construímos jornadas que começam com discovery, MVP rápido e evolução contínua com indicadores claros.
+            Exemplos de aplicação para avaliar no seu contexto. Os benefícios dependem dos dados, das integrações e da validação com usuários.
           </p>
         </Reveal>
 

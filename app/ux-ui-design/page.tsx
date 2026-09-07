@@ -1,3 +1,4 @@
+import ServiceValue from '@/components/services/ServiceValue';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -30,6 +31,7 @@ export default function UxUiDesignPage() {
       <Header />
       <Hero />
       <BackToServices current="UX/UI design" />
+      <ServiceValue path="/ux-ui-design" />
       <UXUISection />
       <About />
       <Blog />

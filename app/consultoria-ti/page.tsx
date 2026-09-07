@@ -1,3 +1,4 @@
+import ServiceValue from '@/components/services/ServiceValue';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -30,6 +31,7 @@ export default function ConsultoriaTIPage() {
       <Header />
       <Hero />
       <BackToServices current="Consultoria de TI" />
+      <ServiceValue path="/consultoria-ti" />
       <ConsultoriaTISection />
       <About />
       <Blog />

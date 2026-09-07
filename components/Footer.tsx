@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
         <div className="mts-footer__nav">
           <div><span>SOLUÇÕES</span><Link href="/servicos">Todos os serviços</Link><Link href="/criacao-software">Software sob medida</Link><Link href="/inteligencia-artificial">Inteligência Artificial</Link><Link href="/criacao-sites">Sites profissionais</Link><Link href="/migracao-cloud">Cloud e infraestrutura</Link></div>
-          <div><span>EMPRESA</span><Link href="/#sobre">Sobre</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
+          <div><span>EMPRESA</span><Link href="/#sobre">Sobre</Link><Link href="/guias">Guias para decidir</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
           <div><span>CONTATO</span><a href="mailto:contato@mattostechsolutions.com">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
         </div>
         <div className="mts-footer__bottom">

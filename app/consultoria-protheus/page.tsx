@@ -1,3 +1,4 @@
+import ServiceValue from '@/components/services/ServiceValue';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Contact from '@/components/Contact';
@@ -32,6 +33,7 @@ export default function ConsultoriaProtheusPage() {
       <Header />
       <ProtheusHero />
       <BackToServices current="Consultoria TOTVS Protheus" />
+      <ServiceValue path="/consultoria-protheus" />
       <ProtheusSection />
       <ProtheusUseCases />
       <ProtheusTechStack />

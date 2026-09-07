@@ -8,9 +8,9 @@ import ThemeSwitcher from '@/components/ThemeSwitcher';
 const navigation = [
   { label: 'Soluções', href: '#solucoes' },
   { label: 'Como trabalhamos', href: '#metodo' },
-  { label: 'Experiência', href: '#experiencia' },
+  { label: 'Transparência', href: '#transparencia' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Guias', href: '/guias' },
   { label: 'Contato', href: '#contato' },
 ];
 
@@ -50,7 +50,7 @@ export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean 
 
         <div className="mts-header__actions">
           <a className="mts-header__cta" href={rootLinks ? '/#contato' : '#contato'}>
-            Agendar uma conversa <ArrowUpRight aria-hidden="true" />
+            Vamos conversar <ArrowUpRight aria-hidden="true" />
           </a>
 
           <ThemeSwitcher />
@@ -76,7 +76,7 @@ export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean 
           </a>
         ))}
         <a className="mts-mobile-menu__cta" href={rootLinks ? '/#contato' : '#contato'} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-          Agendar uma conversa <ArrowUpRight />
+          Vamos conversar <ArrowUpRight />
         </a>
       </div>
     </header>

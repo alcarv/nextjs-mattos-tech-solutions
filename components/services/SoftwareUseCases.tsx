@@ -25,7 +25,7 @@ const useCases: UseCase[] = [
     icon: ClipboardList,
     title: 'Gestão de operações e compliance',
     description: 'Workflows customizados, auditoria, assinatura digital e checklist inteligente para times regulados.',
-    impact: 'Rastreabilidade completa e redução de riscos e penalidades.',
+    impact: 'Histórico das ações e evidências para apoiar a gestão de riscos.',
   },
   {
     icon: Factory,
@@ -43,7 +43,7 @@ const useCases: UseCase[] = [
     icon: ShieldCheck,
     title: 'Sistemas críticos e legado',
     description: 'Modernização de aplicações on-premise, APIs e integrações para manter compliance e disponibilidade.',
-    impact: 'Estabilidade, performance e novas capacidades sem interromper o negócio.',
+    impact: 'Evolução planejada com testes, janelas de implantação e procedimentos de retorno.',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function SoftwareUseCases() {
             Casos de uso que transformam operações digitais
           </h2>
           <p className="mt-3 text-lg text-slate-300">
-            Projetos realizados em diferentes setores, sempre conectando estratégia, UX, engenharia e dados.
+            Exemplos de aplicação para discutir no diagnóstico. Os benefícios abaixo são objetivos a validar no contexto de cada projeto.
           </p>
         </Reveal>
 

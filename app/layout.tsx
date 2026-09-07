@@ -2,9 +2,11 @@ import './globals.css';
 import './home.css';
 import './services.css';
 import './theme-light.css';
+import './value.css';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import ConversionTracking from '@/components/ConversionTracking';
 import MetaPixel from '@/components/MetaPixel';
 import ThemeProvider from '@/components/ThemeProvider';
 import {
@@ -130,6 +132,7 @@ export default function RootLayout({
 
         <ThemeProvider>
           <MetaPixel />
+          <ConversionTracking />
 
           {children}
 

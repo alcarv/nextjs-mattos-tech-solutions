@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { contactMessage, getContactService, validateContact, whatsappLink, type ContactValues, type ContactErrors } from '@/lib/contact';
+import { contactMessage, createLeadEventId, getContactService, validateContact, whatsappLink, type ContactValues, type ContactErrors } from '@/lib/contact';
 import { trackConversion } from '@/lib/conversion-events';
 import { AlertTriangle, ArrowUpRight, CheckCircle2, LoaderCircle, Mail, MessageCircle } from 'lucide-react';
 import MagneticLink from './MagneticLink';
@@ -39,6 +39,7 @@ export default function HomeContact() {
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) {
+      trackConversion('contact_form_error', 'form', service?.path, 'form');
       const firstField = Object.keys(nextErrors)[0];
       const firstInvalid = event.currentTarget.querySelector<HTMLElement>(`[name="${firstField}"]`);
       firstInvalid?.focus();
@@ -47,7 +48,7 @@ export default function HomeContact() {
 
     if (!emailConfigured) {
       window.open(whatsappLink(contactMessage(form, service?.name)), '_blank', 'noopener,noreferrer');
-      trackConversion('contact_click', 'whatsapp', service?.path);
+      trackConversion('contact_click', 'whatsapp', service?.path, 'form');
       return;
     }
 
@@ -64,7 +65,7 @@ export default function HomeContact() {
     }
 
     const isEmail = form.contact.includes('@');
-    const eventId = typeof window.crypto?.randomUUID === 'function' ? window.crypto.randomUUID() : `lead-${Date.now()}`;
+    const eventId = createLeadEventId();
 
     try {
       const { default: emailjs } = await import('@emailjs/browser');
@@ -93,12 +94,12 @@ export default function HomeContact() {
         }),
       }).catch(() => undefined);
 
-      trackConversion('generate_lead', 'form', service?.path);
+      trackConversion('generate_lead', 'form', service?.path, 'form');
       setForm(initialForm);
       started.current = false;
       setStatus('success');
     } catch {
-      trackConversion('contact_form_error', 'form', service?.path);
+      trackConversion('contact_form_error', 'form', service?.path, 'form');
       setStatus('error');
     } finally {
       submitting.current = false;
@@ -116,10 +117,10 @@ export default function HomeContact() {
           <div>
             <p>Conte o que está difícil hoje e o que você gostaria de melhorar. Você não precisa chegar com um projeto pronto nem escolher uma tecnologia.</p>
             <div className="mts-contact__actions">
-              <MagneticLink className="mts-button mts-button--light" href="#formulario">
+              <MagneticLink className="mts-button mts-button--light" href="#formulario" data-contact-location="form">
                 Contar meu desafio <ArrowUpRight />
               </MagneticLink>
-              <MagneticLink className="mts-button mts-button--ghost" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <MagneticLink className="mts-button mts-button--ghost" href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-contact-location="form">
                 Falar pelo WhatsApp <MessageCircle />
               </MagneticLink>
             </div>
@@ -134,14 +135,14 @@ export default function HomeContact() {
             <ol className="mts-contact__steps"><li>Retornamos pelo contato informado para entender sua prioridade.</li><li>Alinhamos o cenário, as restrições e os caminhos possíveis.</li><li>Se houver aderência, estruturamos uma proposta para sua avaliação.</li></ol>
             <p>Enviar este formulário não contrata um serviço.</p>
             <div className="mts-contact__direct">
-              <a href="mailto:contato@mattostechsolutions.com"><Mail /> contato@mattostechsolutions.com</a>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><MessageCircle /> +55 (11) 99018-3194</a>
+              <a href="mailto:contato@mattostechsolutions.com" data-contact-location="form"><Mail /> contato@mattostechsolutions.com</a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-contact-location="form"><MessageCircle /> +55 (11) 99018-3194</a>
             </div>
             <div className="mts-contact__availability"><i /> Atendimento remoto em todo o Brasil</div>
           </aside>
 
           <form className="mts-form" onSubmit={handleSubmit} noValidate aria-label="Formulário de contato" onFocus={() => {
-            if (!started.current) { trackConversion('contact_form_start', 'form', service?.path); started.current = true; }
+            if (!started.current) { trackConversion('contact_form_start', 'form', service?.path, 'form'); started.current = true; }
           }}>
             <p className="mts-form__help">Só nome e contato são obrigatórios. {emailConfigured ? 'Conte o restante se quiser adiantar a conversa.' : 'Ao continuar, o WhatsApp abrirá com sua mensagem para você revisar e enviar.'}</p>
             <fieldset disabled={status === 'loading'} className="mts-form__fields">

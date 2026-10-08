@@ -3,6 +3,7 @@
 import { useRef, type PointerEvent } from 'react';
 import Link from 'next/link';
 import { ArrowDown, ArrowUpRight, Bot, Braces, Database, FileText, ShieldCheck, Workflow } from 'lucide-react';
+import { whatsappLink } from '@/lib/contact';
 
 export default function AIHero() {
   const visualRef = useRef<HTMLDivElement>(null);
@@ -31,7 +32,7 @@ export default function AIHero() {
           <h1>Consultoria de Inteligência Artificial para empresas. <em>Preparada para operar.</em></h1>
           <p>Sua equipe perde tempo procurando informações e respondendo às mesmas dúvidas? Aplicamos IA a tarefas específicas, testando a qualidade das respostas, a necessidade de revisão humana e o custo antes de ampliar o uso.</p>
           <div className="ai-hero__actions">
-            <Link href="#contact" className="mts-button mts-button--primary">Falar sobre meu cenário <ArrowUpRight /></Link>
+            <a href={whatsappLink('Olá! Quero avaliar uma aplicação de IA na minha empresa.')} target="_blank" rel="noopener noreferrer" data-contact-location="service_hero" className="mts-button mts-button--primary">Avaliar uma aplicação de IA <ArrowUpRight /></a>
             <Link href="#ai-journey" className="mts-button mts-button--outline">Ver como funciona <ArrowDown /></Link>
           </div>
           <div className="ai-hero__principles">

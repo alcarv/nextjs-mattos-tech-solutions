@@ -8,6 +8,7 @@ import { ArrowLeft, Calendar, Clock, History, UserRound } from 'lucide-react';
 import type { BlogPost } from '@/lib/supabase';
 import ShareButton from '@/components/ShareButton';
 import { Button } from '@/components/ui/button';
+import ArticleServiceCTA from '@/components/ArticleServiceCTA';
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('pt-BR', {
@@ -151,6 +152,8 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           </div>
         </header>
 
+        <ArticleServiceCTA article={post} placement="intro" />
+
         <div className="prose prose-lg prose-invert max-w-none">
           {post.description && (
             <p className="text-xl text-slate-300 mb-8 font-medium leading-relaxed">{post.description}</p>
@@ -166,15 +169,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           </div>
         </div>
 
-        <aside className="mt-12 p-8 rounded-lg border border-blue-500/30 bg-blue-500/10" aria-label="Próximo passo">
-          <h2 className="text-2xl font-bold text-white mb-4">Precisa de ajuda com seu projeto?</h2>
-          <p className="text-slate-300 mb-6">
-            Converse com a Mattos Tech Solutions sobre como aplicar essas ideias à realidade da sua empresa.
-          </p>
-          <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-500 hover:to-indigo-400">
-            <Link href="/#contato">Falar com um especialista</Link>
-          </Button>
-        </aside>
+        <ArticleServiceCTA article={post} placement="end" />
       </div>
     </article>
   );

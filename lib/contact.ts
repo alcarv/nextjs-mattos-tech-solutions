@@ -1,5 +1,20 @@
 import { BUSINESS_PHONE } from './seo';
-import { serviceCatalog } from './services';
+import { serviceCatalog, type ServicePath } from './services';
+
+export const serviceContactLabels: Record<ServicePath, string> = {
+  '/consultoria-ti': 'Conversar sobre minha TI',
+  '/criacao-software': 'Conversar sobre meu sistema',
+  '/consultoria-protheus': 'Conversar sobre meu Protheus',
+  '/inteligencia-artificial': 'Avaliar uma aplicação de IA',
+  '/criacao-sites': 'Conversar sobre meu site',
+  '/migracao-cloud': 'Planejar minha migração para nuvem',
+  '/banco-dados-analytics': 'Conversar sobre meus dados',
+  '/governanca-compliance': 'Organizar os controles da minha TI',
+  '/avaliacoes-ti': 'Avaliar meu ambiente de TI',
+  '/apps-mobile': 'Conversar sobre meu aplicativo',
+  '/ux-ui-design': 'Melhorar a experiência do meu produto',
+  '/solucoes-ecommerce': 'Conversar sobre minha loja virtual',
+};
 
 export function getContactService(pathname: string) {
   return serviceCatalog.find(service => service.path === pathname);
@@ -7,6 +22,11 @@ export function getContactService(pathname: string) {
 
 export function whatsappLink(message = 'Olá! Quero entender como a Mattos Tech Solutions pode ajudar minha empresa.') {
   return `https://wa.me/${BUSINESS_PHONE.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+}
+
+// Generated only when a validated form is submitted, for Meta Pixel/CAPI deduplication.
+export function createLeadEventId() {
+  return typeof window.crypto?.randomUUID === 'function' ? window.crypto.randomUUID() : `lead-${Date.now()}`;
 }
 
 export type ContactValues = { name: string; company: string; contact: string; challenge: string };

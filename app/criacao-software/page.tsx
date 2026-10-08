@@ -1,4 +1,5 @@
 import ServiceValue from '@/components/services/ServiceValue';
+import ProjectScope from '@/components/services/ProjectScope';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Contact from '@/components/Contact';
@@ -35,6 +36,7 @@ export default function CriacaoSoftwarePage() {
       <SoftwareHero />
       <BackToServices current="Software sob medida" />
       <ServiceValue path="/criacao-software" />
+      <ProjectScope path="/criacao-software" />
       <SoftwareSection />
       <SoftwareUseCases />
       <SoftwareDelivery />

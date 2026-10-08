@@ -97,6 +97,15 @@ const serviceFaqPaths = new Set([
   '/inteligencia-artificial',
 ]);
 
+const sitemapPaths = new Set(pageUrls.map(url => url.pathname));
+if (new Set(sitemapLocations).size !== sitemapLocations.length) failures.push('sitemap.xml contém URLs duplicadas');
+const home = await load(`${baseUrl}/`);
+const homeLinkPaths = new Set(extractInternalLinks(home.html, `${baseUrl}/`).map(url => url.pathname));
+for (const path of servicePaths) {
+  if (!sitemapPaths.has(path)) failures.push(`${path} não está no sitemap`);
+  if (!homeLinkPaths.has(path)) failures.push(`${path} não tem link rastreável no HTML da home`);
+}
+
 for (const url of pageUrls) {
   const { response, html } = await load(url);
   const path = url.pathname;

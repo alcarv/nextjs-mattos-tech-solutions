@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
 import { ServerCog, FileCheck, Cable, ShieldCheck } from 'lucide-react';
+import { whatsappLink } from '@/lib/contact';
 
 export default function ProtheusHero() {
   const highlights = [
@@ -33,11 +34,9 @@ export default function ProtheusHero() {
                 Falhas de integração e ajustes manuais atrapalham seus pedidos e fechamentos? Investigamos o ambiente Protheus, priorizamos correções e validamos os fluxos com sua equipe antes da entrada em operação.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Link href="#contact">
-                  <Button className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 px-8 text-base font-semibold text-white shadow-lg shadow-blue-900/40 transition-all duration-300 hover:from-blue-500 hover:to-cyan-400">
-                    Falar sobre Protheus
-                  </Button>
-                </Link>
+                <Button asChild className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 px-8 text-base font-semibold text-white shadow-lg shadow-blue-900/40 transition-all duration-300 hover:from-blue-500 hover:to-cyan-400">
+                  <a href={whatsappLink('Olá! Quero conversar sobre consultoria Protheus para minha empresa.')} target="_blank" rel="noopener noreferrer" data-contact-location="service_hero">Conversar sobre meu Protheus</a>
+                </Button>
                 <Link href="https://cal.com/daniel-mattos/30min" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"

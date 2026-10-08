@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Instagram } from 'lucide-react';
 import { Brand } from '@/components/home/Brand';
+import { serviceCatalog } from '@/lib/services';
 
 export default function Footer() {
   return (
@@ -14,9 +15,9 @@ export default function Footer() {
           </a>
         </div>
         <div className="mts-footer__nav">
-          <div><span>SOLUÇÕES</span><Link href="/servicos">Todos os serviços</Link><Link href="/criacao-software">Software sob medida</Link><Link href="/inteligencia-artificial">Inteligência Artificial</Link><Link href="/criacao-sites">Sites profissionais</Link><Link href="/migracao-cloud">Cloud e infraestrutura</Link></div>
+          <div className="mts-footer__services"><span>SERVIÇOS</span><Link href="/servicos">Comparar todos os serviços</Link><ul>{serviceCatalog.map(service => <li key={service.path}><Link href={service.path} data-contact-location="footer">{service.name}</Link></li>)}</ul></div>
           <div><span>EMPRESA</span><Link href="/#sobre">Sobre</Link><Link href="/guias">Guias para decidir</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
-          <div><span>CONTATO</span><a href="mailto:contato@mattostechsolutions.com">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
+          <div><span>CONTATO</span><a href="mailto:contato@mattostechsolutions.com" data-contact-location="footer">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer" data-contact-location="footer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
         </div>
         <div className="mts-footer__bottom">
           <span>© {new Date().getFullYear()} MATTOS TECH SOLUTIONS</span>

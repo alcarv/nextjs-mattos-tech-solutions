@@ -111,6 +111,8 @@ const Carousel = React.forwardRef<
         return;
       }
 
+      // Initialize arrow state from the external Embla API before subscribing.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       onSelect(api);
       api.on('reInit', onSelect);
       api.on('select', onSelect);

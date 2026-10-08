@@ -20,9 +20,9 @@ export const campaignConfigs = {
     ctaText: 'Migrar para Nuvem'
   },
   'apps-mobile': {
-    heroTitle: 'Aplicativos para simplificar a rotina de clientes e equipes',
-    heroSubtitle: 'Criamos apps para tarefas recorrentes no celular, com integrações e experiência de uso planejadas. Primeiro avaliamos se um aplicativo faz sentido para o seu público e sua operação.',
-    ctaText: 'Criar Aplicativo'
+    heroTitle: 'Desenvolvimento de aplicativos para empresas, clientes e equipes',
+    heroSubtitle: 'Criamos aplicativos iOS e Android para pedidos, autoatendimento e trabalho em campo, com integrações aos sistemas da empresa. Avaliamos jornada, uso sem internet e distribuição antes de definir o escopo. Atendimento em São Paulo e remoto em todo o Brasil.',
+    ctaText: 'Conversar sobre meu aplicativo'
   },
   'solucoes-ecommerce': {
     heroTitle: 'E-commerce conectado à sua operação',

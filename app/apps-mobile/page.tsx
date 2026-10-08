@@ -1,4 +1,5 @@
 import ServiceValue from '@/components/services/ServiceValue';
+import ProjectScope from '@/components/services/ProjectScope';
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -13,10 +14,10 @@ import RelatedServices from '@/components/RelatedServices';
 import { createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Desenvolvimento de Aplicativos em São Paulo',
-  description: 'Desenvolvemos aplicativos para iOS e Android, nativos ou multiplataforma, com integrações, boa experiência de uso e evolução contínua.',
+  title: 'Desenvolvimento de Aplicativos para Empresas',
+  description: 'Aplicativos para empresas: iOS e Android, integrações e uso em campo. Avalie escopo, distribuição e investimento. São Paulo e atendimento em todo o Brasil.',
   path: '/apps-mobile',
-  keywords: ['desenvolvimento de aplicativos', 'apps iOS e Android', 'React Native', 'Flutter'],
+  keywords: ['desenvolvimento de aplicativos para empresas', 'aplicativo corporativo', 'apps iOS e Android', 'React Native', 'Flutter'],
 });
 
 export default function AppsMobilePage() {
@@ -32,6 +33,7 @@ export default function AppsMobilePage() {
       <Hero />
       <BackToServices current="Desenvolvimento de aplicativos" />
       <ServiceValue path="/apps-mobile" />
+      <ProjectScope path="/apps-mobile" />
       <MobileSection />
       <About />
       <Blog />

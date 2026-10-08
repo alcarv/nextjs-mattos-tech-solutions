@@ -24,6 +24,7 @@ export default function FloatingWhatsApp() {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        data-contact-location="floating"
         className="group inline-flex items-center gap-2 rounded-lg border border-emerald-400/40 bg-slate-950/90 p-3.5 text-emerald-300 shadow-xl shadow-slate-950/40 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-500 hover:text-white sm:p-4"
         aria-label="Falar no WhatsApp"
         title="Falar no WhatsApp"

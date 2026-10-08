@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import {
-  Activity,
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
@@ -12,16 +11,17 @@ import {
   DatabaseZap,
   GitBranch,
   Globe2,
-  Instagram,
   Layers3,
   Radar,
   Search,
   ShieldCheck,
   Sparkles,
+  Smartphone,
   Workflow,
   type LucideIcon,
 } from 'lucide-react';
-import { Brand } from './Brand';
+import Footer from '@/components/Footer';
+import PartnerBrands from '@/components/PartnerBrands';
 import HomeBlog from './HomeBlog';
 import DecisionGuides from '@/components/DecisionGuides';
 import { whatsappLink } from '@/lib/contact';
@@ -86,11 +86,11 @@ const solutions: Solution[] = [
   },
   {
     number: '06',
-    title: 'Observabilidade e confiabilidade',
-    description: 'Para quando os mesmos incidentes voltam e o time só descobre um problema após a reclamação.',
-    outcome: 'Diagnóstico das causas e prioridades para orientar correções e melhorar o acompanhamento.',
-    href: '/avaliacoes-ti',
-    icon: Activity,
+    title: 'Aplicativos para empresas',
+    description: 'Para quando clientes ou equipes precisam concluir tarefas pelo celular, inclusive em campo.',
+    outcome: 'Um aplicativo conectado aos seus sistemas, com a jornada e as integrações definidas no projeto.',
+    href: '/apps-mobile',
+    icon: Smartphone,
   },
 ];
 
@@ -124,7 +124,7 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
               <h1>Sites e software para vender melhor e <em>simplificar sua operação.</em></h1>
               <p>Transforme um site que não explica sua oferta em um caminho para novos contatos. Troque controles manuais por processos conectados. Desenvolvimento de sites, software sob medida e automação em São Paulo, com atendimento em todo o Brasil.</p>
               <div className="mts-hero__actions">
-                <MagneticLink className="mts-button mts-button--primary" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
+                <MagneticLink className="mts-button mts-button--primary" href={whatsappLink()} target="_blank" rel="noopener noreferrer" data-contact-location="home_hero">
                   Falar sobre meu negócio <ArrowUpRight />
                 </MagneticLink>
                 <MagneticLink className="mts-button mts-button--outline" href="#seu-desafio">
@@ -151,6 +151,7 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
           </div>
         </section>
 
+        <PartnerBrands />
         <ChallengeExplorer />
 
         <section id="solucoes" className="mts-solutions">
@@ -257,25 +258,7 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
         {blogPosts.length > 0 && <HomeBlog posts={blogPosts} />}
       </main>
 
-      <footer className="mts-footer">
-        <div className="mts-container">
-          <div className="mts-footer__top">
-            <Brand />
-            <p>Tecnologia sob medida para operações que precisam avançar com clareza, integração e segurança.</p>
-            <a className="mts-footer__social" href="https://www.instagram.com/mattostechsolutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Mattos Tech Solutions"><Instagram /></a>
-          </div>
-          <div className="mts-footer__nav">
-            <div><span>SOLUÇÕES</span><Link href="/servicos">Todos os serviços</Link><Link href="/criacao-software">Software sob medida</Link><Link href="/inteligencia-artificial">Inteligência Artificial</Link><Link href="/criacao-sites">Sites profissionais</Link><Link href="/migracao-cloud">Cloud e infraestrutura</Link></div>
-            <div><span>EMPRESA</span><a href="#sobre">Sobre</a><Link href="/guias">Guias para decidir</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
-            <div><span>CONTATO</span><a href="mailto:contato@mattostechsolutions.com">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
-          </div>
-          <div className="mts-footer__bottom">
-            <span>© {new Date().getFullYear()} MATTOS TECH SOLUTIONS</span>
-            <span>CNPJ 54.019.901/0001-54</span>
-            <Link href="/politica-de-privacidade">POLÍTICA DE PRIVACIDADE</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </HomeEffects>
   );
 }

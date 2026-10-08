@@ -16,6 +16,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { campaignConfigs, getDefaultConfig } from '@/lib/compaignConfigs';
+import { getContactService, whatsappLink } from '@/lib/contact';
 
 const visualConfigs: Record<string, { label: string; icon: LucideIcon; nodes: string[] }> = {
   'consultoria-ti': { label: 'CONSULTORIA / ESTRATÉGIA', icon: Lightbulb, nodes: ['CENÁRIO', 'PRIORIDADES', 'ROADMAP'] },
@@ -31,6 +32,7 @@ const visualConfigs: Record<string, { label: string; icon: LucideIcon; nodes: st
 export default function Hero() {
   const pathname = usePathname();
   const route = pathname.slice(1);
+  const service = getContactService(pathname);
   const config = campaignConfigs[route as keyof typeof campaignConfigs] || getDefaultConfig();
   const visual = visualConfigs[route] || visualConfigs['consultoria-ti'];
   const VisualIcon = visual.icon;
@@ -44,9 +46,9 @@ export default function Hero() {
           <h1>{config.heroTitle}</h1>
           <p>{config.heroSubtitle}</p>
           <div className="service-generic-hero__actions">
-            <Link href="#contact" className="mts-button mts-button--primary">
+            <a href={whatsappLink(service ? `Olá! Quero conversar sobre ${service.name.toLowerCase()} para minha empresa.` : undefined)} target="_blank" rel="noopener noreferrer" data-contact-location="service_hero" className="mts-button mts-button--primary">
               {config.ctaText} <ArrowUpRight />
-            </Link>
+            </a>
             <Link href="#detalhes-servico" className="mts-button mts-button--outline">
               Entender a solução <ArrowDown />
             </Link>

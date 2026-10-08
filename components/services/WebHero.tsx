@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
 import { MonitorSmartphone, Palette, Search, Rocket, Sparkles } from 'lucide-react';
+import { whatsappLink } from '@/lib/contact';
 
 const highlights = [
   { icon: MonitorSmartphone, label: 'Uma jornada simples também no celular' },
@@ -34,11 +35,9 @@ export default function WebHero() {
                 Seu cliente precisa entender o que você oferece, por que confiar e como falar com você. Criamos sites que organizam essa jornada, com conteúdo claro, boa experiência no celular e medição dos contatos. Atendimento em São Paulo e em todo o Brasil.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Link href="#contact">
-                  <Button className="rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 px-8 text-base font-semibold shadow-lg shadow-blue-900/40 transition-all duration-300 hover:from-blue-500 hover:to-indigo-400">
-                    Planejar meu site
-                  </Button>
-                </Link>
+                <Button asChild className="rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 px-8 text-base font-semibold shadow-lg shadow-blue-900/40 transition-all duration-300 hover:from-blue-500 hover:to-indigo-400">
+                  <a href={whatsappLink('Olá! Quero conversar sobre a criação de um site para minha empresa.')} target="_blank" rel="noopener noreferrer" data-contact-location="service_hero">Conversar sobre meu site</a>
+                </Button>
                 <Link href="https://cal.com/daniel-mattos/30min" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"

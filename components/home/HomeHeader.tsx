@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Brand } from './Brand';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
+import { getContactService } from '@/lib/contact';
 
 const navigation = [
-  { label: 'Soluções', href: '#solucoes' },
+  { label: 'Serviços', href: '/servicos' },
   { label: 'Como trabalhamos', href: '#metodo' },
   { label: 'Transparência', href: '#transparencia' },
   { label: 'Sobre', href: '#sobre' },
@@ -14,12 +16,14 @@ const navigation = [
   { label: 'Contato', href: '#contato' },
 ];
 
-function resolveHref(href: string, rootLinks: boolean) {
-  if (rootLinks && href === '#solucoes') return '/servicos';
+function resolveHref(href: string, rootLinks: boolean, isService: boolean) {
+  if (href === '#contato' && isService) return '#contact';
   return rootLinks && href.startsWith('#') ? `/${href}` : href;
 }
 
 export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean }) {
+  const isService = Boolean(getContactService(usePathname()));
+  const contactHref = resolveHref('#contato', rootLinks, isService);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -44,12 +48,12 @@ export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean 
 
         <div className="mts-header__nav">
           {navigation.map((item) => (
-            <a key={item.href} href={resolveHref(item.href, rootLinks)}>{item.label}</a>
+            <a key={item.href} href={resolveHref(item.href, rootLinks, isService)} data-contact-location="header">{item.label}</a>
           ))}
         </div>
 
         <div className="mts-header__actions">
-          <a className="mts-header__cta" href={rootLinks ? '/#contato' : '#contato'}>
+          <a className="mts-header__cta" href={contactHref} data-contact-location="header">
             Vamos conversar <ArrowUpRight aria-hidden="true" />
           </a>
 
@@ -71,11 +75,11 @@ export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean 
       <div id="mts-mobile-menu" className={`mts-mobile-menu ${open ? 'is-open' : ''}`} aria-hidden={!open}>
         <div className="mts-mobile-menu__meta">NAVEGAÇÃO / 01—06</div>
         {navigation.map((item, index) => (
-          <a key={item.href} href={resolveHref(item.href, rootLinks)} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
+          <a key={item.href} href={resolveHref(item.href, rootLinks, isService)} data-contact-location="header" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
             <span>0{index + 1}</span>{item.label}
           </a>
         ))}
-        <a className="mts-mobile-menu__cta" href={rootLinks ? '/#contato' : '#contato'} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
+        <a className="mts-mobile-menu__cta" href={contactHref} data-contact-location="header" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
           Vamos conversar <ArrowUpRight />
         </a>
       </div>

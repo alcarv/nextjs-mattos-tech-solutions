@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Reveal from '@/components/Reveal';
 import { CircuitBoard, Kanban, ShieldCheck, Sparkles } from 'lucide-react';
+import { whatsappLink } from '@/lib/contact';
 
 const highlights = [
   { icon: CircuitBoard, label: 'Processos e sistemas conectados' },
@@ -34,11 +35,9 @@ export default function SoftwareHero() {
                 Quando planilhas e sistemas isolados exigem retrabalho, criamos software para organizar regras e conectar informações. Você acompanha o que está sendo construído e valida as entregas. Atendimento em São Paulo e remoto em todo o Brasil.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Link href="#contact">
-                  <Button className="rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 px-8 text-base font-semibold shadow-lg shadow-blue-900/40 transition-all duration-300 hover:from-blue-500 hover:to-indigo-400">
-                    Planejar meu projeto
-                  </Button>
-                </Link>
+                <Button asChild className="rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 px-8 text-base font-semibold shadow-lg shadow-blue-900/40 transition-all duration-300 hover:from-blue-500 hover:to-indigo-400">
+                  <a href={whatsappLink('Olá! Quero conversar sobre um software sob medida para minha empresa.')} target="_blank" rel="noopener noreferrer" data-contact-location="service_hero">Conversar sobre meu sistema</a>
+                </Button>
                 <Link href="https://cal.com/daniel-mattos/30min" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"

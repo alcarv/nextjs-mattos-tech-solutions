@@ -8,7 +8,7 @@ import { productCatalog } from '@/lib/products';
 import { SITE_URL, absoluteUrl, breadcrumbJsonLd, createPageMetadata, safeJsonLd } from '@/lib/seo';
 import styles from '@/components/products/products.module.css';
 
-const description = 'Conheça o Mattos Auto e o PaperCRM, produto criado em conjunto pela Mattos Tech Solutions e pela Sinapse AI. Fale com nossa equipe sobre cada solução.';
+const description = 'Mattos Auto: gestão para revendas de veículos. PaperCRM: vendas e atendimento, criado em conjunto pela Mattos Tech Solutions e pela Sinapse AI. Conheça.';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Produtos: Mattos Auto e PaperCRM',
@@ -69,7 +69,7 @@ export default function ProdutosPage() {
             <span className="mts-kicker"><i /> PRODUTOS / MATTOS TECH SOLUTIONS</span>
             <h1>Nossa tecnologia,<br /><em>em forma de produto.</em></h1>
             <div className={styles.heroBottom}>
-              <p>Conheça o Mattos Auto, da Mattos Tech Solutions, e o PaperCRM, criado em conjunto com a Sinapse AI.</p>
+              <p>Do estoque da sua revenda ao próximo contato com um cliente: conheça o Mattos Auto e o PaperCRM e descubra qual faz sentido para a sua operação.</p>
               <a href="#produtos" className={styles.explore}>EXPLORE OS PRODUTOS <ArrowDown size={17} aria-hidden="true" /></a>
             </div>
           </div>

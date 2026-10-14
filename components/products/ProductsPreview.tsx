@@ -14,7 +14,7 @@ export default function ProductsPreview() {
         <div className={styles.previewGrid}>
           {productCatalog.map((product) => (
             <Link key={product.id} href={`/produtos#${product.id}`} className={`${styles.previewCard} ${styles[product.tone]}`}>
-              <div><span className={styles.eyebrow}>{product.label}</span><h3>{product.name}</h3><p>{product.creators.join(' + ')}</p></div>
+              <div><span className={styles.eyebrow}>{product.label}</span><h3>{product.name}</h3><p>{product.summary}</p><span className={styles.previewCreators}>{product.creators.join(' + ')}</span></div>
               <ArrowUpRight size={24} aria-hidden="true" />
             </Link>
           ))}

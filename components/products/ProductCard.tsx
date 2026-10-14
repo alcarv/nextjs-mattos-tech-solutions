@@ -14,11 +14,12 @@ export default function ProductCard({ product, index }: { product: Product; inde
           {product.tone === 'blue' ? <BrandMark /> : <Layers3 strokeWidth={1.3} />}
         </div>
         <span className={styles.artName}>{product.name}</span>
-        <span className={styles.artCaption}>{product.creators.join(' + ')}</span>
+        <span className={styles.artCaption}>{product.category}</span>
       </div>
       <div className={styles.cardBody}>
         <span className={styles.eyebrow}>{product.label}</span>
         <h2 id={`${product.id}-title`}>{product.name}</h2>
+        <p className={styles.tagline}>{product.tagline}</p>
         <p>{product.description}</p>
         <div className={styles.creators}>
           <span>{product.creators.length > 1 ? 'Criado em conjunto por' : 'Desenvolvido por'}</span>
@@ -36,7 +37,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
           rel="noopener noreferrer"
           data-contact-location="products"
         >
-          {product.productionUrl ? `Conhecer o ${product.name}` : `Falar sobre o ${product.name}`} <ArrowUpRight size={18} aria-hidden="true" />
+          Quero conhecer o {product.name} <ArrowUpRight size={18} aria-hidden="true" />
         </a>
       </div>
     </article>

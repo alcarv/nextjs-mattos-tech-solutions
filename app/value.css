@@ -136,7 +136,7 @@
 .guide-article ul { padding-left: 24px; list-style: disc; }
 @media (max-width: 600px) { .guide-article p, .guide-article li { font-size: 16px; } .guide-hero, .guide-page { padding-top: 110px; } }
 
-.mts-footer__nav { grid-template-columns: 2fr 1fr 1fr; }
+.mts-footer__nav { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
 .partner-brands { --partner-bg: var(--mts-ink); padding: 36px 0; border-block: 1px solid var(--mts-line); background: var(--partner-bg); color: var(--mts-white); scroll-margin-top: 90px; }
 .partner-brands--contained { --partner-bg: var(--value-bg); margin-top: 40px; padding-bottom: 0; border-bottom: 0; color: var(--value-text); }
 .partner-brands__heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 16px; }

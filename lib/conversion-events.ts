@@ -1,6 +1,6 @@
 export type ConversionEvent = 'contact_click' | 'contact_form_start' | 'contact_form_error' | 'generate_lead' | 'service_interest';
 export type ConversionChannel = 'whatsapp' | 'email' | 'form' | 'schedule' | 'service';
-export const conversionLocations = ['general', 'home_hero', 'service_hero', 'service_scope', 'article_intro', 'article_end', 'header', 'footer', 'floating', 'form'] as const;
+export const conversionLocations = ['general', 'home_hero', 'service_hero', 'service_scope', 'article_intro', 'article_end', 'header', 'footer', 'floating', 'form', 'products'] as const;
 export type ConversionLocation = (typeof conversionLocations)[number];
 
 export function getConversionLocation(value?: string): ConversionLocation {

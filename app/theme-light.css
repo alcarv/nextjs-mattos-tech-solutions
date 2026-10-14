@@ -88,7 +88,8 @@
   color: #475569;
 }
 
-.light .mts-header__nav a:hover {
+.light .mts-header__nav a:hover,
+.light .mts-header__nav a[aria-current="page"] {
   color: #0f172a;
 }
 

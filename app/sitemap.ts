@@ -9,6 +9,7 @@ export const revalidate = 3600;
 const staticPaths = [
   '/',
   '/servicos',
+  '/produtos',
   '/guias',
   ...serviceCatalog.map(service => service.path),
   '/blog',
@@ -18,6 +19,7 @@ const staticPaths = [
 
 // Dates of substantive editorial changes, not the request/build date.
 const contentUpdates: Record<string, string> = {
+  '/produtos': '2026-10-14',
   '/criacao-sites': '2026-10-08',
   '/criacao-software': '2026-10-08',
   '/apps-mobile': '2026-10-08',

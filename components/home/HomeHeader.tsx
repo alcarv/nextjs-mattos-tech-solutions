@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Brand } from './Brand';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
@@ -9,6 +10,7 @@ import { getContactService } from '@/lib/contact';
 
 const navigation = [
   { label: 'Serviços', href: '/servicos' },
+  { label: 'Produtos', href: '/produtos' },
   { label: 'Como trabalhamos', href: '#metodo' },
   { label: 'Transparência', href: '#transparencia' },
   { label: 'Sobre', href: '#sobre' },
@@ -22,7 +24,8 @@ function resolveHref(href: string, rootLinks: boolean, isService: boolean) {
 }
 
 export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean }) {
-  const isService = Boolean(getContactService(usePathname()));
+  const pathname = usePathname();
+  const isService = Boolean(getContactService(pathname));
   const contactHref = resolveHref('#contato', rootLinks, isService);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -48,7 +51,7 @@ export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean 
 
         <div className="mts-header__nav">
           {navigation.map((item) => (
-            <a key={item.href} href={resolveHref(item.href, rootLinks, isService)} data-contact-location="header">{item.label}</a>
+            <Link key={item.href} href={resolveHref(item.href, rootLinks, isService)} aria-current={pathname === item.href ? 'page' : undefined} data-contact-location="header">{item.label}</Link>
           ))}
         </div>
 
@@ -73,11 +76,11 @@ export default function HomeHeader({ rootLinks = false }: { rootLinks?: boolean 
       </nav>
 
       <div id="mts-mobile-menu" className={`mts-mobile-menu ${open ? 'is-open' : ''}`} aria-hidden={!open}>
-        <div className="mts-mobile-menu__meta">NAVEGAÇÃO / 01—06</div>
+        <div className="mts-mobile-menu__meta">NAVEGAÇÃO / 01—{String(navigation.length).padStart(2, '0')}</div>
         {navigation.map((item, index) => (
-          <a key={item.href} href={resolveHref(item.href, rootLinks, isService)} data-contact-location="header" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
+          <Link key={item.href} href={resolveHref(item.href, rootLinks, isService)} aria-current={pathname === item.href ? 'page' : undefined} data-contact-location="header" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
             <span>0{index + 1}</span>{item.label}
-          </a>
+          </Link>
         ))}
         <a className="mts-mobile-menu__cta" href={contactHref} data-contact-location="header" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
           Vamos conversar <ArrowUpRight />

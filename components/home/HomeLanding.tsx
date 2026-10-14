@@ -32,6 +32,7 @@ import MagneticLink from './MagneticLink';
 import MTSCore from './MTSCore';
 import ChallengeExplorer from './ChallengeExplorer';
 import BuyingGuide from '@/components/BuyingGuide';
+import ProductsPreview from '@/components/products/ProductsPreview';
 import type { BlogPost } from '@/lib/supabase';
 
 type Solution = {
@@ -181,6 +182,8 @@ export default function HomeLanding({ blogPosts }: { blogPosts: BlogPost[] }) {
             </div>
           </div>
         </section>
+
+        <ProductsPreview />
 
         <section id="metodo" className="mts-method">
           <div className="mts-method__grid" />

@@ -14,11 +14,13 @@ const staticPaths = [
   ...serviceCatalog.map(service => service.path),
   '/blog',
   '/faq',
+  '/esclarecimento',
   '/politica-de-privacidade',
 ] as const;
 
 // Dates of substantive editorial changes, not the request/build date.
 const contentUpdates: Record<string, string> = {
+  '/esclarecimento': '2026-10-20',
   '/produtos': '2026-10-14',
   '/criacao-sites': '2026-10-08',
   '/criacao-software': '2026-10-08',

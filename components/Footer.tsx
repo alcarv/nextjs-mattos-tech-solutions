@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="mts-footer__nav">
           <div className="mts-footer__services"><span>SERVIÇOS</span><Link href="/servicos">Comparar todos os serviços</Link><ul>{serviceCatalog.map(service => <li key={service.path}><Link href={service.path} data-contact-location="footer">{service.name}</Link></li>)}</ul></div>
           <div><span>PRODUTOS</span><Link href="/produtos">Conhecer os produtos</Link>{productCatalog.map(product => <Link key={product.id} href={`/produtos#${product.id}`}>{product.name}</Link>)}</div>
-          <div><span>EMPRESA</span><Link href="/#sobre">Sobre</Link><Link href="/guias">Guias para decidir</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link></div>
+          <div><span>EMPRESA</span><Link href="/#sobre">Sobre</Link><Link href="/guias">Guias para decidir</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link><Link href="/esclarecimento">Esclarecimento oficial</Link></div>
           <div><span>CONTATO</span><a href="mailto:contato@mattostechsolutions.com" data-contact-location="footer">E-mail</a><a href="https://wa.me/5511990183194" target="_blank" rel="noopener noreferrer" data-contact-location="footer">WhatsApp</a><span className="mts-footer__location">São Paulo / Brasil</span></div>
         </div>
         <div className="mts-footer__bottom">

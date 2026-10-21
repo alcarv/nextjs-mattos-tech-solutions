@@ -3,12 +3,14 @@ import './home.css';
 import './services.css';
 import './theme-light.css';
 import './value.css';
+import './identity.css';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import ConversionTracking from '@/components/ConversionTracking';
 import MetaPixel from '@/components/MetaPixel';
 import ThemeProvider from '@/components/ThemeProvider';
+import IdentityNotice from '@/components/IdentityNotice';
 import {
   SITE_URL,
   SITE_NAME,
@@ -134,6 +136,7 @@ export default function RootLayout({
           <MetaPixel />
           <ConversionTracking />
 
+          <IdentityNotice />
           {children}
 
           <FloatingWhatsApp />

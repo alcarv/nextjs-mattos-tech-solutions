@@ -2,6 +2,8 @@
 
 import { useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { BUSINESS_TAX_ID } from '@/lib/seo';
 import { contactMessage, createLeadEventId, getContactService, validateContact, whatsappLink, type ContactValues, type ContactErrors } from '@/lib/contact';
 import { trackConversion } from '@/lib/conversion-events';
 import { AlertTriangle, ArrowUpRight, CheckCircle2, LoaderCircle, Mail, MessageCircle } from 'lucide-react';
@@ -124,6 +126,11 @@ export default function HomeContact() {
                 Falar pelo WhatsApp <MessageCircle />
               </MagneticLink>
             </div>
+            <p className="identity-contact-note">
+              <strong>Este contato é da Mattos Tech Solutions, CNPJ {BUSINESS_TAX_ID}.</strong>{' '}
+              Não temos vínculo com a Mattos Tech Intermediações.{' '}
+              <Link href="/esclarecimento">Leia o esclarecimento.</Link>
+            </p>
           </div>
         </div>
 

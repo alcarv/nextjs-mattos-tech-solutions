@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { getContactService, whatsappLink } from '@/lib/contact';
 
 // WhatsApp SVG Icon Component
@@ -19,7 +20,8 @@ export default function FloatingWhatsApp() {
   const href = whatsappLink(service ? `Olá! Quero conversar sobre ${service.name}.` : undefined);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 sm:bottom-6 sm:right-6">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
+      <Link href="/esclarecimento" className="identity-floating-link">Aviso sobre empresas com nomes semelhantes</Link>
       <a
         href={href}
         target="_blank"

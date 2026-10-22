@@ -23,7 +23,7 @@ export const productCatalog: readonly Product[] = [
     description: 'Um sistema de gestão para revendas de veículos que conecta estoque, preparação, clientes, negociações e financeiro. Acompanhe a jornada de cada veículo, da entrada na loja à venda, com custos e histórico reunidos para decidir com mais contexto.',
     creators: ['Mattos Tech Solutions'],
     tone: 'blue',
-    productionUrl: null,
+    productionUrl: 'https://mattosauto.com.br',
   },
   {
     id: 'papercrm',
